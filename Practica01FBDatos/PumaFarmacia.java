@@ -40,13 +40,21 @@ public class PumaFarmacia{
 
                     switch (opcionActualizar) {
                         case 1: // Agregar producto
-                            // Lógica para agregar un nuevo producto
+                            System.out.println("=== Agregar Producto ===");
+                            System.out.print("ID del producto: ");
+                            int idProducto = scanner.nextInt();
+                            scanner.nextLine();  // Consumir la nueva línea
                             break;
                         case 2: // Eliminar producto
-                            // Lógica para eliminar un producto
+                            System.out.println("=== Eliminar Producto ===");
+                            System.out.print("ID del producto a eliminar: ");
+                            int idEliminar = scanner.nextInt();
+                        scanner.nextLine();  // Consumir la nueva línea
                             break;
                         case 3: // Buscar producto por nombre
-                            // Lógica para buscar un producto por nombre
+                            System.out.println("=== Buscar Producto por Nombre ===");
+                            System.out.print("Nombre del producto a buscar: ");
+                            String nombreBuscar = scanner.nextLine();
                             break;
                         case 4: // Volver al menú principal
                             break;      
