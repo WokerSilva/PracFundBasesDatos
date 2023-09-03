@@ -86,16 +86,18 @@ public class ProductoAcceso {
     }
 
     // Metodos agregados por la sintaxis de las opciones declaradas
-    // Método para agregar un nuevo producto
+    // Método para agregar un nuevo producto y actualizar el archivo CSV
     public void agregarProducto(Producto producto) {
         productos.add(producto);
+        guardarProductosEnCSV();
     }
 
-    // Método para eliminar un producto por su ID
+    // Método para eliminar un producto por su ID y actualizar el archivo CSV
     public boolean eliminarProducto(int id) {
         for (Producto producto : productos) {
             if (producto.getId() == id) {
                 productos.remove(producto);
+                guardarProductosEnCSV();
                 return true;
             }
         }
