@@ -1,0 +1,10 @@
+ID,Nombre,Categoría,Precio,Cantidad en Existencia
+1,Amoxicilina,Antibióticos,150.0,24
+2,Ibuprofeno,Analgésicos,50.0,50
+3,Paracetamol,Analgésicos,30.0,100
+4,Omeprazol,Otros,20.0,30
+5,Aspirina,Analgésicos,40.0,60
+6,Vitaminas,Alimentos,15.0,200
+7,Agua Mineral,Bebidas,5.0,120
+9,Crema Hidratante,Desinflamantes,25.0,40
+10,Jabón de Manos,Otros,8.0,75

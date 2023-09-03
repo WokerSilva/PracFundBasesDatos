@@ -40,16 +40,53 @@ public class PumaFarmacia{
 
                     switch (opcionActualizar) {
                         case 1: // Agregar producto
-                            System.out.println("=== Agregar Producto ===");
-                            System.out.print("ID del producto: ");
-                            int idProducto = scanner.nextInt();
-                            scanner.nextLine();  // Consumir la nueva línea
-                            break;
+                        System.out.println("=== Agregar Producto ===");
+                        System.out.print("ID del producto: ");
+                        int idProducto = scanner.nextInt();
+                        scanner.nextLine();  // Consumir la nueva línea
+                    
+                        // Verifica si el ID ya existe
+                        boolean idExistente = false;
+                        for (Producto producto : productoAcceso.getProducto()) {
+                            if (producto.getId() == idProducto) {
+                                idExistente = true;
+                                break;
+                            }
+                        }
+                    
+                        if (idExistente) {
+                            System.out.println("El producto con ID " + idProducto + " ya existe. No se puede agregar.");
+                        } else {
+                            // Solicita al usuario ingresar otros detalles del producto (nombre, categoría, precio, cantidad, etc.)
+                            System.out.print("Nombre del producto: ");
+                            String nombre = scanner.nextLine();
+                            System.out.print("Categoría del producto: ");
+                            String categoria = scanner.nextLine();
+                            System.out.print("Precio del producto: ");
+                            double precio = scanner.nextDouble();
+                            System.out.print("Cantidad en existencia: ");
+                            int cantidad = scanner.nextInt();
+                    
+                            // Crea un nuevo objeto Producto con los detalles ingresados por el usuario y llama al método agregarProducto de ProductoAcceso.
+                            Producto nuevoProducto = new Producto(idProducto, nombre, categoria, precio, cantidad);
+                            productoAcceso.agregarProducto(nuevoProducto);
+                            System.out.println("Producto agregado con éxito.");
+                        }
+                        break;
+
                         case 2: // Eliminar producto
                             System.out.println("=== Eliminar Producto ===");
                             System.out.print("ID del producto a eliminar: ");
                             int idEliminar = scanner.nextInt();
-                        scanner.nextLine();  // Consumir la nueva línea
+                            scanner.nextLine();  // Consumir la nueva línea
+                    
+                            boolean productoEliminado = productoAcceso.eliminarProducto(idEliminar);
+                    
+                            if (productoEliminado) {
+                                System.out.println("Producto con ID " + idEliminar + " eliminado con éxito.");
+                            } else {
+                                System.out.println("No se encontró un producto con ID " + idEliminar + " para eliminar.");
+                            }
                             break;
                         case 3: // Buscar producto por nombre
                             System.out.println("=== Buscar Producto por Nombre ===");

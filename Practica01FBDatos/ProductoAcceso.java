@@ -10,6 +10,13 @@ public class ProductoAcceso {
     private List<Producto> productos;
     private final String archivoCSV = "productos.csv"; // Nombre del archivo CSV
 
+    // Constructor y otros métodos de la clase
+
+    // Método para obtener la lista de productos
+    public List<Producto> getProducto() {
+        return productos;
+    }
+
     public ProductoAcceso() {
         productos = new ArrayList<>();
         cargarProductosDesdeCSV();
@@ -38,14 +45,14 @@ public class ProductoAcceso {
     }
 
     // Método para agregar un nuevo producto
-    public void agregarProducto(Producto producto) {
-        productos.add(producto);
-    }
+    //public void agregarProducto(Producto producto) {
+    //    productos.add(producto);
+    //}
 
     // Método para eliminar un producto por su ID
-    public void eliminarProducto(int id) {
-        productos.removeIf(p -> p.getId() == id);
-    }
+    //public void eliminarProducto(int id) {
+    //    productos.removeIf(p -> p.getId() == id);
+    //}
 
     // Método para actualizar un producto por su ID
     public void actualizarProducto(int id, Producto productoActualizado) {
@@ -76,5 +83,22 @@ public class ProductoAcceso {
         } catch (IOException e) {
             System.err.println("Error al guardar productos en el archivo CSV: " + e.getMessage());
         }
+    }
+
+    // Metodos agregados por la sintaxis de las opciones declaradas
+    // Método para agregar un nuevo producto
+    public void agregarProducto(Producto producto) {
+        productos.add(producto);
+    }
+
+    // Método para eliminar un producto por su ID
+    public boolean eliminarProducto(int id) {
+        for (Producto producto : productos) {
+            if (producto.getId() == id) {
+                productos.remove(producto);
+                return true;
+            }
+        }
+        return false;
     }
 }
