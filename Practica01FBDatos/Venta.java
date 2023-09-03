@@ -1,9 +1,16 @@
 public class Venta{
     private int dia;
     private int mes;
-    private int ano;
+    private int year;
     private double totalVendido;
     
+    public Venta(int dia, int mes, int year, double totalVendido) {
+        this.dia = dia;
+        this.mes = mes;
+        this.year = year;
+        this.totalVendido = totalVendido;
+    }
+
     public int getDia() {
         return dia;
     }
@@ -16,11 +23,11 @@ public class Venta{
     public void setMes(int mes) {
         this.mes = mes;
     }
-    public int getAno() {
-        return ano;
+    public int getYear() {
+        return year;
     }
-    public void setAno(int ano) {
-        this.ano = ano;
+    public void setYear(int year) {
+        this.year = year;
     }
     public double getTotalVendido() {
         return totalVendido;

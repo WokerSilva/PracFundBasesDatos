@@ -5,6 +5,14 @@ public class Producto{
     private double precio;
     private int cantidadEnExistencia;
 
+    public Producto(int id, String nombre, String categoria, double precio, int cantidadEnExistencia) {
+        this.id = id;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.precio = precio;
+        this.cantidadEnExistencia = cantidadEnExistencia;
+    }
+    
     public int getId() {
         return id;
     }
