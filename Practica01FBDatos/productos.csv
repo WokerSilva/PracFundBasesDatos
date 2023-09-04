@@ -1,0 +1,10 @@
+ID,	Nombre,	Categoría,	Precio,	Cantidad en Existencia
+AMOANA, Amoxicilina, Antibióticos, 150.0, 24
+IBUAOS, Ibuprofeno, Analgésicos, 50.0, 50
+PARAOS, Paracetamol, Analgésicos, 30.0, 100
+OMEOOS, Omeprazol, Otros, 20.0, 30
+ASPAOS, Aspirina, Analgésicos, 40.0, 60
+VITAOS, Vitaminas, Alimentos, 15.0, 200
+AGUBAS, Agua Mineral, Bebidas, 5.0, 120
+CREHTE, Crema Hidratante, Desinflamantes, 25.0, 40
+JABOOS, Jabón de Manos, Otros, 8.0, 75

@@ -3,10 +3,9 @@ import java.util.Scanner;
 public class PumaFarmacia{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        // Inicializar el sistema y cargar datos desde archivos CSV
+                
         ProductoAcceso productoAcceso = new ProductoAcceso();
-        VentaAcceso ventaAcceso = new VentaAcceso();
+        // VentaAcceso ventaAcceso = new VentaAcceso();
 
         boolean salir = false;
         while (!salir) {
@@ -24,6 +23,7 @@ public class PumaFarmacia{
             switch (opcion) {
                 case 1:
                     // Lógica para visualizar productos
+                    productoAcceso.imprimirProductosDesdeCSV();
                     break;
                 case 2:
                     // Lógica para actualizar hoja de cálculo
@@ -41,10 +41,6 @@ public class PumaFarmacia{
                     System.out.println("Opción no válida. Intente de nuevo.");
             }
         }
-
-        // Guardar datos en archivos CSV antes de salir
-        // productoAcceso.guardarProductosEnCSV();
-        // ventaAcceso.guardarVentasEnCSV();
 
         System.out.println("Gracias por usar PumaFarmacia. ¡Hasta luego!");
         scanner.close();
