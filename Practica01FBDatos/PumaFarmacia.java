@@ -32,6 +32,10 @@ public class PumaFarmacia{
                     break;
                 case 3:
                     // Lógica para realizar búsqueda
+                    System.out.println("=== Búsqueda de Productos por Categoría ===");
+                    System.out.print("Ingrese la categoría a buscar: ");
+                    String categoriaBuscada = scanner.nextLine();
+                    productoAcceso.buscarProductosPorCategoria(categoriaBuscada);
                     break;
                 case 4:
                     // Lógica para registrar venta
