@@ -1,13 +1,21 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductoAcceso {
     private final String archivoCSV = "productos.csv"; // Nombre del archivo CSV
+    private List<Producto> productos; // Declara la lista de productos
 
-    // Otros métodos de la clase...
-    // Método para imprimir productos desde el archivo CSV con formato personalizado
-    public void imprimirProductosDesdeCSV() {
+    public ProductoAcceso() {
+        // Constructor: Inicializa la lista de productos al crear una instancia de la clase
+        productos = new ArrayList<>();
+        cargarProductosDesdeCSV(); // Carga los productos desde el archivo CSV
+    }
+
+    // Método para cargar productos desde el archivo CSV
+    private void cargarProductosDesdeCSV() {
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
             boolean primeraLinea = true; // Variable para omitir la primera línea
@@ -17,7 +25,7 @@ public class ProductoAcceso {
                     primeraLinea = false;
                     continue;
                 }
-            
+
                 // Divide la línea en partes usando la coma como separador
                 String[] partes = linea.split(",");
                 if (partes.length == 5) {
@@ -27,15 +35,35 @@ public class ProductoAcceso {
                     String categoria = partes[2].trim();
                     double precio = Double.parseDouble(partes[3].trim());
                     int cantidad = Integer.parseInt(partes[4].trim());
-                
+
                     // Crear un objeto Producto a partir de las partes
                     Producto producto = new Producto(id, nombre, categoria, precio, cantidad);
-                    // Imprimir el producto formateado
-                    System.out.println(producto.toString());
+                    // Agregar el producto a la lista
+                    productos.add(producto);
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error al imprimir productos desde el archivo CSV: " + e.getMessage());
+            System.err.println("Error al cargar productos desde el archivo CSV: " + e.getMessage());
         }
-    }   
+    }
+
+    // Método para imprimir productos desde la lista
+    public void imprimirProductosDesdeLista(List<Producto> lista) {
+        for (Producto producto : lista) {
+            System.out.println(producto.toString());
+        }
+    }
+
+    // Método para buscar productos por categoría
+    public List<Producto> buscarProductosPorCategoria(String categoriaBuscada) {
+        List<Producto> productosEncontrados = new ArrayList<>();
+        for (Producto producto : productos) {
+            if (producto.getCategoria().equalsIgnoreCase(categoriaBuscada)) {
+                productosEncontrados.add(producto);
+            }
+        }
+        return productosEncontrados;
+    }
+
+    // Resto de tus métodos...
 }
