@@ -52,5 +52,11 @@ public class Producto{
     public void setCantidadEnExistencia(int cantidadEnExistencia) {
         this.cantidadEnExistencia = cantidadEnExistencia;
     }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %s | Nombre: %s | Categoría: %s | Precio: %.2f | Cantidad en Existencia: %d",
+                id, nombre, categoria, precio, cantidadEnExistencia);
+    }
     
 }
