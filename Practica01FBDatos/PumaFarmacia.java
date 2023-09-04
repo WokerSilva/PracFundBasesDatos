@@ -6,7 +6,7 @@ public class PumaFarmacia{
                 
         ProductoAcceso productoAcceso = new ProductoAcceso();
         // VentaAcceso ventaAcceso = new VentaAcceso();
-
+        // Resolviendo problema de acceso al archivo
         boolean salir = false;
         while (!salir) {
             System.out.println("=== Farmacia App ===");
