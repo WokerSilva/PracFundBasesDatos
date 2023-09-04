@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ProductoAcceso {
@@ -87,20 +88,36 @@ public class ProductoAcceso {
 
     // Metodos agregados por la sintaxis de las opciones declaradas
     // Método para agregar un nuevo producto y actualizar el archivo CSV
-    public void agregarProducto(Producto producto) {
+     // Método para agregar un nuevo producto y actualizar el archivo CSV
+     public void agregarProducto(Producto producto) {
         productos.add(producto);
         guardarProductosEnCSV();
     }
 
     // Método para eliminar un producto por su ID y actualizar el archivo CSV
-    public boolean eliminarProducto(int id) {
-        for (Producto producto : productos) {
+    public boolean eliminarProductoPorId(int id) {
+        Iterator<Producto> iterator = productos.iterator();
+        while (iterator.hasNext()) {
+            Producto producto = iterator.next();
             if (producto.getId() == id) {
-                productos.remove(producto);
+                iterator.remove(); // Elimina el producto utilizando el iterador
                 guardarProductosEnCSV();
-                return true;
+                return true; // Producto eliminado con éxito
             }
         }
-        return false;
+        return false; // No se encontró un producto con el ID especificado
     }
+
+
+    // Método para buscar productos por categoría y mostrarlos en la terminal
+    public void buscarProductosPorCategoria(String categoria) {
+        System.out.println("=== Productos en la Categoría: " + categoria + " ===");
+        for (Producto producto : productos) {
+            if (producto.getCategoria().equalsIgnoreCase(categoria)) {
+                System.out.println(producto.getId() + " | " + producto.getNombre() + " | " + producto.getCategoria() +
+                        " | $" + producto.getPrecio() + " | " + producto.getCantidadEnExistencia());
+            }
+        }
+    }
+
 }
