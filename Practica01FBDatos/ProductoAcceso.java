@@ -37,6 +37,5 @@ public class ProductoAcceso {
         } catch (IOException e) {
             System.err.println("Error al imprimir productos desde el archivo CSV: " + e.getMessage());
         }
-    }
-
+    }   
 }

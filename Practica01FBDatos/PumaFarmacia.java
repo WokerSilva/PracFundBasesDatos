@@ -27,6 +27,8 @@ public class PumaFarmacia{
                     break;
                 case 2:
                     // Lógica para actualizar hoja de cálculo
+                    ActualizarDatos actualizarDatos = new ActualizarDatos();
+                    actualizarDatos.realizarOpciones();
                     break;
                 case 3:
                     // Lógica para realizar búsqueda
