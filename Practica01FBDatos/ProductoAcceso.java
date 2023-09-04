@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ProductoAcceso {
-    private final String archivoCSV = "productos.csv"; // Nombre del archivo CSV
+    private final String archivoCSV = "./productos.csv"; // Nombre del archivo CSV
 
     // Otros métodos de la clase...
     // Método para imprimir productos desde el archivo CSV con formato personalizado
