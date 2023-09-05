@@ -14,8 +14,8 @@ public class ProductoAcceso {
         cargarProductosDesdeCSV(); // Carga los productos desde el archivo CSV
     }
 
-    // Método para cargar productos desde el archivo CSV
-    private void cargarProductosDesdeCSV() {
+     // Método para cargar productos desde el archivo CSV
+     private void cargarProductosDesdeCSV() {
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
             boolean primeraLinea = true; // Variable para omitir la primera línea
@@ -47,23 +47,61 @@ public class ProductoAcceso {
         }
     }
 
-    // Método para imprimir productos desde la lista
-    public void imprimirProductosDesdeLista(List<Producto> lista) {
+      // Método para imprimir productos desde la lista
+      public void imprimirProductosDesdeLista(List<Producto> lista) {
         for (Producto producto : lista) {
             System.out.println(producto.toString());
         }
     }
 
-    // Método para buscar productos por categoría
-    public List<Producto> buscarProductosPorCategoria(String categoriaBuscada) {
-        List<Producto> productosEncontrados = new ArrayList<>();
+    
+    
+    // Método para imprimir productos desde el archivo CSV con formato personalizado
+    public void imprimirProductosDesdeCSV() {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+            String linea;
+            boolean primeraLinea = true; // Variable para omitir la primera línea
+            while ((linea = br.readLine()) != null) {
+                if (primeraLinea) {
+                    // Omitir la primera línea (encabezados)
+                    primeraLinea = false;
+                    continue;
+                }
+            
+                // Divide la línea en partes usando la coma como separador
+                String[] partes = linea.split(",");
+                if (partes.length == 5) {
+                    // Eliminar espacios en blanco al principio y al final de las partes
+                    String id = partes[0].trim();
+                    String nombre = partes[1].trim();
+                    String categoria = partes[2].trim();
+                    double precio = Double.parseDouble(partes[3].trim());
+                    int cantidad = Integer.parseInt(partes[4].trim());
+                
+                    // Crear un objeto Producto a partir de las partes
+                    Producto producto = new Producto(id, nombre, categoria, precio, cantidad);
+                    // Imprimir el producto formateado
+                    System.out.println(producto.toString());
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error al imprimir productos desde el archivo CSV: " + e.getMessage());
+        }
+    }   
+
+    public void buscarProductosPorCategoria(String categoriaBuscada) {
+        System.out.println("Resultados de búsqueda para la categoría: " + categoriaBuscada);
+        boolean encontrados = false;
+    
         for (Producto producto : productos) {
             if (producto.getCategoria().equalsIgnoreCase(categoriaBuscada)) {
-                productosEncontrados.add(producto);
+                System.out.println(producto.toString());
+                encontrados = true;
             }
         }
-        return productosEncontrados;
-    }
-
-    // Resto de tus métodos...
+    
+        if (!encontrados) {
+            System.out.println("No se encontraron productos en la categoría: " + categoriaBuscada);
+        }
+    }   
 }

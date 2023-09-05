@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Scanner;
 
 public class PumaFarmacia{
@@ -35,13 +34,7 @@ public class PumaFarmacia{
                     // Lógica para realizar búsqueda
                     System.out.print("Ingrese la categoría a buscar: ");
                     String categoriaBuscada = scanner.nextLine();
-                    List<Producto> productosEncontrados = productoAcceso.buscarProductosPorCategoria(categoriaBuscada);
-                    if (!productosEncontrados.isEmpty()) {
-                        System.out.println("Resultados de búsqueda para la categoría: " + categoriaBuscada);
-                        productoAcceso.imprimirProductosDesdeLista(productosEncontrados);
-                    } else {
-                        System.out.println("No se encontraron productos en la categoría: " + categoriaBuscada);
-                    }
+                    productoAcceso.buscarProductosPorCategoria(categoriaBuscada);
                     break;
                 case 4:
                     // Lógica para registrar venta
