@@ -5,8 +5,8 @@ public class PumaFarmacia{
         Scanner scanner = new Scanner(System.in);
                 
         ProductoAcceso productoAcceso = new ProductoAcceso();
-        // VentaAcceso ventaAcceso = new VentaAcceso();
-        // Resolviendo problema de acceso al archivo
+        VentaAcceso ventaAcceso = new VentaAcceso();
+        
         boolean salir = false;
         while (!salir) {
             System.out.println("=== PumaFarmacia ===");
@@ -14,7 +14,8 @@ public class PumaFarmacia{
             System.out.println("2. Actualizar hoja de cálculo");
             System.out.println("3. Realizar búsqueda");
             System.out.println("4. Registrar venta");
-            System.out.println("5. Salir");
+            System.out.println("5. Ver inventario de venta");
+            System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
@@ -38,8 +39,13 @@ public class PumaFarmacia{
                     break;
                 case 4:
                     // Lógica para registrar venta
+                    ventaAcceso.registrarVenta();
                     break;
                 case 5:
+                    // Visualizar ventas
+                    ventaAcceso.imprimirVentasDesdeCSV(); // Llama al método imprimirVentasDesdeCSV de ventaAcceso
+                    break;
+                case 6: 
                     salir = true;
                     break;
                 default:
