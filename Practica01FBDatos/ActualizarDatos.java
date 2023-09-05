@@ -55,30 +55,109 @@ public class ActualizarDatos{
     /**
      * Método para agregar un nuevo producto y sobreescribir en el archivo CSV
      */
-    public void agregarProducto(){
+    public void agregarProducto() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("=== Agregar Nuevo Producto ===");
         System.out.print("Nombre del producto: ");
         String nombre = scanner.nextLine();
-        System.out.print("Categoria del producto: ");
+        System.out.print("Categoría del producto: ");
         String categoria = scanner.nextLine();
         System.out.print("Precio del producto: ");
         double precio = scanner.nextDouble();
         System.out.print("Cantidad en existencia: ");
         int cantidad = scanner.nextInt();
 
-        // Generar el ID en base a las reglas
-        String id = generarID(nombre, categoria);
+        // Verificar si ya existe un producto con el mismo nombre
+        Producto productoExistente = buscarProductoPorNombre(nombre);
 
-        // Crear un objeto Producto con los detalles ingresados por el usuario
-        Producto nuevoProducto = new Producto(id, nombre, categoria, precio, cantidad);
+        if (productoExistente != null) {
+            System.out.println("El producto ya existe en la lista.");
+            System.out.println("1. Agregar más cantidad al producto existente");
+            System.out.println("2. Cancelar y volver al menú principal");
+            System.out.print("Seleccione una opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir la nueva línea
 
-        // Llamar al método para agregar el producto al archivo CSV
-        agregarProductoAlCSV(nuevoProducto);
-        System.out.println("Producto agregado con éxito.");
+            if (opcion == 1) {
+                // Agregar la cantidad al producto existente
+                productoExistente.setCantidadEnExistencia(productoExistente.getCantidadEnExistencia() + cantidad);
+                actualizarProductoEnCSV(productoExistente);
+                System.out.println("Cantidad agregada al producto existente con éxito.");
+            } else {
+                System.out.println("Operación cancelada. Volviendo al menú principal.");
+            }
+        } else {
+            // Generar el ID en base a las reglas
+            String id = generarID(nombre, categoria);
+
+            // Crear un objeto Producto con los detalles ingresados por el usuario
+            Producto nuevoProducto = new Producto(id, nombre, categoria, precio, cantidad);
+
+            // Llamar al método para agregar el producto al archivo CSV
+            agregarProductoAlCSV(nuevoProducto);
+            System.out.println("Producto agregado con éxito.");
+        }
     }
     
+    /**
+ * @param producto
+ * Método para actualizar un producto en el archivo CSV con nueva cantidad.
+ */
+private void actualizarProductoEnCSV(Producto producto) {
+    List<Producto> productosActualizados = new ArrayList<>();
+
+    try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+        String linea;
+        boolean primeraLinea = true; // Variable para omitir la primera línea (encabezado)
+
+        while ((linea = br.readLine()) != null) {
+            if (primeraLinea) {
+                primeraLinea = false;
+                continue; // Omitir la primera línea (encabezado)
+            }
+
+            // Divide la línea en partes usando la coma como separador
+            String[] partes = linea.split(",");
+            if (partes.length == 5) {
+                String id = partes[0].trim();
+                if (id.equals(producto.getId())) {
+                    // Si el ID coincide con el ID del producto a actualizar, reemplaza la cantidad
+                    productosActualizados.add(producto);
+                } else {
+                    // Si el ID no coincide, agrega el producto existente a la lista actualizada
+                    productosActualizados.add(new Producto(
+                            id, partes[1].trim(), partes[2].trim(),
+                            Double.parseDouble(partes[3].trim()),
+                            Integer.parseInt(partes[4].trim())
+                    ));
+                }
+            }
+        }
+    } catch (IOException e) {
+        System.err.println("Error al actualizar el producto en el archivo CSV: " + e.getMessage());
+        return; // Salir sin actualizar si ocurre un error
+    }
+
+    // Reescribir el archivo CSV con la lista actualizada de productos
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoCSV, false))) {
+        // Volver a escribir la primera línea (encabezado)
+        bw.write("ID,Nombre,Categoría,Precio,Cantidad en Existencia");
+        bw.newLine();
+
+        for (Producto productoActualizado : productosActualizados) {
+            bw.write(productoActualizado.getId() + "," + productoActualizado.getNombre() + ","
+                    + productoActualizado.getCategoria() + "," + productoActualizado.getPrecio()
+                    + "," + productoActualizado.getCantidadEnExistencia());
+            bw.newLine();
+        }
+    } catch (IOException e) {
+        System.err.println("Error al escribir en el archivo CSV: " + e.getMessage());
+    }
+
+    System.out.println("Producto actualizado con éxito.");
+}
+
     /**
      * @param nombre
      * @param categoria
@@ -126,6 +205,43 @@ public class ActualizarDatos{
             System.err.println("Error al agregar el producto al archivo CSV: " + e.getMessage());
         }
     }   
+
+    /**
+     * @param nombre
+     * Método para buscar un producto por su nombre en el archivo CSV
+     * @return El producto si se encuentra, null si no se encuentra
+     */
+    private Producto buscarProductoPorNombre(String nombre) {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+            String linea;
+            boolean primeraLinea = true; // Variable para omitir la primera línea (encabezado)
+
+            while ((linea = br.readLine()) != null) {
+                if (primeraLinea) {
+                    primeraLinea = false;
+                    continue; // Omitir la primera línea (encabezado)
+                }
+
+                // Divide la línea en partes usando la coma como separador
+                String[] partes = linea.split(",");
+                if (partes.length == 5) {
+                    String nombreProducto = partes[1].trim();
+                    if (nombreProducto.equalsIgnoreCase(nombre.trim())) {
+                        // Si el nombre coincide con el nombre buscado (sin importar mayúsculas/minúsculas), devuelve el producto
+                        return new Producto(
+                                partes[0].trim(), partes[1].trim(), partes[2].trim(),
+                                Double.parseDouble(partes[3].trim()),
+                                Integer.parseInt(partes[4].trim())
+                        );
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error al buscar el producto por nombre: " + e.getMessage());
+        }
+
+        return null; // Si no se encuentra el producto, devuelve null
+    }
 
     /**
      * Metodo para eliminar un producto desde su ID
