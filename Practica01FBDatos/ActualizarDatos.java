@@ -54,7 +54,7 @@ public class ActualizarDatos{
 
     /**
      * Método para agregar un nuevo producto y sobreescribir en el archivo CSV
-     */
+     */    
     public void agregarProducto() {
         Scanner scanner = new Scanner(System.in);
 
@@ -70,6 +70,7 @@ public class ActualizarDatos{
 
         // Verificar si ya existe un producto con el mismo nombre
         Producto productoExistente = buscarProductoPorNombre(nombre);
+    
 
         if (productoExistente != null) {
             System.out.println("El producto ya existe en la lista.");
@@ -99,64 +100,63 @@ public class ActualizarDatos{
             System.out.println("Producto agregado con éxito.");
         }
     }
-    
+
     /**
- * @param producto
- * Método para actualizar un producto en el archivo CSV con nueva cantidad.
- */
-private void actualizarProductoEnCSV(Producto producto) {
+    * @param producto
+    * Método para actualizar un producto en el archivo CSV con nueva cantidad.
+    */
+    private void actualizarProductoEnCSV(Producto producto) {
     List<Producto> productosActualizados = new ArrayList<>();
 
-    try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
-        String linea;
-        boolean primeraLinea = true; // Variable para omitir la primera línea (encabezado)
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+            String linea;
+            boolean primeraLinea = true; // Variable para omitir la primera línea (encabezado)
 
-        while ((linea = br.readLine()) != null) {
-            if (primeraLinea) {
-                primeraLinea = false;
-                continue; // Omitir la primera línea (encabezado)
-            }
+            while ((linea = br.readLine()) != null) {
+                if (primeraLinea) {
+                    primeraLinea = false;
+                    continue; // Omitir la primera línea (encabezado)
+                }
 
-            // Divide la línea en partes usando la coma como separador
-            String[] partes = linea.split(",");
-            if (partes.length == 5) {
-                String id = partes[0].trim();
-                if (id.equals(producto.getId())) {
-                    // Si el ID coincide con el ID del producto a actualizar, reemplaza la cantidad
-                    productosActualizados.add(producto);
-                } else {
-                    // Si el ID no coincide, agrega el producto existente a la lista actualizada
-                    productosActualizados.add(new Producto(
+                // Divide la línea en partes usando la coma como separador
+                String[] partes = linea.split(",");
+                if (partes.length == 5) {
+                    String id = partes[0].trim();
+                    if (id.equals(producto.getId())) {
+                        // Si el ID coincide con el ID del producto a actualizar, reemplaza la cantidad
+                        productosActualizados.add(producto);
+                    } else {
+                        // Si el ID no coincide, agrega el producto existente a la lista actualizada
+                        productosActualizados.add(new Producto(
                             id, partes[1].trim(), partes[2].trim(),
                             Double.parseDouble(partes[3].trim()),
                             Integer.parseInt(partes[4].trim())
-                    ));
+                        ));
+                    }
                 }
             }
+        } catch (IOException e) {
+            System.err.println("Error al actualizar el producto en el archivo CSV: " + e.getMessage());
+            return; // Salir sin actualizar si ocurre un error
         }
-    } catch (IOException e) {
-        System.err.println("Error al actualizar el producto en el archivo CSV: " + e.getMessage());
-        return; // Salir sin actualizar si ocurre un error
-    }
 
-    // Reescribir el archivo CSV con la lista actualizada de productos
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoCSV, false))) {
-        // Volver a escribir la primera línea (encabezado)
-        bw.write("ID,Nombre,Categoría,Precio,Cantidad en Existencia");
-        bw.newLine();
-
-        for (Producto productoActualizado : productosActualizados) {
-            bw.write(productoActualizado.getId() + "," + productoActualizado.getNombre() + ","
-                    + productoActualizado.getCategoria() + "," + productoActualizado.getPrecio()
-                    + "," + productoActualizado.getCantidadEnExistencia());
+        // Reescribir el archivo CSV con la lista actualizada de productos
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoCSV, false))) {
+            // Volver a escribir la primera línea (encabezado)
+            bw.write("ID,Nombre,Categoría,Precio,Cantidad en Existencia");
             bw.newLine();
-        }
-    } catch (IOException e) {
-        System.err.println("Error al escribir en el archivo CSV: " + e.getMessage());
-    }
 
-    System.out.println("Producto actualizado con éxito.");
-}
+            for (Producto productoActualizado : productosActualizados) {
+                bw.write(productoActualizado.getId() + "," + productoActualizado.getNombre() + ","
+                        + productoActualizado.getCategoria() + "," + productoActualizado.getPrecio()
+                        + "," + productoActualizado.getCantidadEnExistencia());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo CSV: " + e.getMessage());
+        }
+        System.out.println("Producto actualizado con éxito.");
+    }
 
     /**
      * @param nombre
