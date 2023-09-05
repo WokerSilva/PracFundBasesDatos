@@ -201,31 +201,37 @@ public class ActualizarDatos{
      * Metodo para buscar un producto por medio de su ID
      * El metodo devuelve los atributos del producto
      */
-    private void buscarProductoPorID(String idBuscado){
-    System.out.println("=== Buscar Producto por ID ===");
-
+    public void buscarProductoPorID(String idBuscado) {
+        System.out.println("=== Buscar Producto por ID ===");
+    
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
             boolean encontrado = false;
-
+    
             while ((linea = br.readLine()) != null) {
                 // Divide la línea en partes usando la coma como separador
                 String[] partes = linea.split(",");
                 if (partes.length == 5) {
                     String id = partes[0].trim();
                     if (id.equalsIgnoreCase(idBuscado.trim())) {
-                        // Si el ID coincide con el ID buscado (sin importar mayúsculas/minúsculas), imprime el ID y termina la búsqueda
-                        System.out.println("ID encontrado: " + id);
+                        // Si el ID coincide con el ID buscado (sin importar mayúsculas/minúsculas), imprime los atributos del producto
+                        System.out.println("Producto encontrado:");
+                        System.out.println("ID: " + partes[0].trim());
+                        System.out.println("Nombre: " + partes[1].trim());
+                        System.out.println("Categoría: " + partes[2].trim());
+                        System.out.println("Precio: " + partes[3].trim());
+                        System.out.println("Cantidad en Existencia: " + partes[4].trim());
                         encontrado = true;
                         break; // Termina la búsqueda después de encontrar el primer producto
                     }
                 }
             }
+    
             if (!encontrado) {
                 System.out.println("No se encontró ningún producto con el ID proporcionado.");
             }
         } catch (IOException e) {
             System.err.println("Error al buscar el producto por ID: " + e.getMessage());
         }
-    }
+    }    
 }
