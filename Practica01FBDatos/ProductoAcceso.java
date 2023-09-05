@@ -8,14 +8,18 @@ public class ProductoAcceso {
     private final String archivoCSV = "productos.csv"; // Nombre del archivo CSV
     private List<Producto> productos; // Declara la lista de productos
 
-    public ProductoAcceso() {
-        // Constructor: Inicializa la lista de productos al crear una instancia de la clase
+    /**
+     * Constructor para inicializar la lista de productos al crear la instancia
+     */
+    public ProductoAcceso() {        
         productos = new ArrayList<>();
         cargarProductosDesdeCSV(); // Carga los productos desde el archivo CSV
     }
-
-     // Método para cargar productos desde el archivo CSV
-     private void cargarProductosDesdeCSV() {
+     
+    /**
+     * Método para cargar el archivo de productos
+     */
+    private void cargarProductosDesdeCSV() {
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
             boolean primeraLinea = true; // Variable para omitir la primera línea
@@ -47,16 +51,19 @@ public class ProductoAcceso {
         }
     }
 
-      // Método para imprimir productos desde la lista
-      public void imprimirProductosDesdeLista(List<Producto> lista) {
+    /**
+     * @param lista
+     * Método para imprimir productos desde la lista
+     */
+    public void imprimirProductosDesdeLista(List<Producto> lista) {
         for (Producto producto : lista) {
             System.out.println(producto.toString());
         }
     }
-
     
-    
-    // Método para imprimir productos desde el archivo CSV con formato personalizado
+    /**
+     * Método para imprimir productos desde el archivo CSV
+     */
     public void imprimirProductosDesdeCSV() {
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
@@ -89,6 +96,10 @@ public class ProductoAcceso {
         }
     }   
 
+    /**
+     * @param categoriaBuscada
+     * Metodo encargado de realizar las busquedas por categoria
+     */
     public void buscarProductosPorCategoria(String categoriaBuscada) {
         System.out.println("Resultados de búsqueda para la categoría: " + categoriaBuscada);
         boolean encontrados = false;

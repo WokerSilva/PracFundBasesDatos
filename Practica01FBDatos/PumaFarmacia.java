@@ -9,7 +9,7 @@ public class PumaFarmacia{
         // Resolviendo problema de acceso al archivo
         boolean salir = false;
         while (!salir) {
-            System.out.println("=== Farmacia App ===");
+            System.out.println("=== PumaFarmacia ===");
             System.out.println("1. Visualizar productos");
             System.out.println("2. Actualizar hoja de cálculo");
             System.out.println("3. Realizar búsqueda");

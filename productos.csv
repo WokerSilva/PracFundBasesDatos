@@ -1,11 +1,13 @@
 ID,	Nombre,	Categoría,	Precio,	Cantidad en Existencia
-AMOANA, Amoxicilina, Antibióticos, 150.0, 24
-IBUAOS, Ibuprofeno, Analgésicos, 50.0, 50
-PARAOS, Paracetamol, Analgésicos, 30.0, 100
+AMOANA, Amoxicilina, Antibioticos, 150.0, 24
+IBUAOS, Ibuprofeno, Antibioticos, 50.0, 50
+PARAOS, Paracetamol, Analgesicos, 30.0, 100
 OMEOOS, Omeprazol, Otros, 20.0, 30
-ASPAOS, Aspirina, Analgésicos, 40.0, 60
+ASPAOS, Aspirina, Analgesicos, 40.0, 60
 VITAOS, Vitaminas, Alimentos, 15.0, 200
 AGUBAS, Agua Mineral, Bebidas, 5.0, 120
 CREHTE, Crema Hidratante, Desinflamantes, 25.0, 40
-JABOOS, Jabón de Manos, Otros, 8.0, 75SUEBAS,Suerox,Bebidas,20.0,20
-SUEBAS,Suerox,Bebidas,15.5,10
+JABOOS, Jabon de Manos, Otros, 8.0, 75
+SUEBAS, Suerox, Bebidas, 15.5, 10
+CONPON, Condon Fresa, Proteccion, 50.0, 5
+CONPON, Condon Uva, Proteccion, 45.6, 5
