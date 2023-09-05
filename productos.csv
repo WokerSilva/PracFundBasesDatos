@@ -1,4 +1,4 @@
-ID,Nombre,Categoría,Precio,Cantidad en Existencia
+ID,Nombre,Categoria,Precio,Cantidad en Existencia
 AMOANA,Amoxicilina,Antibioticos,150.0,24
 IBUAOS,Ibuprofeno,Antibioticos,50.0,50
 OMEOOS,Omeprazol,Otros,20.0,30
@@ -7,4 +7,5 @@ VITAOS,Vitaminas,Alimentos,15.0,200
 AGUBAS,Agua Mineral,Bebidas,5.0,120
 CREHTE,Crema Hidratante,Desinflamantes,25.0,40
 SUEBAS,Suerox,Bebidas,15.5,10
-CONPON,Condon,Proteccion,45.5,16
+LLAOOS,Llavero,Otros,15.5,90
+PALAOS,Paletas,Alimentos,12.0,30

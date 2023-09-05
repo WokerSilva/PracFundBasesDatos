@@ -14,24 +14,27 @@ public class VentaAcceso{
     private final String archivoCSV = "ventas.csv"; // Nombre del archivo CSV para ventas
     private List<Venta> ventas; // Lista para almacenar las ventas
 
+    /**
+     * Constructor de la clase
+     */
     public VentaAcceso() {
-        ventas = new ArrayList<>();
-        cargarVentasDesdeCSV(); // Cargar ventas existentes desde el archivo CSV
+        ventas = new ArrayList<>();     
     }
-
-    // Método para cargar ventas desde el archivo CSV
-    private void cargarVentasDesdeCSV() {
-        // Implementa la lógica para cargar las ventas desde el archivo CSV (si existe).
-    }
-
-    // Método para guardar una venta en el archivo CSV
-    public void guardarVenta(Venta venta) {
+    
+    /**
+     * @param venta
+     * Método para guardar una venta en el archivo CSV
+     */
+    public void guardarVenta(Venta venta){
         ventas.add(venta);
         escribirVentaEnCSV(venta);
     }
 
-    // Método para escribir una venta en el archivo CSV
-    private void escribirVentaEnCSV(Venta venta) {
+    /**
+     * @param venta
+     * Método para escribir una venta en el archivo CSV
+     */
+    private void escribirVentaEnCSV(Venta venta){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoCSV, true))) {
             // Formatear la venta como una línea CSV y escribirla en el archivo
             bw.write(venta.getDia() + "," + venta.getMes() + "," + venta.getYear() + ","
@@ -40,11 +43,12 @@ public class VentaAcceso{
         } catch (IOException e) {
             System.err.println("Error al escribir la venta en el archivo CSV: " + e.getMessage());
         }
-    }
+    }    
 
-    // Implementa otros métodos según tus necesidades, como listar ventas, buscar por fecha, etc
-
-    public void registrarVenta() {
+    /**
+     * Método para tomar nota de los datos de la venta
+     */
+    public void registrarVenta(){
         Scanner scanner = new Scanner(System.in);
     
         System.out.println("=== Registrar Venta ===");
@@ -69,49 +73,55 @@ public class VentaAcceso{
         }
     }
     
-
-private boolean esFechaValida(int dia, int mes, int year) {
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    sdf.setLenient(false); // No permitir fechas inválidas (por ejemplo, 30 de febrero)
-    try {
-        Date fecha = sdf.parse(String.format("%02d/%02d/%04d", dia, mes, year));
-        return true;
-    } catch (ParseException e) {
-        return false;
-    }
-}
-
-
-
-public void imprimirVentasDesdeCSV() {
-    try (BufferedReader br = new BufferedReader(new FileReader("ventas.csv"))) {
-        String linea;
-        boolean primeraLinea = true; // Variable para omitir la primera línea (encabezado)
-
-        System.out.println("=== Ventas Registradas ===");
-        while ((linea = br.readLine()) != null) {
-            if (primeraLinea) {
-                primeraLinea = false;
-                continue; // Omitir la primera línea (encabezado)
-            }
-
-            // Divide la línea en partes usando la coma como separador
-            String[] partes = linea.split(",");
-            if (partes.length == 4) {
-                int dia = Integer.parseInt(partes[0].trim());
-                int mes = Integer.parseInt(partes[1].trim());
-                int year = Integer.parseInt(partes[2].trim());
-                double totalVendido = Double.parseDouble(partes[3].trim());
-
-                // Imprimir los datos de la venta
-                System.out.println("Fecha: " + dia + "/" + mes + "/" + year);
-                System.out.println("Total Vendido: $" + totalVendido);
-                System.out.println("-------------------------");
-            }
+    /**
+     * @param dia
+     * @param mes
+     * @param year
+     * @return
+     */
+    private boolean esFechaValida(int dia, int mes, int year){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false); // No permitir fechas inválidas (por ejemplo, 30 de febrero)
+        try {
+            Date fecha = sdf.parse(String.format("%02d/%02d/%04d", dia, mes, year));
+            return true;
+        } catch (ParseException e) {
+            return false;
         }
-    } catch (IOException e) {
-        System.err.println("Error al imprimir las ventas desde el archivo CSV: " + e.getMessage());
-        e.printStackTrace(); // Imprime detalles del error
     }
-}
+
+    /**
+     * Lectura e impresión del archivo
+     */
+    public void imprimirVentasDesdeCSV(){
+        try (BufferedReader br = new BufferedReader(new FileReader("ventas.csv"))) {
+            String linea;
+            boolean primeraLinea = true; // Variable para omitir la primera línea (encabezado)
+
+            System.out.println("=== Ventas Registradas ===");
+            while ((linea = br.readLine()) != null) {
+                if (primeraLinea) {
+                    primeraLinea = false;
+                    continue; // Omitir la primera línea (encabezado)
+                }
+
+                // Divide la línea en partes usando la coma como separador
+                String[] partes = linea.split(",");
+                if (partes.length == 4) {
+                    int dia = Integer.parseInt(partes[0].trim());
+                    int mes = Integer.parseInt(partes[1].trim());
+                    int year = Integer.parseInt(partes[2].trim());
+                    double totalVendido = Double.parseDouble(partes[3].trim());
+
+                    // Imprimir los datos de la venta
+                    System.out.println("Fecha: " + dia + "/" + mes + "/" + year);
+                    System.out.println("Total Vendido: $" + totalVendido);
+                    System.out.println("-------------------------");
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error al imprimir las ventas desde el archivo CSV: " + e.getMessage());
+            e.printStackTrace(); // Imprime detalles del error
+        }
+    }
 }

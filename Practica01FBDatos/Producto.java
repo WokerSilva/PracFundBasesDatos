@@ -55,8 +55,12 @@ public class Producto{
 
     @Override
     public String toString() {
-        return String.format("ID: %s | Nombre: %s | Categoría: %s | Precio: %.2f | Cantidad en Existencia: %d",
-                id, nombre, categoria, precio, cantidadEnExistencia);
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID: ").append(id).append("\n");
+        sb.append("Nombre: ").append(nombre).append("\n");
+        sb.append("Categoría: ").append(categoria).append("\n");
+        sb.append("Precio: ").append(String.format("%.2f", precio)).append("\n");
+        sb.append("Cantidad en Existencia: ").append(cantidadEnExistencia).append("\n");
+        return sb.toString();
     }
-    
 }
