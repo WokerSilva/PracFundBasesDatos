@@ -1,7 +1,6 @@
-ID,Nombre,Categoría,Precio,Cantidad en Existencia
+ID,Nombre,Categoria,Precio,Cantidad en Existencia
 AMOANA,Amoxicilina,Antibioticos,150.0,24
 IBUAOS,Ibuprofeno,Antibioticos,50.0,50
-PARAOS,Paracetamol,Analgesicos,30.0,100
 OMEOOS,Omeprazol,Otros,20.0,30
 ASPAOS,Aspirina,Analgesicos,40.0,60
 VITAOS,Vitaminas,Alimentos,15.0,200
