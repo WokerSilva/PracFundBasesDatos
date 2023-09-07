@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage[utf8]{inputenc} % Acentos válidos sin problemas
+\usepackage[spanish]{babel} % Idioma
+%\usepackage[style=biber]{biblatex}
+%\addbibresource{bibliografia.bib}
+%\usepackage[
+%  backend=biber
+%]{biblatex}
+\usepackage[backend=biber, style=ieee]{biblatex}
+
+\addbibresource{bibliografia.bib}
+\usepackage{csquotes}
+%\usepackage{background}
+%\setlegtth{\parindent}{2px}
+%\phantom{abc}
+
+\input{packet}
+
+\begin{document}%----------------------INICIO DOCUMENTO------------|
+%------------------------------------------------------------------|
+\pagecolor{black}
+\color{white}
+
+\thispagestyle{firstpage} % Aplicar estilo de primera página
+\noindent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\large\textbf{Facultad de Ciencias} \\
+Fundamentos de Bases de Datos \hfill semestre: 2024-1 \\
+\textsc{SILVA HUERTA MARCO}   \hfill No.Cuenta: 316205326    \\
+11 de Septiembre de 2023      \hfill \textbf{Practica \#02}    \\
+\noindent\rule{7.3in}{2.8pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\Large{Modelos de datos}
+\end{center}
+
+\subsection*{Objetivo}
+Que el alumno genere modelos orientados a objetos, relacional y semiestructurado y
+refuerce el conocimiento visto en clase.
+
+\subsection*{Instrucciones}
+
+Los modelos de datos nos ayudan a describir la estructura de una base de datos, brindando
+los medios necesarios para lograr la abstracción de los datos. Tres principales modelos que
+abordaremos son:\\
+
+El modelo orientado a objetos almacena y manipula información que puede ser presentada 
+como objetos; las llamadas bases de datos orientadas a objetos \textbf{(BDOO)} pueden manejar
+herencia, polimorfismo y encapsulamiento. (No está incluido en esta práctica).\\
+
+El modelo semiestructurado surge ante la necesidad de que cada elemento almacenado
+cuente con un conjunto de atributos propio, sin necesidad de que este conjunto sea
+obligatorio como sucede en el modelo relacional. Este tipo de bases de datos se crea con el
+lenguaje de marcado extensible XML.
+
+\subsection*{Ejercicio 1}
+
+Modelo semiestructurado
+
+Deberás leer el archivo csv de la práctica 1 y pasarlo a alguna estructura del modelo
+semiestructurado (json, xml, html etcétera), recomiendo json por ser el más usado.
+
+
+\subsection*{Ejercicio 2}
+
+Modelo relacional
+
+Basándote en las figuras 1.2 y 2.1 diseña un esquema de base de datos y coloca algunos
+registros de ejemplo sobre un universo de discurso de tu elección.
+
+\subsection*{Ejercicio 3}
+
+Completa el modelo con los siguientes aspectos:
+
+\begin{enumerate}
+    \item ¿Qué tipo de información adicional y restricciones podrías representar en este
+    esquema? Inventa al menos 5 restricciones y agrega al menos 5 campos distribuidos
+    en distintas tablas, también si lo consideras necesario, puedes agregar una tabla
+    adicional.
+
+    \item Menciona al menos 3 usuarios de tu base de datos, define los privilegios que cada
+    uno tendría en la BD y describe el tipo de información que cada uno de ellos
+    utilizaría.
+\end{enumerate}
+
+
+\section*{Cuestionario}
+
+\begin{enumerate}
+    \item ¿Cuáles son las 4 principales características de los modelos orientados a objetos?
+    \item ¿Cuáles son las 4 principales propiedades de una relación?
+    \item ¿Cuál es la principal diferencia entre el modelo entidad relación y el modelo
+    semiestructurado?
+    \item Nombra 3 ejemplos en el cual se utilice el modelo orientado a objetos.
+    \item Nombra 3 ejemplos en el cual se utilice el modelo entidad relación.
+    \item Nombra 3 ejemplos en el cual se utilice el modelo semiestructurado.    
+\end{enumerate}
+
+%\newpage
+%\thispagestyle{fancy} % Aplicar estilo de primera página
+
+%\printbibliography
+
+
+%\newpage
+%\thispagestyle{fancy} % Aplicar estilo de primera página
+%\NoBgThispage % Quita el fondo de la pagina
+
+%-----------------------------------------------------------------|
+\end{document}%----------------------FIN DEL DOCUMENTO------------| 
