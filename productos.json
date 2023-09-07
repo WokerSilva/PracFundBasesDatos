@@ -1,0 +1,72 @@
+[
+  {
+    "ID": "AMOANA",
+    "Nombre": "Amoxicilina",
+    "Categoría": "Antibioticos",
+    "Precio": 150.0,
+    "Cantidad en Existencia": 24
+  },
+  {
+    "ID": "IBUAOS",
+    "Nombre": "Ibuprofeno",
+    "Categoría": "Antibioticos",
+    "Precio": 50.0,
+    "Cantidad en Existencia": 50
+  },
+  {
+    "ID": "OMEOOS",
+    "Nombre": "Omeprazol",
+    "Categoría": "Otros",
+    "Precio": 20.0,
+    "Cantidad en Existencia": 30
+  },
+  {
+    "ID": "ASPAOS",
+    "Nombre": "Aspirina",
+    "Categoría": "Analgesicos",
+    "Precio": 40.0,
+    "Cantidad en Existencia": 60
+  },
+  {
+    "ID": "VITAOS",
+    "Nombre": "Vitaminas",
+    "Categoría": "Alimentos",
+    "Precio": 15.0,
+    "Cantidad en Existencia": 200
+  },
+  {
+    "ID": "AGUBAS",
+    "Nombre": "Agua Mineral",
+    "Categoría": "Bebidas",
+    "Precio": 5.0,
+    "Cantidad en Existencia": 120
+  },
+  {
+    "ID": "CREHTE",
+    "Nombre": "Crema Hidratante",
+    "Categoría": "Desinflamantes",
+    "Precio": 25.0,
+    "Cantidad en Existencia": 40
+  },
+  {
+    "ID": "SUEBAS",
+    "Nombre": "Suerox",
+    "Categoría": "Bebidas",
+    "Precio": 15.5,
+    "Cantidad en Existencia": 10
+  },
+  {
+    "ID": "LLAOOS",
+    "Nombre": "Llavero",
+    "Categoría": "Otros",
+    "Precio": 15.5,
+    "Cantidad en Existencia": 90
+  },
+  {
+    "ID": "PALAOS",
+    "Nombre": "Paletas",
+    "Categoría": "Alimentos",
+    "Precio": 12.0,
+    "Cantidad en Existencia": 30
+  }
+]
