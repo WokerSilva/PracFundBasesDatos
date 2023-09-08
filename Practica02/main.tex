@@ -1,0 +1,303 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage[utf8]{inputenc} % Acentos válidos sin problemas
+\usepackage[spanish]{babel} % Idioma
+%\usepackage[style=biber]{biblatex}
+%\addbibresource{bibliografia.bib}
+%\usepackage[
+%  backend=biber
+%]{biblatex}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+\usepackage{csquotes}
+%\usepackage{background}
+%\setlegtth{\parindent}{2px}
+%\phantom{abc}
+\usepackage{csvsimple}
+\usepackage{filecontents}
+%\usepackage{json}
+%\usepackage{fancyvrb}
+
+
+\input{packet}
+
+\begin{document}%----------------------INICIO DOCUMENTO------------|
+%------------------------------------------------------------------|
+\pagecolor{black}
+\color{white}
+
+\thispagestyle{firstpage} % Aplicar estilo de primera página
+\noindent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\large\textbf{Facultad de Ciencias} \\
+Fundamentos de Bases de Datos \hfill semestre: 2024-1 \\
+\textsc{SILVA HUERTA MARCO}   \hfill No.Cuenta: 316205326    \\
+11 de Septiembre de 2023      \hfill \textbf{Practica \#02}    \\
+\noindent\rule{7.3in}{2.8pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\Large{Modelos de datos}
+\end{center}
+
+\subsection*{Objetivo}
+Que el alumno genere modelos orientados a objetos, relacional y semiestructurado y
+refuerce el conocimiento visto en clase.
+
+\subsection*{Instrucciones}
+
+Los modelos de datos nos ayudan a describir la estructura de una base de datos, brindando
+los medios necesarios para lograr la abstracción de los datos. Tres principales modelos que
+abordaremos son:\\
+
+El modelo orientado a objetos almacena y manipula información que puede ser presentada 
+como objetos; las llamadas bases de datos orientadas a objetos \textbf{(BDOO)} pueden manejar
+herencia, polimorfismo y encapsulamiento. (No está incluido en esta práctica).\\
+
+El modelo semiestructurado surge ante la necesidad de que cada elemento almacenado
+cuente con un conjunto de atributos propio, sin necesidad de que este conjunto sea
+obligatorio como sucede en el modelo relacional. Este tipo de bases de datos se crea con el
+lenguaje de marcado extensible XML.
+
+\newpage
+\thispagestyle{fancy} % Aplicar estilo de primera página
+
+
+\subsection*{Ejercicio 1}
+
+Modelo semiestructurado
+
+Deberás leer el archivo csv de la práctica 1 y pasarlo a alguna estructura del modelo
+semiestructurado (json, xml, html etcétera), recomiendo json por ser el más usado.
+
+
+\subsubsection*{Archivo CSV}
+
+\begin{filecontents*}{productos.csv}
+    ID,Nombre,Categoria,Precio,Cantidad en Existencia
+    AMOANA,Amoxicilina,Antibióticos,150.0,24
+    IBUAOS,Ibuprofeno,Analgésicos,50.0,50
+    PARAOS,Paracetamol,Analgésicos,30.0,100
+    OMEOOS,Omeprazol,Otros,20.0,30
+    ASPAOS,Aspirina,Analgésicos,40.0,60
+    VITAOS,Vitaminas,Alimentos,15.0,200
+    AGUBAS,Agua Mineral,Bebidas,5.0,120
+    CREHTE,Crema Hidratante,Desinflamantes,25.0,40
+    JABOOS,Jabón de Manos,Otros,8.0,75
+    SUEBAS,Suerox,Bebidas,20.0,20
+    SUEBAS,Suerox,Bebidas,15.5,10
+\end{filecontents*}
+
+\csvautotabular{productos.csv}
+
+\subsubsection*{Archivo CSV}
+
+%\jsonfile{productos.json}
+
+\begin{lstlisting}[language=json, caption=productos.json]
+    {
+        [
+            {
+              "ID": "AMOANA",
+              "Nombre": "Amoxicilina",
+              "Categoria": "Antibioticos",
+              "Precio": 150.0,
+              "Cantidad en Existencia": 24
+            },
+            {
+              "ID": "IBUAOS",
+              "Nombre": "Ibuprofeno",
+              "Categoria": "Antibioticos",
+              "Precio": 50.0,
+              "Cantidad en Existencia": 50
+            },
+            {
+              "ID": "OMEOOS",
+              "Nombre": "Omeprazol",
+              "Categoria": "Otros",
+              "Precio": 20.0,
+              "Cantidad en Existencia": 30
+            },
+            {
+              "ID": "ASPAOS",
+              "Nombre": "Aspirina",
+              "Categoria": "Analgesicos",
+              "Precio": 40.0,
+              "Cantidad en Existencia": 60
+            },
+            {
+              "ID": "VITAOS",
+              "Nombre": "Vitaminas",
+              "Categoria": "Alimentos",
+              "Precio": 15.0,
+              "Cantidad en Existencia": 200
+            },
+            {
+              "ID": "AGUBAS",
+              "Nombre": "Agua Mineral",
+              "Categoria": "Bebidas",
+              "Precio": 5.0,
+              "Cantidad en Existencia": 120
+            },
+            {
+              "ID": "CREHTE",
+              "Nombre": "Crema Hidratante",
+              "Categoria": "Desinflamantes",
+              "Precio": 25.0,
+              "Cantidad en Existencia": 40
+            },
+            {
+              "ID": "SUEBAS",
+              "Nombre": "Suerox",
+              "Categoria": "Bebidas",
+              "Precio": 15.5,
+              "Cantidad en Existencia": 10
+            },
+            {
+              "ID": "LLAOOS",
+              "Nombre": "Llavero",
+              "Categoria": "Otros",
+              "Precio": 15.5,
+              "Cantidad en Existencia": 90
+            },
+            {
+              "ID": "PALAOS",
+              "Nombre": "Paletas",
+              "Categoria": "Alimentos",
+              "Precio": 12.0,
+              "Cantidad en Existencia": 30
+            }
+          ]          
+    }
+\end{lstlisting}
+
+
+\subsection*{Ejercicio 2}
+
+Modelo relacional
+
+Basándote en las figuras 1.2 y 2.1 diseña un esquema de base de datos y coloca algunos
+registros de ejemplo sobre un universo de discurso de tu elección.
+
+\begin{center}
+    \includegraphics[scale = .6]{ejercico02.png}
+\end{center}
+
+\subsection*{Ejercicio 3}
+
+Completa el modelo con los siguientes aspectos:
+
+\begin{enumerate}
+    \item ¿Qué tipo de información adicional y restricciones podrías representar en este
+    esquema? Inventa al menos 5 restricciones y agrega al menos 5 campos distribuidos
+    en distintas tablas, también si lo consideras necesario, puedes agregar una tabla
+    adicional.
+
+    \item Menciona al menos 3 usuarios de tu base de datos, define los privilegios que cada
+    uno tendría en la BD y describe el tipo de información que cada uno de ellos
+    utilizaría.
+\end{enumerate}
+
+
+\section*{Cuestionario}
+
+\begin{enumerate}
+    \item ¿Cuáles son las 4 principales características de los modelos orientados a objetos?
+    \item ¿Cuáles son las 4 principales propiedades de una relación?
+    \item ¿Cuál es la principal diferencia entre el modelo entidad relación y el modelo
+    semiestructurado?
+    \item Nombra 3 ejemplos en el cual se utilice el modelo orientado a objetos.
+    \item Nombra 3 ejemplos en el cual se utilice el modelo entidad relación.
+    \item Nombra 3 ejemplos en el cual se utilice el modelo semiestructurado.    
+\end{enumerate}
+
+
+\section*{Tablas}
+
+\begin{table}[h]
+    \centering
+    \caption{\textcolor{white}{Tabla Estudiante}}
+    \label{tabla_estudiante}
+    \textcolor{white}{
+    \begin{tabular}{|c|c|c|c|} 
+    \hline
+        Nombre & Numero\_Estudiante & Clase & Departamento \\ \hline
+        Juan & 4 & 1 & CS \\ \hline
+        Luis & 17 & 2 & CS \\ 
+    \hline
+    \end{tabular}
+    }
+\end{table}
+\begin{table}[h]
+    \centering
+    \caption{\textcolor{white}{Tabla Curso}}
+    \label{tabla_curso}
+    \textcolor{white}{
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    Nombre\_Curso & Numero\_Curso & Horas & Departamento \\
+    \hline
+        Introducción a Computación & CS1310 & 4 & CS \\
+        Estructura de datos & CS3320 & 4 & CS \\
+        Matemáticas Discretas & MATH2410 & 3 & MATH \\
+        Bases de datos & CS3380 & 3 & CS \\
+    \hline
+    \end{tabular}
+    }
+\end{table}
+\begin{table}[h]
+    \centering
+    \caption{\textcolor{white}{Tabla Sección}}
+    \label{tabla_seccion}
+    \textcolor{white}{
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+        Numero\_Curso & Semestre & Año & Instructor \\ \hline
+        MATH2410 & Otoño & 07 & Smith \\
+        CS1310 & Primavera & 08 & Lucas \\
+    \hline
+    \end{tabular}
+    }
+\end{table}
+\begin{table}[h]
+    \centering
+    \caption{\textcolor{white}{Tabla Calificaciones}}
+    \label{tabla_calificaciones}
+    \textcolor{white}{
+    \begin{tabular}{|c|c|c|}
+    \hline
+        Número\_Estudiante & ID\_Seccion & Calificacion \\ \hline
+                2      &     1       & A \\
+                1      &     2       & B \\
+    \hline
+    \end{tabular}
+    }
+\end{table}
+\begin{table}[h]
+    \centering
+    \caption{\textcolor{white}{Tabla Prerrequisitos}}
+    \label{tabla_prerrequisitos}
+    \textcolor{white}{
+    \begin{tabular}{|c|c|}
+    \hline
+        Numero\_Curso & Numero\_Prerrequisito \\ \hline
+        CS1310        & CS3320 \\
+    \hline
+    \end{tabular}
+    }
+\end{table}
+    
+
+
+    
+%\newpage
+%\thispagestyle{fancy} % Aplicar estilo de primera página
+
+%\printbibliography
+
+
+%\newpage
+%\thispagestyle{fancy} % Aplicar estilo de primera página
+%\NoBgThispage % Quita el fondo de la pagina
+
+%-----------------------------------------------------------------|
+\end{document}%----------------------FIN DEL DOCUMENTO------------| 
