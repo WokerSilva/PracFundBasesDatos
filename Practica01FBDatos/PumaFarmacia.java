@@ -16,7 +16,7 @@ public class PumaFarmacia{
             System.out.println("4. Registrar venta");
             System.out.println("5. Ver inventario de venta");
             System.out.println("6. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
 
             int opcion = scanner.nextInt();
             scanner.nextLine();  // Consumir la nueva línea
@@ -33,7 +33,7 @@ public class PumaFarmacia{
                     break;
                 case 3:
                     // Lógica para realizar búsqueda
-                    System.out.print("Ingrese la categoría a buscar: ");
+                    System.out.print("Ingrese la categoria a buscar: ");
                     String categoriaBuscada = scanner.nextLine();
                     productoAcceso.buscarProductosPorCategoria(categoriaBuscada);
                     break;
@@ -49,7 +49,7 @@ public class PumaFarmacia{
                     salir = true;
                     break;
                 default:
-                    System.out.println("Opción no válida. Intente de nuevo.");
+                    System.out.println("Opción no valida. Intente de nuevo.");
             }
         }
 
