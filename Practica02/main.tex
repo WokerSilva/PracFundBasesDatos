@@ -39,35 +39,14 @@ Fundamentos de Bases de Datos \hfill semestre: 2024-1 \\
 \Large{Modelos de datos}
 \end{center}
 
-\subsection*{Objetivo}
-Que el alumno genere modelos orientados a objetos, relacional y semiestructurado y
-refuerce el conocimiento visto en clase.
-
-\subsection*{Instrucciones}
-
-Los modelos de datos nos ayudan a describir la estructura de una base de datos, brindando
-los medios necesarios para lograr la abstracción de los datos. Tres principales modelos que
-abordaremos son:\\
-
-El modelo orientado a objetos almacena y manipula información que puede ser presentada 
-como objetos; las llamadas bases de datos orientadas a objetos \textbf{(BDOO)} pueden manejar
-herencia, polimorfismo y encapsulamiento. (No está incluido en esta práctica).\\
-
-El modelo semiestructurado surge ante la necesidad de que cada elemento almacenado
-cuente con un conjunto de atributos propio, sin necesidad de que este conjunto sea
-obligatorio como sucede en el modelo relacional. Este tipo de bases de datos se crea con el
-lenguaje de marcado extensible XML.
-
-\newpage
-\thispagestyle{fancy} % Aplicar estilo de primera página
 
 
 \subsection*{Ejercicio 1}
 
 Modelo semiestructurado
 
-Deberás leer el archivo csv de la práctica 1 y pasarlo a alguna estructura del modelo
-semiestructurado (json, xml, html etcétera), recomiendo json por ser el más usado.
+\textcolor{sun}{Deberás leer el archivo csv de la práctica 1 y pasarlo a alguna estructura del modelo
+semiestructurado (json, xml, html etcétera), recomiendo json por ser el más usado.}
 
 
 \subsubsection*{Archivo CSV}
@@ -89,11 +68,11 @@ semiestructurado (json, xml, html etcétera), recomiendo json por ser el más us
 
 \csvautotabular{productos.csv}
 
-\subsubsection*{Archivo CSV}
+\subsubsection*{Archivo JSON}
 
 %\jsonfile{productos.json}
-
-\begin{lstlisting}[language=json, caption=productos.json]
+\thispagestyle{fancy} % Aplicar estilo de primera página
+\begin{lstlisting}[language=json]
     {
         [
             {
@@ -137,7 +116,7 @@ semiestructurado (json, xml, html etcétera), recomiendo json por ser el más us
               "Categoria": "Bebidas",
               "Precio": 5.0,
               "Cantidad en Existencia": 120
-            },
+            },            
             {
               "ID": "CREHTE",
               "Nombre": "Crema Hidratante",
@@ -169,49 +148,96 @@ semiestructurado (json, xml, html etcétera), recomiendo json por ser el más us
           ]          
     }
 \end{lstlisting}
+\thispagestyle{fancy} % Aplicar estilo de primera página
 
+\newpage
+\thispagestyle{fancy} % Aplicar estilo de primera página
 
 \subsection*{Ejercicio 2}
 
 Modelo relacional
 
-Basándote en las figuras 1.2 y 2.1 diseña un esquema de base de datos y coloca algunos
-registros de ejemplo sobre un universo de discurso de tu elección.
+\textcolor{sun}{Basándote en las figuras 1.2 y 2.1 diseña un esquema de base de datos y coloca algunos
+registros de ejemplo sobre un universo de discurso de tu elección.}
 
 \begin{center}
     \includegraphics[scale = .6]{ejercico02.png}
 \end{center}
+
+
 
 \subsection*{Ejercicio 3}
 
 Completa el modelo con los siguientes aspectos:
 
 \begin{enumerate}
-    \item ¿Qué tipo de información adicional y restricciones podrías representar en este
+    \item \textcolor{sun}{¿Qué tipo de información adicional y restricciones podrías representar en este
     esquema? Inventa al menos 5 restricciones y agrega al menos 5 campos distribuidos
     en distintas tablas, también si lo consideras necesario, puedes agregar una tabla
-    adicional.
+    adicional.}
 
-    \item Menciona al menos 3 usuarios de tu base de datos, define los privilegios que cada
+    \begin{itemize}
+      \item \textbf{Restricción de Unicidad en Departamentos:} Agregar una restricción única para el campo `Departamento` en la tabla de `Departamento` para garantizar que no haya departamentos con el mismo nombre.
+      
+      \item \textbf{Fecha de Inicio en Secciones:} Agregar un campo `Fecha de Inicio` en la tabla de `Sección` para registrar la fecha en que una sección comienza.
+      
+      \item \textbf{Restricción de Calificaciones:} Agregar una restricción de rango en la tabla de `Calificaciones` para garantizar que las calificaciones estén dentro de un rango específico (por ejemplo, A, B, C, D, F).
+      
+      \item \textbf{Restricción de Edad en Estudiantes:} Agregar un campo `Fecha de Nacimiento` en la tabla de `Estudiante` para calcular automáticamente la edad y aplicar una restricción de edad mínima (por ejemplo, 18 años).
+      
+      \item \textbf{Tabla de Profesores:} Agregar una nueva tabla llamada `Profesor` que almacene información sobre los profesores, como su nombre, número de identificación y departamento al que están asignados. Esta tabla estaría relacionada con la tabla de `Sección` para identificar quién imparte cada sección.
+    \end{itemize}
+ 
+    \subsubsection*{Tabla agregada}
+
+    \begin{table}[h]
+      \centering
+      \caption{\textcolor{white}{Tabla Profesor}}
+      \label{tabla_profesor}
+      \textcolor{white}{
+      \begin{tabular}{|c|c|c|}
+      \hline
+          Nombre & Numero\_Identificacion & Departamento \\ \hline
+          Profesor X & 12345 & CS \\ \hline
+          Yoda & 67890 & MATH \\
+      \hline
+      \end{tabular}
+      }
+    \end{table}
+    
+
+    \item \textcolor{sun}{Menciona al menos 3 usuarios de tu base de datos, define los privilegios que cada
     uno tendría en la BD y describe el tipo de información que cada uno de ellos
-    utilizaría.
+    utilizaría.}
+
+    \begin{itemize}
+      \item \textbf{Administrador de la Base de Datos:} Los administradores tienen privilegios completos sobre la base de datos. Puede crear, modificar y eliminar tablas, así como otorgar permisos a otros usuarios. Su función es mantener la integridad y la estructura de la base de datos.
+    
+      \item \textbf{Profesor:} Los profesores tienen acceso a la información de las tablas \textit{Sección} y \textit{Calificaciones}. Tienen permiso para ver y actualizar las calificaciones de los estudiantes en las secciones que imparten. También pueden consultar información sobre las secciones que están a cargo.      
+    
+      \item \textbf{Departamento de Admisiones:} Ellos tiene acceso a la tabla \textit{Estudiante} para registrar nuevos estudiantes en la base de datos. También puede consultar información sobre los departamentos y cursos ofrecidos.          
+    \end{itemize}
+
+  
 \end{enumerate}
 
 
 \section*{Cuestionario}
 
 \begin{enumerate}
-    \item ¿Cuáles son las 4 principales características de los modelos orientados a objetos?
-    \item ¿Cuáles son las 4 principales propiedades de una relación?
-    \item ¿Cuál es la principal diferencia entre el modelo entidad relación y el modelo
-    semiestructurado?
-    \item Nombra 3 ejemplos en el cual se utilice el modelo orientado a objetos.
-    \item Nombra 3 ejemplos en el cual se utilice el modelo entidad relación.
-    \item Nombra 3 ejemplos en el cual se utilice el modelo semiestructurado.    
+    \item \textcolor{sun}{¿Cuáles son las 4 principales características de los modelos orientados a objetos?}
+    \item \textcolor{sun}{¿Cuáles son las 4 principales propiedades de una relación?}
+    \item \textcolor{sun}{¿Cuál es la principal diferencia entre el modelo entidad relación y el modelo
+    semiestructurado?}
+    \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo orientado a objetos.}
+    \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo entidad relación.}
+    \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo semiestructurado.}
 \end{enumerate}
 
+\newpage
+\thispagestyle{fancy} % Aplicar estilo de primera página
 
-\section*{Tablas}
+\section*{Tablas de referencia}
 
 \begin{table}[h]
     \centering
