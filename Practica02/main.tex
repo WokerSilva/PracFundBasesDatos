@@ -71,7 +71,6 @@ semiestructurado (json, xml, html etcétera), recomiendo json por ser el más us
 \subsubsection*{Archivo JSON}
 
 %\jsonfile{productos.json}
-\thispagestyle{fancy} % Aplicar estilo de primera página
 \begin{lstlisting}[language=json]
     {
         [
@@ -177,144 +176,175 @@ Completa el modelo con los siguientes aspectos:
     adicional.}
 
     \begin{itemize}
-      \item \textbf{Restricción de Unicidad en Departamentos:} Agregar una restricción única para el campo `Departamento` en la tabla de `Departamento` para garantizar que no haya departamentos con el mismo nombre.
+      \item \textbf{Restricción de Unicidad en Departamentos:} Agregar una restricción única para el campo \textit{Departamento} en la tabla de \textit{Departamento} para garantizar que no haya departamentos con el mismo nombre.
       
-      \item \textbf{Fecha de Inicio en Secciones:} Agregar un campo `Fecha de Inicio` en la tabla de `Sección` para registrar la fecha en que una sección comienza.
+      \item \textbf{Fecha de Inicio en Secciones:} Agregar un campo \textit{Fecha de Inicio} en la tabla de \textit{Sección} para registrar la fecha en que una sección comienza.
       
-      \item \textbf{Restricción de Calificaciones:} Agregar una restricción de rango en la tabla de `Calificaciones` para garantizar que las calificaciones estén dentro de un rango específico (por ejemplo, A, B, C, D, F).
+      \item \textbf{Restricción de Calificaciones:} Agregar una restricción de rango en la tabla de \textit{Calificaciones} para garantizar que las calificaciones estén dentro del rango específico (A, B, C, D, F).
       
-      \item \textbf{Restricción de Edad en Estudiantes:} Agregar un campo `Fecha de Nacimiento` en la tabla de `Estudiante` para calcular automáticamente la edad y aplicar una restricción de edad mínima (por ejemplo, 18 años).
+      \item \textbf{Restricción de Edad en Estudiantes:} Agregar un campo \textit{Fecha de Nacimiento} en la tabla de \textit{Estudiante} para calcular automáticamente la edad y aplicar una restricción de edad mínima.
       
-      \item \textbf{Tabla de Profesores:} Agregar una nueva tabla llamada `Profesor` que almacene información sobre los profesores, como su nombre, número de identificación y departamento al que están asignados. Esta tabla estaría relacionada con la tabla de `Sección` para identificar quién imparte cada sección.
+      \item \textbf{Tabla de Profesores:} Agregar una nueva tabla llamada \textit{Profesor} que almacene información sobre los profesores. Se relaciona con la tabla de \textit{Sección} para saber quién imparte cada sección.
     \end{itemize}
- 
-    \subsubsection*{Tabla agregada}
-
-    \begin{table}[h]
-      \centering
-      \caption{\textcolor{white}{Tabla Profesor}}
-      \label{tabla_profesor}
-      \textcolor{white}{
-      \begin{tabular}{|c|c|c|}
-      \hline
+    \thispagestyle{fancy} % Aplicar estilo de primera página
+    \subsubsection*{Tablas}
+    \begin{minipage}[c]{0.75\textwidth}        
+      Tabla estudiente \\
+  
+      \begin{tabular}{|c|c|c|c|c|} 
+        \hline
+            Nombre & Numero\_Estudiante & Clase & Departamento & Fecha\_Nacimiento \\ \hline
+            Juan & 4 & 1 & CS & 1990-03-15 \\ \hline
+            Luis & 17 & 2 & CS & 1992-08-20 \\ 
+        \hline
+        \end{tabular}            
+    \end{minipage}
+  
+    \vspace{10mm}
+  
+    \begin{minipage}[c]{0.75\textwidth}        
+      Tabla Curso  \\
+  
+        \begin{tabular}{|c|c|c|c|}
+          \hline
+            Nombre\_Curso & Numero\_Curso & Horas & Departamento \\
+          \hline
+            Introducción a Computación & CS1310 & 4 & CS \\
+            Estructura de datos & CS3320 & 4 & CS \\
+            Matemáticas Discretas & MATH2410 & 3 & MATH \\
+            Bases de datos & CS3380 & 3 & CS \\
+          \hline
+        \end{tabular}
+    \end{minipage}
+  
+    \vspace{10mm}
+  
+    \begin{minipage}[c]{0.75\textwidth}        
+      Tabla Sección \\
+  
+        \begin{tabular}{|c|c|c|c|c|}
+        \hline
+          Numero\_Curso & Semestre & Año & Profesor & Fecha\_Inicio \\ \hline
+          MATH2410 & Otoño & 07 & Yoda & 2023-09-01 \\
+          CS1310 & Primavera & 08 & Profesor X & 2023-01-15 \\
+        \hline
+        \end{tabular}
+    \end{minipage}
+  
+    \vspace{10mm}
+  
+    \begin{minipage}[c]{0.75\textwidth}        
+        Tabla Calificaciones \\
+  
+        \begin{tabular}{|c|c|c|}
+        \hline
+          Número\_Estudiante & ID\_Seccion & Calificacion \\ \hline
+          2 & 1 & A \\
+          1 & 2 & B \\
+        \hline
+        \end{tabular}
+    \end{minipage}
+  
+    \vspace{10mm}
+    \thispagestyle{fancy} % Aplicar estilo de primera página
+    \begin{minipage}[c]{0.75\textwidth}        
+        Tabla Prerrequisitos \\
+  
+        \begin{tabular}{|c|c|}
+        \hline
+          Numero\_Curso & Numero\_Prerrequisito \\ \hline
+          CS1310 & CS3320 \\
+        \hline
+        \end{tabular}    
+    \end{minipage}
+  
+    \vspace{10mm}
+    \thispagestyle{fancy} % Aplicar estilo de primera página
+    \begin{minipage}[c]{0.75\textwidth}        
+        Tabla Profesor\\
+  
+        \begin{tabular}{|c|c|c|}
+        \hline
           Nombre & Numero\_Identificacion & Departamento \\ \hline
           Profesor X & 12345 & CS \\ \hline
           Yoda & 67890 & MATH \\
-      \hline
-      \end{tabular}
-      }
-    \end{table}
-    
+        \hline
+        \end{tabular}    
+    \end{minipage}
 
     \item \textcolor{sun}{Menciona al menos 3 usuarios de tu base de datos, define los privilegios que cada
     uno tendría en la BD y describe el tipo de información que cada uno de ellos
     utilizaría.}
 
     \begin{itemize}
-      \item \textbf{Administrador de la Base de Datos:} Los administradores tienen privilegios completos sobre la base de datos. Puede crear, modificar y eliminar tablas, así como otorgar permisos a otros usuarios. Su función es mantener la integridad y la estructura de la base de datos.
+      \item \textcolor{Peach}{\textbf{Administrador de la Base de Datos:}} Los administradores tienen privilegios completos sobre la base de datos. Puede crear, modificar y eliminar tablas, así como otorgar permisos a otros usuarios. Su función es mantener la integridad y la estructura de la base de datos.
     
-      \item \textbf{Profesor:} Los profesores tienen acceso a la información de las tablas \textit{Sección} y \textit{Calificaciones}. Tienen permiso para ver y actualizar las calificaciones de los estudiantes en las secciones que imparten. También pueden consultar información sobre las secciones que están a cargo.      
+      \item \textcolor{Peach}{\textbf{Profesor:}} Los profesores tienen acceso a la información de las tablas \textit{Sección} y \textit{Calificaciones}. Tienen permiso para ver y actualizar las calificaciones de los estudiantes en las secciones que imparten. También pueden consultar información sobre las secciones que están a cargo.      
     
-      \item \textbf{Departamento de Admisiones:} Ellos tiene acceso a la tabla \textit{Estudiante} para registrar nuevos estudiantes en la base de datos. También puede consultar información sobre los departamentos y cursos ofrecidos.          
+      \item \textcolor{Peach}{\textbf{Departamento de Admisiones:}} Ellos tiene acceso a la tabla \textit{Estudiante} para registrar nuevos estudiantes en la base de datos. También puede consultar información sobre los departamentos y cursos ofrecidos.          
     \end{itemize}
-
   
 \end{enumerate}
-
-
+\thispagestyle{fancy} % Aplicar estilo de primera página
 \section*{Cuestionario}
 
 \begin{enumerate}
     \item \textcolor{sun}{¿Cuáles son las 4 principales características de los modelos orientados a objetos?}
+    \begin{itemize}
+      \item \textcolor{water}{\textbf{Encapsulación:}} Protege y controla el acceso a los datos en la base de datos, asegurando su integridad y privacidad.
+      \item \textcolor{water}{\textbf{Herencia:}} Permite crear nuevas estructuras de datos basadas en las existentes, promoviendo la reutilización y la organización eficiente de información.      
+      \item \textcolor{water}{\textbf{Abstracción:}} Simplifica la representación de objetos del mundo real en la base de datos, centrándose en los aspectos clave y ocultando detalles innecesarios.
+      \item \textcolor{water}{\textbf{Polimorfismo:}} Permite tratar diferentes tipos de datos de manera uniforme a través de interfaces comunes, facilitando consultas y operaciones flexibles.
+    \end{itemize}
+
     \item \textcolor{sun}{¿Cuáles son las 4 principales propiedades de una relación?}
+    \begin{itemize}
+      \item \textcolor{water}{\textbf{Cardinalidad:}} Describe el número de instancias de una entidad que pueden estar relacionadas con el número de instancias de otra entidad. Las posibles cardinalidades incluyen 1:1, 1:N, N:1 y M:N.
+      \item \textcolor{water}{\textbf{Participación:}} Indica si la existencia de una entidad depende de su participación en una relación. Puede ser total (obligatoria) o parcial (opcional).
+      \item \textcolor{water}{\textbf{Atributos de relación:}} Son atributos asociados a la relación misma, que almacenan información adicional sobre la relación en sí.
+      \item \textcolor{water}{\textbf{Grado de relación:}} Indica cuántas entidades están involucradas en la relación. Las relaciones binarias implican dos entidades, mientras que las relaciones ternarias involucran tres, y así sucesivamente.
+    \end{itemize}
+    \thispagestyle{fancy} % Aplicar estilo de primera página
     \item \textcolor{sun}{¿Cuál es la principal diferencia entre el modelo entidad relación y el modelo
     semiestructurado?}
+
+    \textcolor{water}{El modelo entidad-relación (ER) se basa en una \textbf{estructura de datos tabular} y utiliza relaciones bien definidas entre entidades y atributos. Mientras el modelo semiestructurado es más flexible y permite \textbf{datos con estructura variable},  (JSON o XML), que no siguen una estructura tabular rígida. entonces la diferencia radica la estructura de datos.}
+
     \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo orientado a objetos.}
-    \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo entidad relación.}
+    \begin{itemize}
+      \item \textcolor{water}{\textbf{Gestión de Biblioteca:}}\\
+      Para hacer la gestión de un biblioteca, los libros, los usuarios y los préstamos se modelan como objetos.
+       La encapsulación se utiliza para proteger la información de los usuarios, la herencia se aplica para crear clases de libros 
+       basadas en género o autor, el polimorfismo permite a diferentes tipos de usuarios realizar operaciones de préstamo y 
+       devolución de libros.
+
+      \item \textcolor{water}{\textbf{Videojuegos:}}\\
+       En videojuegos modernos, los personajes, objetos, enemigos y entornos se modelan como objetos en un mundo virtual.
+        Cada objeto tiene atributos y comportamientos específicos, lo que permite una simulación realista y dinámica del juego.
+         Por ejemplo, un personaje en un juego de rol es un objeto con atributos como salud, nivel y habilidades.
+
+      \item \textcolor{water}{\textbf{Gestión de Archivos Multimedia:}}\\
+       En aplicaciones de gestión de activos digitales como sistemas de transmisión de contenido,
+        se utilizan bases de datos orientadas a objetos para almacenar y organizar archivos multimedia,
+        como imágenes, audio y video. Esto permite la indexación eficiente de metadatos y facilita la búsqueda y recuperación 
+        de contenido multimedia.
+    \end{itemize}
+    \thispagestyle{fancy} % Aplicar estilo de primera página
+    \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo entidad relación.}    
+    \begin{itemize}
+      \item Diseño de bases de datos: El modelo entidad-relación se utiliza ampliamente para diseñar esquemas de bases de datos relacionales que representan entidades y sus relaciones.
+      \item Modelado de sistemas de información: Se utiliza para modelar la estructura de información en organizaciones y empresas, lo que ayuda a comprender cómo se almacena y se accede a la información.
+      \item Desarrollo de sistemas de gestión de contenido (CMS): Los CMS utilizan el modelo entidad-relación para organizar y gestionar el contenido, como artículos, imágenes y usuarios.
+    \end{itemize}
+    \thispagestyle{fancy} % Aplicar estilo de primera página
     \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo semiestructurado.}
+    \begin{itemize}
+      \item Documentos XML: XML (Extensible Markup Language) es un formato de datos semiestructurado ampliamente utilizado en la representación y el intercambio de datos en la web y en sistemas de información.
+      \item Bases de datos NoSQL: Las bases de datos NoSQL, como MongoDB y Cassandra, almacenan datos semiestructurados y ofrecen flexibilidad en el esquema de datos.
+      \item Configuración de software: Muchos archivos de configuración de software, como archivos JSON y archivos de configuración de aplicaciones, utilizan estructuras semiestructuradas para definir configuraciones y opciones.
+    \end{itemize}
 \end{enumerate}
 
-\newpage
-\thispagestyle{fancy} % Aplicar estilo de primera página
-
-\section*{Tablas de referencia}
-
-\begin{table}[h]
-    \centering
-    \caption{\textcolor{white}{Tabla Estudiante}}
-    \label{tabla_estudiante}
-    \textcolor{white}{
-    \begin{tabular}{|c|c|c|c|} 
-    \hline
-        Nombre & Numero\_Estudiante & Clase & Departamento \\ \hline
-        Juan & 4 & 1 & CS \\ \hline
-        Luis & 17 & 2 & CS \\ 
-    \hline
-    \end{tabular}
-    }
-\end{table}
-\begin{table}[h]
-    \centering
-    \caption{\textcolor{white}{Tabla Curso}}
-    \label{tabla_curso}
-    \textcolor{white}{
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-    Nombre\_Curso & Numero\_Curso & Horas & Departamento \\
-    \hline
-        Introducción a Computación & CS1310 & 4 & CS \\
-        Estructura de datos & CS3320 & 4 & CS \\
-        Matemáticas Discretas & MATH2410 & 3 & MATH \\
-        Bases de datos & CS3380 & 3 & CS \\
-    \hline
-    \end{tabular}
-    }
-\end{table}
-\begin{table}[h]
-    \centering
-    \caption{\textcolor{white}{Tabla Sección}}
-    \label{tabla_seccion}
-    \textcolor{white}{
-    \begin{tabular}{|c|c|c|c|}
-    \hline
-        Numero\_Curso & Semestre & Año & Instructor \\ \hline
-        MATH2410 & Otoño & 07 & Smith \\
-        CS1310 & Primavera & 08 & Lucas \\
-    \hline
-    \end{tabular}
-    }
-\end{table}
-\begin{table}[h]
-    \centering
-    \caption{\textcolor{white}{Tabla Calificaciones}}
-    \label{tabla_calificaciones}
-    \textcolor{white}{
-    \begin{tabular}{|c|c|c|}
-    \hline
-        Número\_Estudiante & ID\_Seccion & Calificacion \\ \hline
-                2      &     1       & A \\
-                1      &     2       & B \\
-    \hline
-    \end{tabular}
-    }
-\end{table}
-\begin{table}[h]
-    \centering
-    \caption{\textcolor{white}{Tabla Prerrequisitos}}
-    \label{tabla_prerrequisitos}
-    \textcolor{white}{
-    \begin{tabular}{|c|c|}
-    \hline
-        Numero\_Curso & Numero\_Prerrequisito \\ \hline
-        CS1310        & CS3320 \\
-    \hline
-    \end{tabular}
-    }
-\end{table}
-    
-
-
-    
 %\newpage
 %\thispagestyle{fancy} % Aplicar estilo de primera página
 
