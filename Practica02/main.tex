@@ -29,7 +29,7 @@
 \noindent
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \large\textbf{Facultad de Ciencias} \\
-Fundamentos de Bases de Datos \hfill semestre: 2024-1 \\
+Fundamentos de Bases de Datos \hfill semestre: $2024-1$ \\
 \textsc{SILVA HUERTA MARCO}   \hfill No.Cuenta: 316205326    \\
 11 de Septiembre de 2023      \hfill \textbf{Practica \#02}    \\
 \noindent\rule{7.3in}{2.8pt}
@@ -163,8 +163,6 @@ registros de ejemplo sobre un universo de discurso de tu elección.}
     \includegraphics[scale = .6]{ejercico02.png}
 \end{center}
 
-
-
 \subsection*{Ejercicio 3}
 
 Completa el modelo con los siguientes aspectos:
@@ -176,15 +174,15 @@ Completa el modelo con los siguientes aspectos:
     adicional.}
 
     \begin{itemize}
-      \item \textbf{Restricción de Unicidad en Departamentos:} Agregar una restricción única para el campo \textit{Departamento} en la tabla de \textit{Departamento} para garantizar que no haya departamentos con el mismo nombre.
+      \item \textcolor{water}{\textbf{Restricción de Unicidad en Departamentos:}} Agregar una restricción única para el campo \textit{Departamento} en la tabla de \textit{Departamento} para garantizar que no haya departamentos con el mismo nombre.
       
-      \item \textbf{Fecha de Inicio en Secciones:} Agregar un campo \textit{Fecha de Inicio} en la tabla de \textit{Sección} para registrar la fecha en que una sección comienza.
+      \item \textcolor{water}{\textbf{Fecha de Inicio en Secciones:}} Agregar un campo \textit{Fecha de Inicio} en la tabla de \textit{Sección} para registrar la fecha en que una sección comienza.
       
-      \item \textbf{Restricción de Calificaciones:} Agregar una restricción de rango en la tabla de \textit{Calificaciones} para garantizar que las calificaciones estén dentro del rango específico (A, B, C, D, F).
+      \item \textcolor{water}{\textbf{Restricción de Calificaciones:}} Agregar una restricción de rango en la tabla de \textit{Calificaciones} para garantizar que las calificaciones estén dentro del rango específico (A, B, C, D, F).
       
-      \item \textbf{Restricción de Edad en Estudiantes:} Agregar un campo \textit{Fecha de Nacimiento} en la tabla de \textit{Estudiante} para calcular automáticamente la edad y aplicar una restricción de edad mínima.
+      \item \textcolor{water}{\textbf{Restricción de Edad en Estudiantes:}} Agregar un campo \textit{Fecha de Nacimiento} en la tabla de \textit{Estudiante} para calcular automáticamente la edad y aplicar una restricción de edad mínima.
       
-      \item \textbf{Tabla de Profesores:} Agregar una nueva tabla llamada \textit{Profesor} que almacene información sobre los profesores. Se relaciona con la tabla de \textit{Sección} para saber quién imparte cada sección.
+      \item \textcolor{water}{\textbf{Tabla de Profesores:}} Agregar una nueva tabla llamada \textit{Profesor} que almacene información sobre los profesores. Se relaciona con la tabla de \textit{Sección} para saber quién imparte cada sección.
     \end{itemize}
     \thispagestyle{fancy} % Aplicar estilo de primera página
     \subsubsection*{Tablas}
@@ -194,8 +192,8 @@ Completa el modelo con los siguientes aspectos:
       \begin{tabular}{|c|c|c|c|c|} 
         \hline
             Nombre & Numero\_Estudiante & Clase & Departamento & Fecha\_Nacimiento \\ \hline
-            Juan & 4 & 1 & CS & 1990-03-15 \\ \hline
-            Luis & 17 & 2 & CS & 1992-08-20 \\ 
+            Juan & 4 & 1 & CS & $1990-03-15$ \\ \hline
+            Luis & 17 & 2 & CS & $1992-08-20$ \\ 
         \hline
         \end{tabular}            
     \end{minipage}
@@ -225,8 +223,8 @@ Completa el modelo con los siguientes aspectos:
         \begin{tabular}{|c|c|c|c|c|}
         \hline
           Numero\_Curso & Semestre & Año & Profesor & Fecha\_Inicio \\ \hline
-          MATH2410 & Otoño & 07 & Yoda & 2023-09-01 \\
-          CS1310 & Primavera & 08 & Profesor X & 2023-01-15 \\
+          MATH2410 & Otoño & 07 & Yoda & $2023-09-01$ \\
+          CS1310 & Primavera & 08 & Profesor X & $2023-01-15$ \\
         \hline
         \end{tabular}
     \end{minipage}
@@ -308,7 +306,7 @@ Completa el modelo con los siguientes aspectos:
     \item \textcolor{sun}{¿Cuál es la principal diferencia entre el modelo entidad relación y el modelo
     semiestructurado?}
 
-    \textcolor{water}{El modelo entidad-relación (ER) se basa en una \textbf{estructura de datos tabular} y utiliza relaciones bien definidas entre entidades y atributos. Mientras el modelo semiestructurado es más flexible y permite \textbf{datos con estructura variable},  (JSON o XML), que no siguen una estructura tabular rígida. entonces la diferencia radica la estructura de datos.}
+    \textcolor{water}{El modelo entidad-relación (ER) se basa en una \textbf{estructura de datos tabular} y utiliza relaciones bien definidas entre entidades y atributos. Mientras el modelo semiestructurado es más flexible y permite \textbf{datos con estructura variable},  (JSON o XML), que no siguen una estructura tabular rígida. Entonces la diferencia radica la estructura de datos.}
 
     \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo orientado a objetos.}
     \begin{itemize}
@@ -332,25 +330,43 @@ Completa el modelo con los siguientes aspectos:
     \thispagestyle{fancy} % Aplicar estilo de primera página
     \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo entidad relación.}    
     \begin{itemize}
-      \item Diseño de bases de datos: El modelo entidad-relación se utiliza ampliamente para diseñar esquemas de bases de datos relacionales que representan entidades y sus relaciones.
-      \item Modelado de sistemas de información: Se utiliza para modelar la estructura de información en organizaciones y empresas, lo que ayuda a comprender cómo se almacena y se accede a la información.
-      \item Desarrollo de sistemas de gestión de contenido (CMS): Los CMS utilizan el modelo entidad-relación para organizar y gestionar el contenido, como artículos, imágenes y usuarios.
+      \item \textcolor{water}{\textbf{Ventas:}}\\
+      En un sistema de ventas, se utiliza el modelo entidad-relación para representar clientes,
+       productos y pedidos. Facilitando el seguimiento de las transacciones y ver el inventario
+
+      \item \textcolor{water}{\textbf{Museos:}}\\
+      Para museos o exposiciones de arte, el sistema maneja los registros de obras, exposiciones y visitantes dando seguimiento
+       detallado a lo que entra y sale y lieneas de tiempo.
+
+      \item \textcolor{water}{\textbf{Recursos Humanos:}}\\      
+      Dentro de una empresa el poder llevar las relaciones internas ayudan a administrar quién trabaja en qué departamento, 
+      quién reporta a quién y el registro de horas trabajadas.
+      
     \end{itemize}
     \thispagestyle{fancy} % Aplicar estilo de primera página
     \item \textcolor{sun}{Nombra 3 ejemplos en el cual se utilice el modelo semiestructurado.}
     \begin{itemize}
-      \item Documentos XML: XML (Extensible Markup Language) es un formato de datos semiestructurado ampliamente utilizado en la representación y el intercambio de datos en la web y en sistemas de información.
-      \item Bases de datos NoSQL: Las bases de datos NoSQL, como MongoDB y Cassandra, almacenan datos semiestructurados y ofrecen flexibilidad en el esquema de datos.
-      \item Configuración de software: Muchos archivos de configuración de software, como archivos JSON y archivos de configuración de aplicaciones, utilizan estructuras semiestructuradas para definir configuraciones y opciones.
+      \item \textcolor{water}{\textbf{Aplicaciones Web: (JSON):}}\\
+      Los datos en JSON son fáciles de transmitir entre un servidor web y un navegador, lo que lo convierte en un formato ideal para
+       el intercambio de datos en aplicaciones web. Se utiliza para representar información como configuraciones de usuario, 
+       respuestas de API y datos de formularios.
+
+      \item \textcolor{water}{\textbf{Datos Empresariales (XML): }}\\
+      Se emplea en la representación de datos estructurados y no estructurados en documentos, informes y flujos de trabajo empresariales.       
+
+      \item \textcolor{water}{\textbf{Bases de Datos NoSQL:}}\\
+      Las bases de datos NoSQL, como MongoDB y CouchDB, almacenan datos en un formato semiestructurado permitiendo gestionar datos
+       variados, como documentos JSON, datos de sensores, registros de redes sociales sin requerir una estructura de tabla rígida.
     \end{itemize}
 \end{enumerate}
+
+
+
 
 %\newpage
 %\thispagestyle{fancy} % Aplicar estilo de primera página
 
 %\printbibliography
-
-
 %\newpage
 %\thispagestyle{fancy} % Aplicar estilo de primera página
 %\NoBgThispage % Quita el fondo de la pagina
