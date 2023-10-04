@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net" modified="2023-10-03T14:03:22.166Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="lARRNcvbxOCHpig3HKCN" version="21.7.4" type="device">
+  <diagram name="Página-1" id="n0EUb614Mm8EhaAoMd_E">
+    <mxGraphModel dx="880" dy="467" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-1" value="&lt;u&gt;NOMBRE&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="200" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-2" value="DOMICILIO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="200" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-3" value="FECHA&amp;nbsp; DE&amp;nbsp;&lt;br&gt;NACIMIENTO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-4" value="SEXO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="200" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-5" value="ENFERMEDADES" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="200" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-6" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Paciente&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="170" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-7" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Enfermedad&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="159" y="290" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-8" value="&lt;u&gt;NOMBRE&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="320" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-9" value="DESCRIPCIÓN" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="320" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lj2iEhoP57zpXyQpJGJB-10" value="CONTAGIOSA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="320" width="110" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

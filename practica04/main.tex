@@ -1,0 +1,160 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage[utf8]{inputenc} % Acentos válidos sin problemas
+\usepackage[spanish]{babel} % Idioma
+%\usepackage[style=biber]{biblatex}
+%\addbibresource{bibliografia.bib}
+%\usepackage[
+%  backend=biber
+%]{biblatex}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{bibliografia.bib}
+\usepackage{csquotes}
+%\usepackage{background}
+%\setlegtth{\parindent}{2px}
+%\phantom{abc}
+\input{packet}
+\begin{document}%----------------------INICIO DOCUMENTO------------|
+%------------------------------------------------------------------|
+\pagecolor{black}
+\color{white}
+
+\thispagestyle{firstpage} % Aplicar estilo de primera página
+\noindent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\large\textbf{Facultad de Ciencias} \\
+Fundamentos de Bases de Datos \hfill semestre: 2024$-$1 \\
+\textsc{SILVA HUERTA MARCO}   \hfill No.Cuenta: 316205326    \\
+03 de Octubre de 2023      \hfill \textbf{Practica \#04}    \\
+\noindent\rule{7.3in}{2.8pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\textcolor{sun}{\Large{Modelo Relacional}}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Ejercio 1}
+\textcolor{sun}{Empleando el algoritmo que se abordó en clase generar el modelo
+relacional a partir del modelo entidad/asociación realizado en la práctica 3 (Estudiante). Mencionar y explicar con claridad cada paso realizado}
+\thispagestyle{fancy} % Aplicar estilo de primera página
+\subsubsection*{Modelo relacional}
+\begin{enumerate}
+  \item[] Paso 1
+  \item[] Paso 2
+  \item[] Paso 3
+  \item[] Paso 4
+  \item[] Paso 5
+  \item[] Paso 6
+  \item[] Paso 7
+\end{enumerate}
+
+\subsubsection*{Modelo entidad/asociación}
+\begin{center}
+    \includegraphics[scale = .5]{IMA/Ejercio1.png}    
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{Ejercio 2}
+\textcolor{sun}{Empleando el algoritmo que se abordó en clase generar el modelo
+relacional a partir del modelo entidad/asociación realizado en la práctica 3 (Consultorio). Mencionar y explicar con claridad cada paso realizado}
+\thispagestyle{fancy} % Aplicar estilo de primera página
+
+\subsubsection*{Modelo entidad/asociación}
+\begin{center}
+    \includegraphics[scale = .5]{IMA/Ejercio2.png}
+\end{center}
+
+\subsubsection*{Modelo relacional}
+\begin{enumerate}
+  \item[] Paso 1
+  \thispagestyle{fancy} % Aplicar estilo de primera página      
+  Para cada tipo de entidad regular (fuerte) en el esquema ER, se crea una relación R que incluya todos los atributos simples de E.
+  \begin{center}
+    \includegraphics[scale = .5]{IMA/E2P1.png}
+  \end{center}
+
+  \item[] Paso 2
+  \thispagestyle{fancy} % Aplicar estilo de primera página    
+  Para cada tipo de entidad débil W en el esquema ER con un tipo de entidad propietaria E, 
+  se crea una relación R y se incluyen todos los atributos simples 
+  (o componentes simples de atributos compuestos) de W como atributos de R. En adición, 
+  se incluye como atributos de llave foránea de R, a los atributos llave de la relación(es) 
+  que corresponde al tipo de entidad(es) propietaria.
+  \begin{center}
+    \includegraphics[scale = .5]{IMA/E2P2.png}
+  \end{center}
+
+  \item[] Paso 3
+  \thispagestyle{fancy} % Aplicar estilo de primera página    
+  No hay tipos de asociaciones binarias 1:1 en el esquema ER.
+
+  \item[] Paso 4
+  \begin{itemize}
+    \item[] La relación 1:N entre Familia y Paciente se representa con una flecha que va de
+            Familia a Paciente. Esta flecha indica que una familia solo puede tener un paciente,
+            pero un paciente puede tener una o varias familias.
+    \item[] La llave foránea de Familia a Enfermedades es enfermedades. Esta llave foránea se 
+            utiliza para garantizar que cada familia solo pueda tener una lista de enfermedades.         
+
+  \end{itemize}
+  \begin{center}
+    \includegraphics[scale = .5]{IMA/E2P4.png}
+  \end{center}
+  
+  \item[] Paso 5
+  \thispagestyle{fancy} % Aplicar estilo de primera página    
+  \begin{center}
+    \includegraphics[scale = .5]{IMA/E2P5.png}
+  \end{center}
+
+  \item[] Paso 6
+  
+  \begin{center}
+    \includegraphics[scale = .5]{IMA/E2P6.png}
+  \end{center}
+
+  \item[] Paso 7
+  \thispagestyle{fancy} % Aplicar estilo de primera página    
+  No hay tipos de asociaciones n-arias en el esquema ER.
+
+\end{enumerate}
+
+
+\thispagestyle{fancy} % Aplicar estilo de primera página    
+\section*{Cuestionario}
+\begin{enumerate}
+    \item \textcolor{sun}{¿Cuáles son las principales características de los modelos relacionales?} 
+
+    \textcolor{water}{Respuesta}   
+
+    \item \textcolor{sun}{¿Cuál es la principal diferencia entre el modelo entidad relación y el modelo relacional? } 
+
+    \textcolor{water}{Respuesta}   
+
+    \item \textcolor{sun}{¿Para qué sirven los modelos relacionales?} 
+
+    \textcolor{water}{Respuesta}   
+    \thispagestyle{fancy} % Aplicar estilo de primera página    
+\end{enumerate}
+
+
+%\newpage
+%\thispagestyle{fancy} % Aplicar estilo de primera página
+%\thispagestyle{firstpage} % Aplicar estilo de primera página
+%\printbibliography[title={Bibliografia:}]%
+
+
+%\printbibliography
+
+
+%\newpage
+%\thispagestyle{fancy} % Aplicar estilo de primera página
+%\NoBgThispage % Quita el fondo de la pagina
+
+%-----------------------------------------------------------------|
+\end{document}%----------------------FIN DEL DOCUMENTO------------| 
