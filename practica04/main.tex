@@ -35,31 +35,63 @@ Fundamentos de Bases de Datos \hfill semestre: 2024$-$1 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Ejercio 1}
+\section*{Ejercicio 1}
 \textcolor{sun}{Empleando el algoritmo que se abordó en clase generar el modelo
 relacional a partir del modelo entidad/asociación realizado en la práctica 3 (Estudiante). Mencionar y explicar con claridad cada paso realizado}
-\thispagestyle{fancy} % Aplicar estilo de primera página
 \subsubsection*{Modelo relacional}
 \begin{enumerate}
-  \item[] Paso 1
-  \item[] Paso 2
-  \item[] Paso 3
-  \item[] Paso 4
-  \item[] Paso 5
-  \item[] Paso 6
-  \item[] Paso 7
+    \item[] Paso 1
+    \begin{center}
+        \includegraphics[scale = .5]{IMA/E1P1.png}    
+    \end{center}
+    \item[] Paso 2
+    
+    Se identifica que la entidad Sección es una entidad débil, ya que su existencia depende de la entidad Curso. Por lo tanto, se crea una nueva relación R para representar esta entidad débil.
+    \begin{center}
+        \includegraphics[scale = .5]{IMA/E1P2.png}    
+    \end{center}
+    
+    \newpage
+    \item[] Paso 3
+    \thispagestyle{fancy} % Aplicar estilo de primera página  
+    Por cada sección existe un único curso, por eso es uno a uno
+    \begin{center}
+        \includegraphics[scale = .5]{IMA/E1P2.png}    
+    \end{center}
+    
+    \item[] Paso 4
+    \thispagestyle{fancy} % Aplicar estilo de primera página  
+    \begin{center}
+        \includegraphics[scale = .5]{IMA/E1P4.png}    
+    \end{center}
+    
+    \item[] Paso 5
+    \thispagestyle{fancy} % Aplicar estilo de primera página  
+    No hay relaciones binarias M:N en el esquema ER, por lo que este paso no se aplica.
+
+    \newpage
+    \item[] Paso 6
+
+     El atributo calificaciones de la entidad Estudiante es multivaluado. Por lo tanto, se crea una nueva relación R para este atributo.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/E1P6.png}    
+    \end{center}
+    
+    \item[] Paso 7
+    \thispagestyle{fancy} % Aplicar estilo de primera página  
+    No hay tipos de asociaciones n-arias en el esquema ER
 \end{enumerate}
 
 \subsubsection*{Modelo entidad/asociación}
 \begin{center}
     \includegraphics[scale = .5]{IMA/Ejercio1.png}    
 \end{center}
-
+\thispagestyle{fancy} % Aplicar estilo de primera página  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section*{Ejercio 2}
+\section*{Ejercicio 2}
 \textcolor{sun}{Empleando el algoritmo que se abordó en clase generar el modelo
 relacional a partir del modelo entidad/asociación realizado en la práctica 3 (Consultorio). Mencionar y explicar con claridad cada paso realizado}
 \thispagestyle{fancy} % Aplicar estilo de primera página
@@ -130,15 +162,35 @@ relacional a partir del modelo entidad/asociación realizado en la práctica 3 (
 \begin{enumerate}
     \item \textcolor{sun}{¿Cuáles son las principales características de los modelos relacionales?} 
 
-    \textcolor{water}{Respuesta}   
+    
+    Los modelos relacionales son una forma de representar datos y su estructura en una base de datos. Sus principales características son:
+    \begin{itemize}
+        \item Utilizan tablas (relaciones) para organizar los datos.
+        \item Cada fila en una tabla representa una entidad única.
+        \item Las columnas en la tabla representan atributos o características de la entidad.
+        \item Establecen relaciones entre tablas utilizando claves primarias y claves foráneas.        
+        \item Soportan consultas SQL para recuperar y manipular datos.
+    \end{itemize}
 
     \item \textcolor{sun}{¿Cuál es la principal diferencia entre el modelo entidad relación y el modelo relacional? } 
-
-    \textcolor{water}{Respuesta}   
+     
+    La principal diferencia entre el modelo entidad-relación y el modelo relacional radica en su nivel de abstracción y enfoque:
+    \begin{itemize}
+        \item El modelo entidad-relación se enfoca en la representación de entidades, atributos y relaciones entre ellas de una manera más conceptual y visual, utilizando diagramas ER.
+        \item El modelo relacional se centra en la representación de datos de manera tabular, utilizando tablas con filas y columnas para organizar la información. Se basa en la teoría de conjuntos y álgebra relacional.
+    \end{itemize}
 
     \item \textcolor{sun}{¿Para qué sirven los modelos relacionales?} 
 
-    \textcolor{water}{Respuesta}   
+    
+    Los modelos relacionales sirven para gestionar y organizar datos de manera estructurada en una base de datos. Sus usos principales incluyen:
+    \begin{itemize}
+        \item Almacenar y gestionar información en aplicaciones empresariales.
+        \item Facilitar consultas y análisis de datos utilizando lenguaje SQL.
+        \item Mantener la integridad de los datos a través de restricciones y relaciones.
+        \item Permitir la recuperación eficiente de datos.
+        \item Apoyar la escalabilidad y la seguridad de los sistemas de bases de datos.
+    \end{itemize}
     \thispagestyle{fancy} % Aplicar estilo de primera página    
 \end{enumerate}
 
