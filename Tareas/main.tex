@@ -1,0 +1,140 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage[utf8]{inputenc} % Acentos válidos sin problemas
+\usepackage[spanish]{babel} % Idioma
+%\usepackage[style=biber]{biblatex}
+%\addbibresource{bibliografia.bib}
+%\usepackage[
+%  backend=biber
+%]{biblatex}
+\usepackage[backend=biber, style=ieee]{biblatex}
+
+\addbibresource{bibliografia.bib}
+\usepackage{csquotes}
+%\usepackage{background}
+%\setlegtth{\parindent}{2px}
+%\phantom{abc}
+
+\input{packet}
+
+\begin{document}%----------------------INICIO DOCUMENTO------------|
+%------------------------------------------------------------------|
+\pagecolor{black}
+\color{white}
+
+\thispagestyle{firstpage} % Aplicar estilo de primera página
+\noindent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\large\textbf{Facultad de Ciencias} \\
+Fundamentos de bases de datos \hfill semestre: 2024$-$1 \\
+\textsc{SILVA HUERTA MARCO}   \hfill     \\
+11 de Octubre de 2023      \hfill \textbf{Tarea \#07}    \\
+\noindent\rule{7.3in}{2.8pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    \Large{Modelo Relacional}
+\end{center}
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Pregunta 1 %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item \textcolor{sun}{Completa el modelo relacional que se muestra a continuación, 
+                            debes agregar claves primarias PK y las flechas correspondientes 
+                            que representen a las claves foráneas FK:}
+    
+    \begin{itemize}
+        \item \textbf{Cuenta} (\underline{nombreSucursal, numCta}, saldo)        
+        \item \textbf{Sucursal} (\underline{nombreSucursal}, ciudad, activos)
+        \item \textbf{Cliente} (\underline{nombreCliente}, calle, ciudad)
+        \item \textbf{CtaCliente} (\underline{nombreCliente, numCta},  
+        \begin{itemize}
+            \item[] FK\: nombreCliente,
+            \item[] numCta $\rightarrow$ Cuenta)
+        \end{itemize}
+        \item \textbf{Prestamo} (\underline{nombreSucursal, numPrestamo},   
+        \begin{itemize}
+            \item[] importe,
+            \item[] FK\: nombreSucursal,
+            \item[] numPrestamo $\rightarrow$ Prestamo)
+        \end{itemize}        
+        \item \textbf{Prestatario} (\underline{nombreCliente, numPrestamo},  
+        \begin{itemize}
+            \item[] FK\: nombreCliente,
+            \item[] numPrestamo $\rightarrow$ Prestamo)
+        \end{itemize}
+    \end{itemize}
+                            
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Pregunta 2 %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item \textcolor{sun}{Realiza las siguientes consultas por medio de Álgebra Relacional.}
+    \begin{itemize}
+
+        \item[(a)] Encontrar la información de todos los préstamos realizados en la sucursal llamada "Fuentes Brotantes"
+                
+        
+        $\pi_{numPrestamo, importe}(\sigma_{nombreSucursal="Fuentes Brotantes"}(Prestamo))$
+
+        
+        \item[(b)] Determinar el nombre de los clientes que viven en Guanajuato.
+
+        $(\sigma_{\text{ciudad} = \text{Guanajuato}} ( \text{Cliente} ))$
+
+        
+        \item[(c)] Nombre de los clientes del banco que tienen una cuenta, un préstamo o ambas cosas.
+
+        $\pi_{\text{nombreCliente}}(\text{Cliente}) \cup \pi_{\text{nombreCliente}}(\text{CtaCliente}) \cup \pi_{\text{nombreCliente}}(\text{Prestatario})$
+
+        
+        \item[(d)] El listado de clientes que tienen abierta una cuenta pero no tienen ninguna de préstamo.
+
+        $\pi_{\text{nombreCliente}}(\text{Cliente} - \text{CtaCliente})$
+
+        
+        \item[(e)] Todos los clientes que tienen un préstamo y una cuenta abierta.
+
+        $\pi_{\text{nombreCliente}}(\text{CtaCliente} \cap \text{Prestatario})$
+
+        
+        \item[(f)] Nombre de los clientes que tienen un préstamo en la sucursal llamada Fuentes Brotantes.
+
+        $\pi_{\text{nombreCliente}}(\sigma_{\text{nombreSucursal}=\text{Fuentes Brotantes}}(\text{Prestatario} \bowtie \text{Prestamo}))$
+        
+        \item[(g)] Nombre de los clientes que tienen un préstamo y el importe del mismo.
+
+        $\pi_{\text{nombreCliente, importe}}(\text{Prestatario} \bowtie \text{Prestamo})$
+
+        
+        \item[(h)] Nombre de los clientes con préstamo mayor a cinco mil pesos.
+
+        $\pi_{\text{nombreCliente}}(\sigma_{\text{importe}>5000}(\text{Prestamo} \bowtie \text{Prestatario}))$
+
+        
+        \item[(i)] Nombre de los clientes que tienen una cuenta con saldo menor a tres mil pesos y que no tienen préstamo.
+
+        $\pi_{\text{nombreCliente}}(\sigma_{\text{saldo}<3000}(\text{CtaCliente}) - \pi_{\text{nombreCliente}}(\text{Prestatario}))$
+        
+    \end{itemize}
+        
+
+\end{enumerate}
+\thispagestyle{fancy}    
+
+    
+%\newpage
+%\thispagestyle{fancy} % Aplicar estilo de primera página
+%\thispagestyle{firstpage} % Aplicar estilo de primera página
+%\printbibliography[title={Bibliografia:}]%
+
+
+%\printbibliography
+
+
+%\newpage
+%\thispagestyle{fancy} % Aplicar estilo de primera página
+%\NoBgThispage % Quita el fondo de la pagina
+
+%-----------------------------------------------------------------|
+\end{document}%----------------------FIN DEL DOCUMENTO------------| 
