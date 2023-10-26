@@ -31,11 +31,56 @@ Fundamentos de Bases de Datos \hfill semestre: 2024$-$1 \\
 \begin{center}
 \textcolor{sun}{\Large{Dependencias Funcionales y Normalización}}
 \end{center}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Objetivos}
+
+El objetivo del diseño de las bases de datos relacionales es la generación de un conjunto de esquemas relacionales que nos permita almacenar la información evitando la redundancia y la existencia de tuplas falsas o valores nulos en exceso. Un enfoque para lograr la consistencia de los datos es la normalización, un proceso de descomposición de relaciones, en el que los requerimientos son determinantes para definir las asociaciones apropiadas que existen entre los atributos de una relación.
+
+\section{Introducción}
+
+\subsection{Primera Forma Normal}
+
+Se dice que el esquema de una relación \(R\) está en la primera forma normal (1FN) si los dominios de todos los atributos de \(R\) son atómicos.
+
+\subsection{Forma Normal de Boyce-Codd}
+
+Mediante las dependencias funcionales se pueden definir varias formas normales que representan buenos diseños de bases de datos. Una de las formas normales más deseables que se pueden obtener es la forma normal de Boyce-Codd (FNBC). Un esquema de relación \(R\) está en FNBC respecto a un conjunto de dependencias funcionales \(F\) si, para todas las dependencias funcionales de \(F^+\) de la forma \(\beta \rightarrow \alpha\), donde \(\alpha \subseteq R\) y \(\beta \subseteq R\), se cumple al menos una de las siguientes condiciones:
+
+\begin{enumerate}
+    \item \(\alpha \rightarrow \beta\) es una dependencia funcional trivial (es decir, \(\beta \subseteq \alpha\)).
+    \item \(\alpha\) es una superclave del esquema \(R\).
+\end{enumerate}
+
+\subsection{Tercera Forma Normal}
+
+FNBC exige que todas las dependencias no triviales sean de la forma \(\alpha \rightarrow \beta\) donde \(\alpha\) es una superclave. 3FN relaja ligeramente esta restricción permitiendo dependencias funcionales no triviales cuya parte izquierda no sea una superclave. Un esquema de relación \(R\) está en tercera forma normal (3FN) respecto a un conjunto \(F\) de dependencias funcionales si, para todas las dependencias funcionales de \(F^+\) de la forma \(\alpha \rightarrow \beta\), donde \(\alpha \subseteq R\) y \(\beta \subseteq R\), se cumple al menos una de las siguientes condiciones:
+
+\begin{enumerate}
+    \item \(\alpha \rightarrow \beta\) es una dependencia funcional trivial.
+    \item \(\alpha\) es una superclave de \(R\).
+    \item Cada atributo \(A\) de \(\beta - \alpha\) está contenido en alguna clave candidata de \(R\).
+\end{enumerate}
+
+\section{Ejercicios}
+\begin{itemize}
+    \item Ejercicio 1
+    \item Ejercicio 2
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}          
+            \hline  
+            a  & b  & c  & \#Tupla \\ \hline
+            10 & b1 & c1 & 1       \\
+            10 & b2 & c2 & 2       \\
+            11 & b4 & c1 & 3       \\
+            12 & b3 & c4 & 4       \\
+            13 & b1 & c1 & 5       \\
+            14 & b3 & c4 & 6      \\ 
+            \hline
+            \end{tabular}
+    \end{center}
+\end{itemize}
 
 %\newpage
 %\thispagestyle{fancy} % Aplicar estilo de primera página
