@@ -1,0 +1,63 @@
+VAMOS A DISEÑAR UNA BASE DE DATOS,
+EL MINI MUNDO DE ESTA BASE DE DATOS  SERA SOMBRE EL SISTEMA PARA ADMINISTRAR LA VENTA DE BOLETOS EN ESTADIOS DE FUTBOL 
+
+HAS UN BREVE TEXTO SOBRE COMO LA FIFA NOS PIDE ESTE SISTEMA PARA LOS PARTIDOS DEL MUNDIAL DE 2026 SOLO PARA 4 ESTADIOS EN MEXICO
+
+1. Lista de requerimientos para la base de datos propuesta.
+    Has la lista sobre las tablas que se necesitan:
+    Boletos, Clientes, Estadios, Transacción, Equipos y si tú consideras que se necesito una o dos más agrega. 
+   Crea para cada tabla los valores y las restricciones 
+   TODO ESO PARA LA LISTA DE REQUERIMIENTOS, QUE TODO SEA EN TEXTO PLANO
+
+
+2. Modelo conceptual de la base de datos, respetando la nomenclatura de Peter Chen.
+    2.a Utilizar el software de modelado de su preferencia.
+
+3. Modelo relacional, deben incluirse:
+     3.a Llaves primarias
+     3.b Llaves foráneas
+      3.c Utilizar el software de modelado de su preferencia.
+
+4. Script completo y sin errores para la creación de todos los elementos que conforman el 
+     esquema de la base de datos.
+     4.a El Script debe estar diseñado para la versión 14 de Postgres.
+     4.b Deben estar contempladas todas las llaves primarias, llaves candidatas y llaves 
+             foráneas; todas las llaves foráneas deben contar con un trigger de integridad 
+              referencial (SET NULL, CASCADE o SET DEFAULT).
+
+5. Script con las Instrucciones “Insert” que permitan poblar la base de datos (Este Script no 
+    se debe incluir en el reporte final, sólo en los entregables):
+    5.a Se deben generar 100 registros para cada tabla.
+    5.b Si para el buen funcionamiento de la base de datos se requieren más de 100 registros o
+            menos de 100 registros en una tabla, se debe explicar claramente la razón, sólo en 
+            este caso sí se debe incluir un apartado en el reporte final.
+
+
+6. Evidencia del funcionamiento de al menos 4 restricciones de integridad referencial.
+    6.a Tablas involucradas en la restricción.
+    6.b FK de la tabla que referencia y PK de la tabla referenciada.
+    6.c Justificación del trigger de integridad referencial elegido.
+    6.d Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+    6.e Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+
+7. Evidencia del funcionamiento de al menos 3 restricciones check para “atributos” de varias tablas.
+    7.a Tabla elegida
+    7.b Atributo elegido
+    7.c Breve descripción de la restricción
+    7.d Instrucción para la creación de la restricción.
+    7.e Instrucción que permita evidenciar que la restricción esta funcionando.
+    7.f Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+
+8. Evidencia de la creación de al menos tres dominios personalizados. Se deben utilizar restricciones check en la creación de los tres dominios.
+    8.a Tabla elegida
+    8.b Atributo elegido
+    8.c Breve descripción del dominio y de la restricción check propuesta.
+    8.d Instrucción para la creación del dominio personalizado.
+    8.e Captura de pantalla de la estructura de la tabla donde se muestre el dominio personalizado en uso.
+
+9. Evidencia del funcionamiento de al menos 2 restricciones para “tuplas” en diferentes tablas (Unidad 8 Integridad, tema “Specifying Constraints on Tuples Using CHECK”)
+    9.a Tabla elegida
+    9.b Breve descripción de la restricción.
+    9.c Instrucción para la creación de la restricción.
+    9.d Instrucción “Insert” o “Update” que permita evidenciar que la restricción esta funcionando.
+    9.e Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.

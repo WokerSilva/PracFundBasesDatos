@@ -2,5 +2,7 @@
 *.vscode
 *.log
 *.out
-proyecto/
+*.toc
+*.fdb_latexmk
+*.fls
 IMA/

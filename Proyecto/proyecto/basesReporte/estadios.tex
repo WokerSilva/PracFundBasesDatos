@@ -1,0 +1,174 @@
+%%%%%----------------------------------------
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\section{\texttt{Estadios}}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+%%%%%----------------------------------------
+
+
+La FIFA nos ha encargado el desarrollo de un sistema para la administración de la venta de boletos
+en estadios de fútbol para los partidos del Mundial de 2026. El sistema deberá cubrir los cuatro
+estadios de fútbol de México que albergarán partidos del torneo: el Estadio Azteca,
+el Estadio Corregidora, el Estadio Hidalgo y el Estadio Jalisco.
+
+
+\subsection{Lista de Requerimientos}
+
+\subsubsection*{El sistema deberá cumplir con los siguientes requisitos}
+
+\begin{itemize}
+    \item Permitir la venta de boletos por internet y en taquillas.
+    \item Permitir la selección de asientos por parte de los clientes.
+    \item Permitir el pago de los boletos con tarjeta de crédito, débito o efectivo.
+    \item Generar reportes de ventas.
+\end{itemize}
+
+\subsubsection*{La base de datos deberá tener las siguientes tablas:}
+
+\begin{itemize}
+    \item \textbf{Boletos:}
+    
+        Contiene los datos de los boletos, como el número de boleto, la fecha del partido,
+        el estadio, la sección, el asiento, el precio y el estado de venta.
+
+    \item \textbf{Clientes:}
+    
+        Contiene los datos de los clientes, como el nombre, la dirección, el teléfono, el correo electrónico y la tarjeta de crédito.
+
+    \item \textbf{Estadios:}
+    
+        Contiene los datos de los estadios, como el nombre, la capacidad, la ubicación y las secciones.
+    
+    \item \textbf{Transacciones:} 
+    
+        Contiene los datos de las transacciones de venta de boletos, como el número de transacción, la fecha, el cliente, el boleto y el precio.
+
+    \item \textbf{Equipos:} 
+    
+        Contiene los datos de los equipos que participan en el Mundial, como el nombre, el país, el escudo y el color de uniforme.    
+\end{itemize}
+
+\subsubsection*{Restricciones de los datos}
+
+\begin{itemize}
+    \item El número de boleto debe ser único.
+    \item La fecha del partido debe ser una fecha válida.
+    \item El estadio debe ser uno de los cuatro estadios de México.
+    \item La sección debe ser una sección válida del estadio.
+    \item El asiento debe ser un asiento válido de la sección.
+    \item El precio debe ser un número positivo.
+    \item El estado de venta debe ser Vendido o Disponible.
+    \item El nombre del cliente debe ser una string no vacía.
+    \item La dirección del cliente debe ser una string no vacía.
+    \item El teléfono del cliente debe ser un número de teléfono válido.
+    \item El correo electrónico del cliente debe ser una dirección de correo electrónico válida.
+    \item El número de tarjeta de crédito debe ser un número de tarjeta de crédito válido.
+    \item La fecha de la transacción debe ser una fecha válida.
+    \item El equipo debe ser uno de los equipos participantes en el Mundial.
+\end{itemize}
+
+
+%%%%%----------------------------------------
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\section{Modelo conceptual}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+%%%%%----------------------------------------
+
+\begin{center}
+    AQUI VA EL DIAGRAMA 
+\end{center}
+
+\begin{itemize}
+    \item Boletos:
+    \begin{itemize}
+        \item id$\_$boleto: int, llave primaria
+        \item fecha$\_$partido: fecha
+        \item estadio: string, llave foránea (referencia a Estadios.nombre$\_$estadio)
+        \item sección: string, llave foránea (referencia a Secciones.nombre$\_$seccion)
+        \item asiento: int
+        \item precio: double
+        \item estado$\_$venta: string
+        \item fecha$\_$compra: fecha
+    \end{itemize}
+    \item Clientes:
+    \begin{itemize}
+        \item nombre$\_$cliente: string, llave primaria
+        \item dirección: string
+        \item teléfono: string
+        \item email: string
+        \item tarjeta$\_$crédito: int
+    \end{itemize}
+    \item Estadios:
+    \begin{itemize}
+        \item nombre$\_$estadio: string, llave primaria
+        \item capacidad: int
+        \item ubicación: string        
+    \end{itemize}
+    \item Secciones:
+    \begin{itemize}
+        \item nombre$\_$seccion: string, llave primaria
+        \item id$\_$estadio: string, llave foránea (referencia a Estadios.nombre$\_$estadio)
+        \item precio: double        
+    \end{itemize}
+    \item Transacciones:
+    \begin{itemize}
+        \item id$\_$transacción: int, llave primaria
+        \item fecha$\_$compra: fecha
+        \item nombre$\_$cliente: string,  llave foránea (referencia a Clientes.nombre$\_$cliente)
+        \item id$\_$boleto: int, llave foránea (referencia a Boletos.id$\_$boleto)
+        \item precio: double
+        \item cantidad$\_$boletos: int
+    \end{itemize}
+    \item Equipos:
+    \begin{itemize}
+        \item nombre$\_$equipo: string, llave primaria
+        \item país: string
+        \item entrenador: string
+        \item color$\_$uniforme: string, multivalor
+        \item nombre$\_$estadio: string, llave foránea (referencia a Estadios.nombre$\_$estadio)
+    \end{itemize}
+    \item Partido:
+    \begin{itemize}
+        \item id$\_$partido: string, llave primaria
+        \item fecha: fecha
+        \item hora: hora
+    \end{itemize}
+    \item EquiposPartido:
+    \begin{itemize}        
+        \item id$\_$partido: string, llave foránea (referencia a Partido.id$\_$partido)
+        \item nombre$\_$equipo: string, llave foránea (referencia a Equipos.nombre$\_$equipo)        
+        \item rol$\_$equipo: string
+        %\item UNIQUE(id$\_$partido, rol$\_$equipo)
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Relaciones}
+
+Boletos $-$ Estadios: Un boleto solo puede estar relacionado con un estadio, pero un estadio puede tener muchos boletos.
+Boletos $-$ Secciones: Un boleto puede estar relacionado con muchas secciones y una sección puede tener muchos boletos.
+Boletos $-$ Transacciones: Un boleto puede estar relacionado con muchas transacciones y una transacción puede tener muchos boletos.
+Boletos $-$ Equipos: Un boleto puede estar relacionado con uno o más equipos y un equipo puede tener muchos boletos.
+Clientes$-$ Transacciones: Un cliente solo puede estar relacionado con una transacción, pero una transacción puede tener muchos clientes.
+Clientes$-$ Equipos: Un cliente puede estar relacionado con uno o más equipos y un equipo puede tener muchos clientes.
+Equipos $-$ Partidos: Un equipo puede estar relacionado con muchos partidos y un partido puede tener muchos equipos.
+
+
+En este caso estoy en EDRPlus 
+cuando agrego la sección RELATIONSHIP me da una tabla:
+Entidad ONE
+ Boletos: 
+               one [ ]
+               Many [ ]
+Entidad TWO
+ Estadios: 
+               one [ ]
+               Many [ ]
+
+Tribuna Cabecera Local: La tribuna principal del estadio donde juegan los equipos locales.
+Tribuna Cabecera Visita: La tribuna principal del estadio donde juegan los equipos visitantes.
+Tribuna Lateral Visita: Una tribuna lateral del estadio donde juegan los equipos visitantes.
+Tribuna Lateral Local: Una tribuna lateral del estadio donde juegan los equipos locales.
+Palcos: Una sección intermedia entre la tribuna principal y la tribuna lateral.
