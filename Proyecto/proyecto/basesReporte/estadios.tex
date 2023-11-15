@@ -147,13 +147,47 @@ el Estadio Corregidora, el Estadio Hidalgo y el Estadio Jalisco.
 
 \subsection*{Relaciones}
 
-Boletos $-$ Estadios: Un boleto solo puede estar relacionado con un estadio, pero un estadio puede tener muchos boletos.
-Boletos $-$ Secciones: Un boleto puede estar relacionado con muchas secciones y una sección puede tener muchos boletos.
-Boletos $-$ Transacciones: Un boleto puede estar relacionado con muchas transacciones y una transacción puede tener muchos boletos.
-Boletos $-$ Equipos: Un boleto puede estar relacionado con uno o más equipos y un equipo puede tener muchos boletos.
-Clientes$-$ Transacciones: Un cliente solo puede estar relacionado con una transacción, pero una transacción puede tener muchos clientes.
-Clientes$-$ Equipos: Un cliente puede estar relacionado con uno o más equipos y un equipo puede tener muchos clientes.
-Equipos $-$ Partidos: Un equipo puede estar relacionado con muchos partidos y un partido puede tener muchos equipos.
+Boletos - Estadios:
+Título: Venta de Boletos
+Descripción: Un boleto pertenece a un estadio, y un estadio puede tener muchos boletos. Es la relación que representa la venta de boletos para un partido en un estadio específico.
+Forma: Muchos a Uno (N:1)
+Llaves Foráneas: estadio en Boletos hace referencia a nombre$\_$estadio en Estadios.
+Boletos - Secciones:
+
+Título: Asignación a Secciones
+Descripción: Un boleto está asignado a una sección, y una sección puede tener muchos boletos. Representa la asignación de asientos en una sección específica para un partido.
+Forma: Muchos a Uno (N:1)
+Llaves Foráneas: sección en Boletos hace referencia a nombre$\_$seccion en Secciones.
+Boletos - Transacciones:
+
+Título: Registro de Compras
+Descripción: Un boleto puede estar asociado con muchas transacciones, y una transacción puede tener muchos boletos. Representa la relación entre la venta de boletos y las transacciones realizadas por los clientes.
+Forma: Muchos a Muchos (N:N)
+Llaves Foráneas: id$\_$boleto en Transacciones hace referencia a id$\_$boleto en Boletos.
+Clientes - Transacciones:
+
+Título: Historial de Compras
+Descripción: Un cliente puede tener muchas transacciones, pero una transacción pertenece a un único cliente. Representa el historial de compras de un cliente.
+Forma: Uno a Muchos (1:N)
+Llaves Foráneas: nombre$\_$cliente en Transacciones hace referencia a nombre$\_$cliente en Clientes.
+Equipos - EquiposPartido:
+
+Título: Participación en Partidos
+Descripción: Un equipo puede participar en muchos partidos, y un partido puede involucrar a varios equipos. Registra la participación de equipos en distintos partidos.
+Forma: Muchos a Muchos (N:N)
+Llaves Foráneas: nombre$\_$equipo en EquiposPartido hace referencia a nombre$\_$equipo en Equipos, y id$\_$partido en EquiposPartido hace referencia a id$\_$partido en Partido.
+EquiposPartido - Partido:
+
+Título: Relación Equipos-Partido
+Descripción: EquiposPartido se relaciona con Partido para registrar la participación de equipos en partidos específicos.
+Forma: Muchos a Uno (N:1)
+Llaves Foráneas: id$\_$partido en EquiposPartido hace referencia a id$\_$partido en Partido.
+
+
+
+
+
+
 
 
 En este caso estoy en EDRPlus 
