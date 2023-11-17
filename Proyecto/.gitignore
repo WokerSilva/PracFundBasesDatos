@@ -5,4 +5,5 @@
 *.toc
 *.fdb_latexmk
 *.fls
+*.synctex.gz
 IMA/
