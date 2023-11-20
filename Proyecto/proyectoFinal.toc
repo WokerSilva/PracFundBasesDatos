@@ -1,4 +1,7 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}\texttt {Estadios}}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Lista de Requerimientos}{2}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Modelo conceptual}{9}{section.2}%
+\contentsline {subsection}{\numberline {1.2}Modelo conceptual}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Modelo relacional}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Script de creación}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Script de Insert}{5}{subsection.1.5}%
