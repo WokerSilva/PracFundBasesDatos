@@ -1,0 +1,7 @@
+# Comando de entrada en la terminal:
+
+psql -h suleiman.db.elephantsql.com -p 5432 -U hfghjpts -d hfghjpts
+
+# Contraseña: 
+
+cmA-snWxIBSqeTWvaErQEALMn0k_UGTx
