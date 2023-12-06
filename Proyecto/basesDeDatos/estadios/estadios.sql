@@ -36,12 +36,11 @@ CREATE TABLE Partidos
 );
 
 CREATE TABLE SeccionesEstadio
-(
-  id_Seccion VARCHAR(255) PRIMARY KEY,
-  id_Estadio INT NOT NULL,
+(    
+  id_Estadio INT NOT NULL CHECK (id_Estadio IN (1, 2, 3, 4)),
   nombre_Seccion VARCHAR(255) NOT NULL,
   capacidad_Seccion INT CHECK (capacidad_Seccion > 0),
-  num_asiento VARCHAR(255) NOT NULL,
+  num_asiento VARCHAR(255) PRIMARY KEY,
   FOREIGN KEY (id_Estadio) REFERENCES Estadios(id_Estadio) ON DELETE CASCADE
 );
 
