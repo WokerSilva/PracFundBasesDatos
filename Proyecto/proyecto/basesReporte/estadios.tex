@@ -28,21 +28,28 @@ el Estadio Corregidora, el Estadio Hidalgo y el Estadio Jalisco.
     \begin{itemize}
         \item Estadio Azteca      $\{$ Capacidad: 83,000, \\
                                        Ubicación: Calzada de Tlalpan 3465, Sta. Úrsula Coapa, Coyoacán, 04650 Ciudad de México, CDMX,\\
-                                       Precio de las secciones: Cabecera Local: 300, Cabecera Visita: 300, Lateral Visita: 400, Lateral Local 450, Palcos 1500
+                                       Precio de las secciones: Cabecera Local: 300, Cabecera Visita: 300, Lateral Visita: 400, Lateral Local: 450, Palcos: 1500
+                                       Asientos de las secciones: Cabecera Local: 20,750, Cabecera Visita: 16,600, Lateral Visita: 12,450, Lateral Local: 20,750, Palcos: 12,450
                                   $\}$
         \item Estadio Corregidora $\{$ Capacidad: 34,000, \\
                                        Ubicación: Avenidas de las Torres S/N, Centro Sur, 76090 Santiago de Querétaro, Qro.,\\
                                        Precio de las secciones: Cabecera Local: 250, Cabecera Visita: 250, Lateral Visita: 300, Lateral Local 300, Palcos 900
+                                       Asientos de las secciones: Cabecera Local: 8,500, Cabecera Visita: 6,800, Lateral Visita: 5,100, Lateral Local: 8,500, Palcos: 5,100
                                   $\}$        
         \item Estadio Hidalgo     $\{$ Capacidad: 30,000, \\
                                        Ubicación: 2da B Juárez 102, Los Jales, Ex Hacienda de Coscotitlán, 42064 Pachuca de Soto, Hgo.,\\
                                        Precio de las secciones: Cabecera Local: 250, Cabecera Visita: 250, Lateral Visita: 300, Lateral Local 300, Palcos 1000
+                                       Asientos de las secciones: Cabecera Local: 7,500, Cabecera Visita: 6,000, Lateral Visita: 4,500, Lateral Local: 7,500, Palcos: 4,500
+                                       
                                   $\}$        
         \item Estadio Jalisco     $\{$ Capacidad: 55,000, \\
                                        Ubicación: C. Siete Colinas 1772, Independencia, 44290 Guadalajara, Jal.,\\
                                        Precio de las secciones: Cabecera Local: 270, Cabecera Visita: 270, Lateral Visita: 350, Lateral Local 400, Palcos 1200
+                                       Asientos de las secciones: Cabecera Local: 13,750, Cabecera Visita: 11,000, Lateral Visita: 8,250, Lateral Local: 13,750, Palcos: 8,250
                                   $\}$           
     \end{itemize}
+    IMPORTANTE: CADA TOTAL DE ASIENTOS POR SECCIÓN se divide entre 10 letras para obtener una numeración como la siguiente: CLA1, CLA1, ... CLB1, ... etc
+    DODE CL: es la sección, A: es la letra de numeración (va de A a la J) y la numeración de los boletos correspondientes 
 \end{itemize}
 
 \subsubsection*{Restricciones de los datos}
@@ -147,4 +154,15 @@ el Estadio Corregidora, el Estadio Hidalgo y el Estadio Jalisco.
     \item Si para el buen funcionamiento de la base de datos se requieren más de 100 registros o
             menos de 100 registros en una tabla, se debe explicar claramente la razón, sólo en este caso
             sí se debe incluir un apartado en el reporte final.
+\end{itemize}
+
+Tablas:
+\begin{itemize}
+    \item Clientes: Si es posible llegar a 100 registros 
+    \item Estadios: La tabla únicamente contiene la información de los 4 estadios que albergan el mundial, por lo que no es posible llegar a 100 registros
+    \item SeccionesEstadio: Si es posible llegar a 100 registros 
+    \item Equipos: La tabla únicamente contiene la información de las 32 selecciones clasificadas al mundial por lo que no es posible llegar a 100 registros
+    \item Partidos: 
+    \item Boletos: Si es posible llegar a 100 registros 
+    \item Transacciones: Si es posible llegar a 100 registros 
 \end{itemize}

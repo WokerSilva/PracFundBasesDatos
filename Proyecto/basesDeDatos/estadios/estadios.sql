@@ -1,4 +1,4 @@
-CREATE TABLE Clientes
+CREATE TABLE Clientes -- LISTOLISTOLISTOLISTOLISTOLISTO
 (
   id_Cliente VARCHAR PRIMARY KEY,
   nombre_Cliente VARCHAR NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE Clientes
   tarjetaCredito VARCHAR NOT NULL CHECK (LENGTH(tarjetaCredito) = 16)
 );
 
-CREATE TABLE Estadios
+CREATE TABLE Estadios -- LISTOLISTOLISTOLISTOLISTOLISTO
 (
   id_Estadio INT PRIMARY KEY,
   nombre_Estadio VARCHAR NOT NULL,
@@ -16,16 +16,17 @@ CREATE TABLE Estadios
   ubicacion VARCHAR NOT NULL CHECK (ubicacion <> '')
 );
 
-CREATE TABLE SeccionesEstadio
+CREATE TABLE SeccionesEstadio -- LISTOLISTOLISTOLISTOLISTOLISTO
 (
   id_Seccion VARCHAR PRIMARY KEY,
   id_Estadio INT NOT NULL,
   nombre_Seccion VARCHAR NOT NULL,
   capacidad_Seccion INT CHECK (capacidad_Seccion > 0),
+  num_asiento VARCHAR NOT NULL,
   FOREIGN KEY (id_Estadio) REFERENCES Estadios(id_Estadio) ON DELETE CASCADE
 );
 
-CREATE TABLE Equipos
+CREATE TABLE Equipos -- LISTOLISTOLISTOLISTOLISTOLISTO
 (
   id_Equipo VARCHAR PRIMARY KEY,
   nombre_Equipo VARCHAR NOT NULL,
@@ -39,7 +40,7 @@ CREATE TABLE Partidos
 (
   id_Partido VARCHAR PRIMARY KEY,
   fecha_hora TIMESTAMP NOT NULL CHECK (fecha_hora > CURRENT_TIMESTAMP),
-  id_Estadio INT NOT NULL,
+  id_Estadio INT NOT NULL CHECK (id_Estadio IN (1, 2, 3, 4)),
   nombre_Arbitro VARCHAR NOT NULL,
   FOREIGN KEY (id_Estadio) REFERENCES Estadios(id_Estadio) ON DELETE CASCADE
 );
@@ -50,8 +51,7 @@ CREATE TABLE Boletos
   id_Partido VARCHAR NOT NULL,
   id_equipoLocal VARCHAR NOT NULL,
   id_equipoVisita VARCHAR NOT NULL,
-  estado VARCHAR NOT NULL CHECK (estado IN ('Vendido', 'Disponible')),
-  asiento INT NOT NULL,
+  estado VARCHAR NOT NULL CHECK (estado IN ('Vendido', 'Disponible')),  
   precio INT NOT NULL CHECK (precio > 0),
   nombre_Seccion VARCHAR NOT NULL,
   FOREIGN KEY (id_Partido) REFERENCES Partidos(id_Partido) ON DELETE CASCADE,
