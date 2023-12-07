@@ -264,21 +264,88 @@ Evidencia del funcionamiento de al menos 4 restricciones de integridad referenci
 %%%%%-------------------------------------
 %%%%%--------------------------------------
 
-Evidencia del funcionamiento de al menos 3 restricciones check para “atributos” de varias
+Evidencia del funcionamiento de al menos 3 restricciones check para \textit{atributos} de varias
 tablas.
 
+\subsection*{Check 01}
 \begin{itemize}
-    \item Tabla elegida
-    \item Atributo elegido
-    \item Breve descripción de la restricción
+    \item Tabla elegida: Clientes
+    \item Atributo elegido: tarjetaCredito
+    \item Breve descripción de la restricción: La restricción garantiza que el número de tarjeta de crédito tenga exactamente 16 dígitos.
     \item Instrucción para la creación de la restricción.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Clientes
+        ADD CONSTRAINT CHK_TarjetaCredito 
+        CHECK (LENGTH(tarjetaCredito) = 16);
+    \end{lstlisting}
+    
     \item Instrucción que permita evidenciar que la restricción esta funcionando.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Clientes 
+            (id_Cliente, nombre_Cliente, direccion_Cliente, 
+            telefono_Cliente, email_Cliente, tarjetaCredito)
+           VALUES ('CIL120', 'Juan Luna', 'Calle Falsa 123',
+                    '55555555', 'juan.perez@example.com', '123456789012345'); 
+    \end{lstlisting}
+
     \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
     funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/7-01.png}
+    \end{center}
 \end{itemize}
 
 
+\subsection*{Check 02}
+\begin{itemize}
+    \item Tabla elegida: Estadios
+    \item Atributo elegido: capacidad
+    \item Breve descripción de la restricción: La restricción garantiza que la capacidad del estadio sea mayor a 0.
+    \item Instrucción para la creación de la restricción.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Estadios
+    ADD CONSTRAINT CHK_Capacidad CHECK (capacidad > 0);
+    \end{lstlisting}
 
+    \item Instrucción que permita evidenciar que la restricción esta funcionando.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Estadios (id_Estadio, nombre_Estadio, capacidad, ubicacion) VALUES 
+    (5, 'Anfield', 0, 'San Paulo'); 
+    \end{lstlisting}
+
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/7-02.png}
+    \end{center}
+\end{itemize}
+
+
+\subsection*{Check 03}
+\begin{itemize}
+    \item Tabla elegida: Boletos
+    \item Atributo elegido: estado
+    \item Breve descripción de la restricción: Garantiza que el estado del boleto sea Vendido o Disponible.
+    \item Instrucción para la creación de la restricción.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Boletos
+    ADD CONSTRAINT CHK_Estado CHECK (estado IN ('Vendido', 'Disponible'));        
+    \end{lstlisting}
+    \item Instrucción que permita evidenciar que la restricción esta funcionando.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Boletos (num_boleto, id_Partido, id_equipoLocal, id_equipoVisita,
+                         estado, precio, nombre_Seccion) 
+                VALUES (1, 'P123', 'E123', 'E124', 'Reservado',
+                         100, 'Seccion 1');    
+    \end{lstlisting}
+
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/7-03.png}
+    \end{center}
+\end{itemize}
 
 
 
@@ -289,15 +356,65 @@ tablas.
 %%%%%--------------------------------------
 
 Evidencia de la creación de al menos tres dominios personalizados. Se deben utilizar restricciones check en la creación de los tres dominios.
+
+\subsubsection*{Dominio 01}
 \begin{itemize}
-    \item Tabla elegida
-    \item Atributo elegido
-    \item Breve descripción del dominio y de la restricción check propuesta.
+    \item Tabla elegida: Clientes
+    \item Atributo elegido: tarjetaCredito
+    \item Breve descripción del dominio y de la restricción check propuesta: Un dominio personalizado para el número de tarjeta de crédito que debe tener exactamente 16 dígitos.
     \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    CREATE DOMAIN TarjetaCredito AS VARCHAR(16)
+    CHECK (LENGTH(VALUE) = 16);
+    \end{lstlisting}
+    Instrucción para usar el dominio personalizado en la tabla:
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Clientes
+    ALTER COLUMN tarjetaCredito TYPE TarjetaCredito;        
+    \end{lstlisting}
     \item Captura de pantalla de la estructura de la tabla donde se muestre el dominio personalizado
     en uso.
 \end{itemize}
 
+
+\subsubsection*{Dominio 02}
+\begin{itemize}
+    \item Tabla elegida: Equipos
+    \item Atributo elegido: pais
+    \item Breve descripción del dominio y de la restricción check propuesta: Un dominio personalizado para el país del equipo que no debe estar vacío.
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    CREATE DOMAIN PaisEquipo AS VARCHAR(255)
+    CHECK (VALUE <> '');        
+    \end{lstlisting}
+    Instrucción para usar el dominio personalizado en la tabla:
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Equipos
+    ALTER COLUMN pais TYPE PaisEquipo;        
+    \end{lstlisting}
+    \item Captura de pantalla de la estructura de la tabla donde se muestre el dominio personalizado
+    en uso.
+\end{itemize}
+
+
+\subsubsection*{Dominio 03}
+\begin{itemize}
+    \item Tabla elegida: Partidos
+    \item Atributo elegido:  id Estadio
+    \item Breve descripción del dominio y de la restricción check propuesta:  Un dominio personalizado para el id del estadio que debe estar entre 1 y 4.
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+        CREATE DOMAIN IdEstadio AS INT
+        CHECK (VALUE IN (1, 2, 3, 4));
+    \end{lstlisting}
+    Instrucción para usar el dominio personalizado en la tabla:
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+        ALTER TABLE Partidos
+        ALTER COLUMN id_Estadio TYPE IdEstadio;        
+    \end{lstlisting}
+    \item Captura de pantalla de la estructura de la tabla donde se muestre el dominio personalizado
+    en uso.
+\end{itemize}
 
 
 %%%%%--------------------------------------
@@ -307,16 +424,58 @@ Evidencia de la creación de al menos tres dominios personalizados. Se deben uti
 %%%%%--------------------------------------
 
 Evidencia del funcionamiento de al menos 2 restricciones para “tuplas” en diferentes tablas (Unidad 8 Integridad, tema Specifying Constraints on Tuples Using CHECK)
+
+\subsubsection*{Restricción 01}
 \begin{itemize}
-    \item Tabla elegida
-    \item Breve descripción de la restricción.
+    \item Tabla elegida: Partidos
+    \item Breve descripción de la restricción: La restricción garantiza que el id del estadio sea válido solo si la fecha y hora del partido están en el futuro.
     \item Instrucción para la creación de la restricción.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Partidos
+    ADD CONSTRAINT 
+        CHK_FechaEstadio CHECK ((fecha_hora > CURRENT_TIMESTAMP AND 
+        id_Estadio IN (1, 2, 3, 4)) OR (fecha_hora <= CURRENT_TIMESTAMP));
+    \end{lstlisting}
+
     \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Partidos (id_Partido, fecha_hora, id_Estadio, nombre_Arbitro)
+    VALUES ('P124', '2022-12-31 20:00:00', 5, 'Arbitro Prueba'); 
+    -- falla porque la fecha y hora estan en el futuro pero 
+    -- el id del estadio no es valido    
+    \end{lstlisting}
+
     \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
     funcionando.
 \end{itemize}
 
 
+\subsubsection*{Restricción 02}
+\begin{itemize}
+    \item Tabla elegida: Transacciones
+    \item Breve descripción de la restricción: La restricción garantiza que el total de la transacción sea igual al precio del boleto multiplicado por la cantidad de boletos.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Transacciones
+    ADD CONSTRAINT CHK_TotalPrecioCantidad CHECK (total_Transaccion = 
+                    (SELECT precio 
+                    FROM Boletos 
+                    WHERE num_boleto = id_Boleto) * cantidad_Boletos);        
+    \end{lstlisting}
+
+    \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Transacciones (num_Transaccion, fecha_transaccion, id_Cliente, 
+                                id_Boleto, cantidad_Boletos, total_Transaccion)
+    VALUES (2, CURRENT_TIMESTAMP, 'C123', 1, 2, 150);     
+    \end{lstlisting}
+
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+\end{itemize}
 
 %%%%%--------------------------------------
 %%%%%-------------------------------------

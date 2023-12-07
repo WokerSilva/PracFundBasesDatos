@@ -12,15 +12,188 @@
 %%%%%-------------------------------------
 %%%%%--------------------------------------
 
+\subsubsection*{Tablas para la base de datos}
 
-%%%%%-------------------------------------
-\subsubsection*{Datos para la base de datos:}
-%%%%%-------------------------------------
+\begin{itemize}
+    \item Tabla Alumnos:
+      \begin{itemize}
+        \item \textit{AlumnoID} (Clave primaria)
+        \item \textit{Nombre}
+        \item \textit{Apellido}
+        \item \textit{Casa} 
+        \item \textit{Fecha de Nacimiento}
+        \item \textit{Género}
+        \item \textit{CursoID} (Clave foránea referenciando a la tabla Cursos)
+        \item \textit{UbicacionID} (Clave foránea referenciando a la tabla Ubicacion)
+      \end{itemize}
+    \item Tabla Maestros:
+      \begin{itemize}
+        \item \textit{maestroID} (Clave primaria)
+        \item \textit{Nombre}
+        \item \textit{Apellido}
+        \item \textit{Especialidad}
+        \item \textit{Fecha de Nacimiento}
+        \item \textit{Género}
+        \item \textit{UbicacionID} (Clave foránea referenciando a la tabla Ubicacion)
+      \end{itemize}
+    \item Tabla Ubicacion:
+      \begin{itemize}
+        \item \textit{UbicacionID} (Clave primaria)
+        \item \textit{Localidad}
+        \item \textit{Pais}
+      \end{itemize}
+    \item Tabla Cursos:
+      \begin{itemize}
+        \item \textit{CursoID} (Clave primaria)
+        \item \textit{Nombre del Curso}
+        \item \textit{gradoAcademico} 
+        \item \textit{ProfesorJefeID} (Clave foránea referenciando a la tabla Maestros)
+      \end{itemize}
+    \item Tabla Asignaturas:
+      \begin{itemize}
+        \item \textit{AsignaturaID} (Clave primaria)
+        \item \textit{Nombre de la Asignatura}
+        \item \textit{maestroID} (Clave foránea referenciando a la tabla Maestros)
+        \item \textit{CursoID} (Clave foránea referenciando a la tabla Cursos)
+      \end{itemize}
+  \end{itemize}
+
+\subsubsection*{Principales restricciones}
+\begin{itemize}
+    \item La clave primaria en cada tabla debe ser única y no nula.
+    \item Las claves foráneas deben hacer referencia a claves primarias existentes en las tablas referenciadas.
+    \item La columna de Fecha de Nacimiento en las tablas Alumnos y Maestros debe contener fechas válidas.
+    \item La columna de Género en las tablas Alumnos y Maestros debe contener valores específicos: 'Masculino' o 'Femenino'.
+    \item La columna de Casa en la tabla Alumnos debe contener valores específicos: 'Gryffindor', 'Hufflepuff', 'Ravenclaw' o 'Slytherin'.
+    \item La columna de Año Académico en la tabla Cursos debe contener valores específicos: '1ro', '2do', '3ro', '4to', '5to', '6to'.    
+    \item La columna de Nombre y Apellido en las tablas Alumnos y Maestros debe contener texto no nulo y no vacío.
+    \item La tabla Asignaturas debe tener una relación adecuada entre las claves foráneas y la información del profesor y el curso.
+    \item La columna de Localidad en la tabla Ubicacion debe contener valores no nulos y no vacíos.  
+    \item Cada año escolar tiene un curso asociado 
+\end{itemize}
+
+\subsubsection*{Información de la escuela}
+
+\begin{itemize}
+  \item Curso Primer Año:  Iniciación Mágica
+    \begin{itemize}
+      \item \textit{Encantamientos Básicos}
+      \item \textit{Herbología Elemental}
+      \item \textit{Pociones para Principiantes}
+      \item \textit{Historia de la Magia Antigua}
+      \item \textit{Defensa Básica contra las Artes Oscuras}
+      \item \textit{Vuelo Inicial en Escoba}
+      \item \textit{Estudios Muggles Introductorios}
+    \end{itemize}
+  \item Curso Segundo Año: Desarrollo Mágico
+    \begin{itemize}
+      \item \textit{Transformaciones Intermedias}
+      \item \textit{Cuidado de Criaturas Mágicas}
+      \item \textit{Pociones Avanzadas}
+      \item \textit{Historia de la Magia Contemporánea}
+      \item \textit{Defensa Intermedia contra las Artes Oscuras}
+      \item \textit{Aritmancia Elemental}
+      \item \textit{Runas Antiguas}
+    \end{itemize}
+  \item Curso Tercer Año:  Magia Avanzada
+    \begin{itemize}
+      \item \textit{Encantamientos Avanzados}
+      \item \textit{Herbología Avanzada}
+      \item \textit{Pociones Maestras}
+      \item \textit{Historia de la Magia Medieval}
+      \item \textit{Defensa Avanzada contra las Artes Oscuras}
+      \item \textit{Adivinación Elemental}
+      \item \textit{Astronomía Mágica}
+    \end{itemize}
+  \item Curso Cuarto Año: Especialización Mágica
+    \begin{itemize}
+      \item \textit{Transformaciones Avanzadas}
+      \item \textit{Cuidado de Criaturas Mágicas Exóticas}
+      \item \textit{Pociones Maestras Avanzadas}
+      \item \textit{Historia de la Magia Moderna}
+      \item \textit{Defensa contra las Artes Oscuras Especializada}
+      \item \textit{Estudios de Artefactos Mágicos}
+      \item \textit{Ocultismo}
+    \end{itemize}
+  \item Curso Quinto Año:  Maestría Mágica
+    \begin{itemize}
+      \item \textit{Encantamientos Supremos}
+      \item \textit{Herbología Aplicada}
+      \item \textit{Pociones Maestras Maestría}
+      \item \textit{Historia de la Magia Contemporánea Avanzada}
+      \item \textit{Defensa Avanzada contra las Artes Oscuras Aplicada}
+      \item \textit{Aritmancia Avanzada}
+      \item \textit{Estudio de las Maldiciones}
+    \end{itemize}
+  \item Curso Sexto Año: Sabiduría Arcana
+    \begin{itemize}
+      \item \textit{Transformaciones Maestras}
+      \item \textit{Cuidado de Criaturas Mágicas Legendarias}
+      \item \textit{Pociones Maestras Supremas}
+      \item \textit{Historia de la Magia Postmoderna}
+      \item \textit{Defensa Maestra contra las Artes Oscuras}
+      \item \textit{Adivinación Avanzada}
+      \item \textit{Astronomía Avanzada}
+    \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c|c}
+  \textbf{Curso} & \textbf{Asignatura} & \textbf{Profesor} \\ \hline
+  \multirow{2}{*}{Primer Año} & Iniciación Mágica & \\
+  & Encantamientos Básicos & Profesor Filius Flitwick \\
+  & Herbología Elemental & Profesora Pomona Sprout \\
+  & Pociones para Principiantes & Profesor Severus Snape \\
+  & Historia de la Magia Antigua & Profesora Bathilda Bagshot \\
+  & Defensa Básica contra las Artes Oscuras & Profesor Quirinus Quirrell \\
+  & Vuelo Inicial en Escoba & Madame Hooch \\
+  & Estudios Muggles Introductorios & Profesor Arthur Weasley \\ \hline
+  \multirow{2}{*}{Segundo Año} & Desarrollo Mágico & \\
+  & Transformaciones Intermedias & Profesora Minerva McGonagall \\
+  & Cuidado de Criaturas Mágicas & Profesor Rubeus Hagrid \\
+  & Pociones Avanzadas & Profesora Horace Slughorn \\
+  & Historia de la Magia Contemporánea & Profesor Binns (fantasma) \\
+  & Defensa Intermedia contra las Artes Oscuras & Profesora Gilderoy Lockhart \\
+  & Aritmancia Elemental & Profesora Septima Vector \\
+  & Runas Antiguas & Profesor Bathsheda Babbling \\ \hline
+  \multirow{2}{*}{Tercer Año} & Magia Avanzada & \\
+  & Encantamientos Avanzados & Profesor Remus Lupin \\
+  & Herbología Avanzada & Profesora Neville Longbottom \\
+  & Pociones Maestras & Profesora Horace Slughorn \\
+  & Historia de la Magia Medieval & Profesora Adalbert Waffling \\
+  & Defensa Avanzada contra las Artes Oscuras & Profesor Alastor Moody \\
+  & Adivinación Elemental & Profesora Sybill Trelawney \\
+  & Astronomía Mágica & Profesor Aurora Sinistra \\ \hline
+  \multirow{2}{*}{Cuarto Año} & Especialización Mágica & \\
+  & Transformaciones Avanzadas & Profesora Minerva McGonagall \\
+  & Cuidado de Criaturas Mágicas Exóticas & Profesor Rubeus Hagrid \\
+  & Pociones Maestras Avanzadas & Profesora Horace Slughorn \\
+  & Historia de la Magia Moderna & Profesor Cuthbert Binns (fantasma) \\
+  & Defensa contra las Artes Oscuras Especializada & Profesor Dolores Umbridge \\
+  & Estudios de Artefactos Mágicos & Profesora Bathilda Bagshot \\
+  & Ocultismo & Profesor Gellert Grindelwald \\ \hline
+  \multirow{2}{*}{Quinto Año} & Maestría Mágica & \\
+  & Encantamientos Supremos & Profesor Filius Flitwick \\
+  & Herbología Aplicada & Profesora Neville Longbottom \\
+  & Pociones Maestras Maestría & Profesora Horace Slughorn \\
+  & Historia de la Magia Contemporánea Avanzada & Profesora Bathilda Bagshot \\
+  & Defensa Avanzada contra las Artes Oscuras Aplicada & Profesora Nymphadora Tonks \\
+  & Aritmancia Avanzada & Profesora Septima Vector \\
+  & Estudio de las Maldiciones & Profesor Severus Snape \\ \hline
+  \multirow{2}{*}{Sexto Año} & Sabiduría Arcana & \\
+  & Transformaciones Maestras & Profesor Minerva McGonagall \\
+  & Cuidado de Criaturas Mágicas Legendarias & Profesor Rubeus Hagrid \\
+  & Pociones Maestras Supremas & Profesor Horace Slughorn \\
+  & Historia de la Magia Postmoderna & Profesora Bathilda Bagshot \\
+  & Defensa Maestra contra las Artes Oscuras & Profesor Alastor Moody \\
+  & Adivinación Avanzada & Profesora Sybill Trelawney \\
+  & Astronomía Avanzada & Profesora Aurora Sinistra
+  \end{tabular}
+  \end{table}
+  
 
 
-
-
-\subsubsection*{Restricciones de los datos}
 
 
 %%%%%--------------------------------------
@@ -29,7 +202,7 @@
 %%%%%-------------------------------------
 %%%%%--------------------------------------
 \begin{center}
-    MAPA
+    \includegraphics[scale = .7]{IMA/escuela/BD-ESCUELA-MO-CONCEPTUAL.png}
 \end{center}
 
 
@@ -39,7 +212,7 @@
 %%%%%-------------------------------------
 %%%%%--------------------------------------
 \begin{center}
-    MAPA
+  \includegraphics[scale = .7]{IMA/escuela/BD-ESCUELA-MO-RELACIONAL.png}
 \end{center}
 
 
