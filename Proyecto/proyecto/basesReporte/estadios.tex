@@ -47,8 +47,8 @@ el Estadio Corregidora, el Estadio Hidalgo y el Estadio Jalisco.
                                        Asientos de las secciones: Cabecera Local: 13,750, Cabecera Visita: 11,000, Lateral Visita: 8,250, Lateral Local: 13,750, Palcos: 8,250
                                   $\}$           
     \end{itemize}
-    IMPORTANTE: CADA TOTAL DE ASIENTOS POR SECCIÓN se divide entre 10 letras para obtener una numeración como la siguiente: CLA1, CLA1, ... CLB1, ... etc
-    DODE CL: es la sección, A: es la letra de numeración (va de A a la J) y la numeración de los boletos correspondientes 
+    %IMPORTANTE: CADA TOTAL DE ASIENTOS POR SECCIÓN se divide entre 10 letras para obtener una numeración como la siguiente: CLA1, CLA1, ... CLB1, ... etc
+    %DODE CL: es la sección, A: es la letra de numeración (va de A a la J) y la numeración de los boletos correspondientes 
 \end{itemize}
 
 \subsubsection*{Restricciones de los datos}
@@ -81,7 +81,7 @@ el Estadio Corregidora, el Estadio Hidalgo y el Estadio Jalisco.
 %%%%%-------------------------------------
 %%%%%--------------------------------------
 \begin{center}
-    \includegraphics[scale = .6]{IMA/estadio/BD-ESTADIO-MOCONCEPTUAL.png}
+    \includegraphics[scale = .6]{IMA/estadio/BD-ESTADIO-MO-CONCEPTUAL.png}
 \end{center}
 
 
@@ -91,7 +91,7 @@ el Estadio Corregidora, el Estadio Hidalgo y el Estadio Jalisco.
 %%%%%-------------------------------------
 %%%%%--------------------------------------
 \begin{center}
-    \includegraphics[scale = .7]{IMA/estadio/BD-ESTADIO-MORELACIONAL.png}
+    \includegraphics[scale = .7]{IMA/estadio/BD-ESTADIO-MO-RELACIONAL.png}
 \end{center}
 
 
@@ -164,4 +164,186 @@ Tablas:
     \item Partidos: La tabla solo contiene los 24 partidos de fase de grupos por lo que no es posible llegar a 100 registros
     \item Boletos: Si es posible llegar a 100 registros 
     \item Transacciones: Si es posible llegar a 100 registros 
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento restricciones}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 4 restricciones de integridad referencial.
+
+\subsubsection*{Restricción 01}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: Partidos y Estadios
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: FK: id Estadio en la tabla Partidos. PK id Estadio en la tabla Estadios
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: : Esta restricción asegura que no puedes tener un partido en un estadio que no exista en la tabla Estadios.
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está
+    funcionando.
+    \begin{verbatim}
+        DELETE FROM Estadios WHERE id_Estadio = 1;
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/6-01.png}
+    \end{center}
+\end{itemize}
+
+
+\subsubsection*{Restricción 02}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: Boletos y Equipos
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: Las claves foráneas en Boletos que hacen referencia a Equipos son id equipoLocal y id equipoVisita, y la clave primaria en Equipos es id Equipo.
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Se utiliza la opción ON DELETE SET NULL. Esto significa que si se elimina un registro en la tabla Equipos, entonces el id equipoLocal y/o id equipoVisita correspondiente en la tabla Boletos se establecerá en NULL. Esto asegura la integridad de los datos.
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está
+    funcionando.
+    \begin{verbatim}
+        DELETE FROM Equipos WHERE id_Equipo = 'SEN';
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/6-02-1.png}
+
+        \includegraphics[scale = .4]{IMA/estadio/6-02-2.png}
+    \end{center}
+\end{itemize}
+
+
+
+\subsubsection*{Restricción 03}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: Transacciones y Clientes
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: La clave foránea en Transacciones que hace referencia a Clientes es id Cliente, y la clave primaria en Clientes es id Cliente.
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido:  Se utiliza la opción ON DELETE CASCADE. Esto significa que si se elimina un registro en la tabla Clientes, entonces todos los registros correspondientes en la tabla Transacciones también se eliminarán. Esto asegura la integridad de los datos. 
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está
+    funcionando.
+    \begin{verbatim}
+        DELETE FROM Clientes WHERE id_Cliente = 'CLI100';
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/6-03-1.png}
+
+        \includegraphics[scale = .4]{IMA/estadio/6-03-2.png}
+    \end{center}
+\end{itemize}
+
+
+\subsubsection*{Restricción 04}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: Transacciones y Boletos
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: La clave foránea en Transacciones que hace referencia a Boletos es id Boleto, y la clave primaria en Boletos es num boleto.
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Se utiliza la opción ON DELETE CASCADE. Esto significa que si se elimina un registro en la tabla Boletos, entonces todos los registros correspondientes en la tabla Transacciones también se eliminarán. Esto asegura la integridad de los datos.
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está
+    funcionando.
+    \begin{verbatim}
+        DELETE FROM Boletos WHERE num_boleto = 2;
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4 ]{IMA/estadio/6-04-1.png}
+
+        \includegraphics[scale = .4 ]{IMA/estadio/6-04-2.png}
+    \end{center}
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento Restricciones check}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 3 restricciones check para “atributos” de varias
+tablas.
+
+\begin{itemize}
+    \item Tabla elegida
+    \item Atributo elegido
+    \item Breve descripción de la restricción
+    \item Instrucción para la creación de la restricción.
+    \item Instrucción que permita evidenciar que la restricción esta funcionando.
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+\end{itemize}
+
+
+
+
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Creación de dominios personalizados}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia de la creación de al menos tres dominios personalizados. Se deben utilizar restricciones check en la creación de los tres dominios.
+\begin{itemize}
+    \item Tabla elegida
+    \item Atributo elegido
+    \item Breve descripción del dominio y de la restricción check propuesta.
+    \item Instrucción para la creación del dominio personalizado.
+    \item Captura de pantalla de la estructura de la tabla donde se muestre el dominio personalizado
+    en uso.
+\end{itemize}
+
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Restricciones para tuplas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 2 restricciones para “tuplas” en diferentes tablas (Unidad 8 Integridad, tema Specifying Constraints on Tuples Using CHECK)
+\begin{itemize}
+    \item Tabla elegida
+    \item Breve descripción de la restricción.
+    \item Instrucción para la creación de la restricción.
+    \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando.
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+\end{itemize}
+
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Consultas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 consultas que consideres relevantes para la base de datos propuesta. Para cada consulta planteada, incluir en el reporte los siguientes incisos:
+\begin{itemize}
+    \item Redacción clara de la consulta.
+    \item Código en lenguaje SQL de la consulta.
+    \item Ejecutar la consulta en Postgres e incluir una captura de pantalla con el resultado de la
+    consulta.
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Vistas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 vistas que consideres relevantes para la base de datos propuesta. Para cada vista planteada, incluir en el reporte los siguientes incisos:
+\begin{itemize}
+    \item Redacción clara de la vista planteada.
+    \item Código en lenguaje SQL que permita crear la vista solicitada.
+    \item Ejecutar el código para la creación de la vista en Postgres e incluir una captura de pantalla
+    con la vista creada satisfactoriamente.
+    \item Incluir un ejemplo que los evaluadores puedan ejecutar para verificar el funcionamiento
+    de las vistas.
 \end{itemize}

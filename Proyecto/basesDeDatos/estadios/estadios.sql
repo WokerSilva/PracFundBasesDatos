@@ -32,7 +32,7 @@ CREATE TABLE Partidos
   fecha_hora TIMESTAMP NOT NULL,
   id_Estadio INT NOT NULL CHECK (id_Estadio IN (1, 2, 3, 4)),
   nombre_Arbitro VARCHAR(255) NOT NULL,
-  FOREIGN KEY (id_Estadio) REFERENCES Estadios(id_Estadio) ON DELETE CASCADE
+  FOREIGN KEY (id_Estadio) REFERENCES Estadios(id_Estadio) ON DELETE NO ACTION
 );
 
 CREATE TABLE SeccionesEstadio

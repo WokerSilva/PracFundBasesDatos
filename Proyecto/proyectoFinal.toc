@@ -10,3 +10,9 @@
 \contentsline {subsection}{\numberline {2.3}Modelo relacional}{6}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Script de creación}{6}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Script de Insert}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Funcionamiento restricciones}{8}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Funcionamiento Restricciones check}{10}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Creación de dominios personalizados}{11}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Restricciones para tuplas}{11}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Consultas}{11}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}Vistas}{11}{subsection.2.11}%
