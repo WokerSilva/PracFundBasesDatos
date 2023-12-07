@@ -48,24 +48,21 @@ VALUES
   ('ARMO', 'Armagh', 'Reino Unido'),
   ('STAF', 'St Albans', 'Reino Unido'),
   ('CHEU', 'Chelmsford', 'Reino Unido'),
-  ('PETA', 'Peterborough', 'Reino Unido'),
-  ('EDIU', 'Edimburgo', 'Escocia'),
+  ('PETA', 'Peterborough', 'Reino Unido'),  
   ('DUND', 'Dundee', 'Escocia'),
   ('DUMF', 'Dumfries', 'Escocia'),
   ('KIRK', 'Kirkwall', 'Escocia'),
   ('WICK', 'Wick', 'Escocia'),
   ('FORT', 'Fort William', 'Escocia'),
   ('ELGI', 'Elgin', 'Escocia'),
-  ('OBAN', 'Oban', 'Escocia'),
-  ('INVE', 'Inverurie', 'Escocia'),
+  ('OBAN', 'Oban', 'Escocia'),  
   ('FIFE', 'Fife', 'Escocia'),
   ('MONT', 'Montrose', 'Escocia'),
   ('THUR', 'Thurso', 'Escocia'),
   ('HUNT', 'Huntly', 'Escocia'),
   ('ROTH', 'Rothesay', 'Escocia'),
   ('CARD', 'Cardiff', 'Gales'),
-  ('SWAN', 'Swansea', 'Gales'),
-  ('BANG', 'Bangor', 'Gales'),
+  ('SWAN', 'Swansea', 'Gales'),  
   ('NEWP', 'Newport', 'Gales'),
   ('WREX', 'Wrexham', 'Gales'),
   ('ABER', 'Aberystwyth', 'Gales'),
@@ -95,6 +92,7 @@ VALUES
   ('MIAF', 'Miami', 'Estados Unidos'),
   ('MEXC', 'Ciudad de México', 'México');
 
+  
 -- Insertar datos en la tabla Maestros
 INSERT INTO MAESTROS (maestroID, Nombre, Apellido, Especialidad, fechaNacimiento, Genero, ubicacionID)
 VALUES
