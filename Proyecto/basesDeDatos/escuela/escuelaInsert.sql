@@ -1,5 +1,4 @@
--- Insertar datos en la tabla Ubicacion para el Reino Unido
-INSERT INTO Ubicacion (ubicacionID, Localidad, Pais)
+INSERT INTO UBICACION (ubicacionID, Localidad, Pais)
 VALUES
   ('LORU', 'Londres', 'Reino Unido'),
   ('HODE', 'Hogsmeade', 'Reino Unido'),
@@ -51,19 +50,13 @@ VALUES
   ('CHEU', 'Chelmsford', 'Reino Unido'),
   ('PETA', 'Peterborough', 'Reino Unido'),
   ('EDIU', 'Edimburgo', 'Escocia'),
-  ('GLAU', 'Glasgow', 'Escocia'),
-  ('ABEU', 'Aberdeen', 'Escocia'),
   ('DUND', 'Dundee', 'Escocia'),
-  ('INVE', 'Inverness', 'Escocia'),
-  ('PERT', 'Perth', 'Escocia'),
-  ('STIR', 'Stirling', 'Escocia'),
   ('DUMF', 'Dumfries', 'Escocia'),
   ('KIRK', 'Kirkwall', 'Escocia'),
   ('WICK', 'Wick', 'Escocia'),
   ('FORT', 'Fort William', 'Escocia'),
   ('ELGI', 'Elgin', 'Escocia'),
   ('OBAN', 'Oban', 'Escocia'),
-  ('LERC', 'Lerwick', 'Escocia'),
   ('INVE', 'Inverurie', 'Escocia'),
   ('FIFE', 'Fife', 'Escocia'),
   ('MONT', 'Montrose', 'Escocia'),
@@ -102,9 +95,8 @@ VALUES
   ('MIAF', 'Miami', 'Estados Unidos'),
   ('MEXC', 'Ciudad de México', 'México');
 
-
 -- Insertar datos en la tabla Maestros
-INSERT INTO Maestros (maestroID, Nombre, Apellido, Especialidad, fechaNacimiento, Genero, ubicacionID)
+INSERT INTO MAESTROS (maestroID, Nombre, Apellido, Especialidad, fechaNacimiento, Genero, ubicacionID)
 VALUES
   ('FFE17', 'Filius', 'Flitwick', 'Encantamientos', '1958-10-17', 'Masculino', 'BIRU'),
   ('PSH15', 'Pomona', 'Sprout', 'Herbología', '1951-05-15', 'Femenino', 'HODE'),
@@ -142,7 +134,7 @@ VALUES
   ('A6SA', 'Sabiduría Arcana', 'Sexto Año', 'GGO01');
 
   -- Insertar datos en la tabla Asignaturas con asignaturaID personalizado
-INSERT INTO Asignaturas (asignaturaID, nombreAsignatura, maestroID, cursoID)
+INSERT INTO ASIGNATURAS (asignaturaID, nombreAsignatura, maestroID, cursoID)
 VALUES
   ('EFL1', 'Encantamientos Básicos', 'FFE17', 'A1IM'),
   ('HE1', 'Herbología Elemental', 'PSH15', 'A1IM'),
