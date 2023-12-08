@@ -82,8 +82,7 @@ VALUES
   ('WELL', 'Wellington', 'Gales'),  
   ('SYDA', 'Sídney', 'Australia'),
   ('MELB', 'Melbourne', 'Australia'),
-  ('BRIS', 'Brisbane', 'Australia'),
-  ('PERT', 'Perth', 'Australia'),
+  ('BRIS', 'Brisbane', 'Australia'),  
   ('ADEL', 'Adelaida', 'Australia'),
   ('NYNY', 'Nueva York', 'Estados Unidos'),
   ('LAXC', 'Los Ángeles', 'Estados Unidos'),
@@ -146,14 +145,14 @@ VALUES
   ('PA1', 'Pociones Avanzadas', 'HSP28', 'A2DM'),
   ('HMCO1', 'Historia de la Magia Contemporánea', 'CBH16', 'A2DM'),
   ('DIACAO1', 'Defensa Intermedia contra las Artes Oscuras', 'GLD26', 'A2DM'),
-  ('AE1', 'Aritmancia Elemental', 'SVA24', 'A2DM'),
+  ('AER1', 'Aritmancia Elemental', 'SVA24', 'A2DM'),
   ('RA1', 'Runas Antiguas', 'BBR25', 'A2DM'),
   ('EAA1', 'Encantamientos Avanzados', 'A3MA', 'A3MA'),
-  ('HA1', 'Herbología Avanzada', 'NLH30', 'A3MA'),
+  ('HEA1', 'Herbología Avanzada', 'NLH30', 'A3MA'),
   ('PM1', 'Pociones Maestras', 'HSP28', 'A3MA'),
   ('HMM1', 'Historia de la Magia Medieval', 'AWH15', 'A3MA'),
   ('DAAACAO1', 'Defensa Avanzada contra las Artes Oscuras', 'AMD15', 'A3MA'),
-  ('AE1', 'Adivinación Elemental', 'STA11', 'A3MA'),
+  ('AED1', 'Adivinación Elemental', 'STA11', 'A3MA'),
   ('AM1', 'Astronomía Mágica', 'ASA21', 'A3MA'),
   ('TA1', 'Transformaciones Avanzadas', 'A4EM', 'A4EM'),
   ('CCME1', 'Cuidado de Criaturas Mágicas Exóticas', 'RHC06', 'A4EM'),
@@ -163,7 +162,7 @@ VALUES
   ('EAM1', 'Estudios de Artefactos Mágicos', 'BBE05', 'A4EM'),
   ('O1', 'Ocultismo', 'GGO01', 'A4EM'),
   ('ES1', 'Encantamientos Supremos', 'FFE17', 'A5MM'),
-  ('HA1', 'Herbología Aplicada', 'NLH30', 'A5MM'),
+  ('HPA1', 'Herbología Aplicada', 'NLH30', 'A5MM'),
   ('PMM1', 'Pociones Maestras Maestría', 'HSP28', 'A5MM'),
   ('HMCACAA1', 'Historia de la Magia Contemporánea Avanzada', 'BBH04', 'A5MM'),
   ('DAAACAA1', 'Defensa Avanzada contra las Artes Oscuras Aplicada', 'NTD24', 'A5MM'),
@@ -174,8 +173,8 @@ VALUES
   ('PMS1', 'Pociones Maestras Supremas', 'HSP28', 'A6SA'),
   ('HMP1', 'Historia de la Magia Postmoderna', 'CBH16', 'A6SA'),
   ('DMA1', 'Defensa Maestra contra las Artes Oscuras', 'AMD15', 'A6SA'),
-  ('AA1', 'Adivinación Avanzada', 'STA11', 'A6SA'),
-  ('AA1', 'Astronomía Avanzada', 'ASA21', 'A6SA');
+  ('ADOA1', 'Adivinación Avanzada', 'STA11', 'A6SA'),
+  ('ASIA1', 'Astronomía Avanzada', 'ASA21', 'A6SA');
 
 
 -- Insertar 100 filas de datos en la tabla ALUMNOS

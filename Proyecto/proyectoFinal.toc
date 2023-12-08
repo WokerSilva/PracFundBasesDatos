@@ -7,24 +7,24 @@
 \contentsline {section}{\numberline {2}\texttt {Escuela}}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Lista de Requerimientos}{3}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Modelo conceptual}{7}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Modelo relacional}{8}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Script de creación}{8}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Script de Insert}{8}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.3}Modelo relacional}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Script de creación}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Script de Insert}{7}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}Funcionamiento restricciones}{8}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}Funcionamiento Restricciones check}{10}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Creación de dominios personalizados}{11}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}Restricciones para tuplas}{11}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.8}Creación de dominios personalizados}{10}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Restricciones para tuplas}{10}{subsection.2.9}%
 \contentsline {subsection}{\numberline {2.10}Consultas}{11}{subsection.2.10}%
 \contentsline {subsection}{\numberline {2.11}Vistas}{11}{subsection.2.11}%
 \contentsline {section}{\numberline {3}\texttt {Estadios}}{12}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Lista de Requerimientos}{12}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Modelo conceptual}{14}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Modelo relacional}{15}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Script de creación}{15}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Script de Insert}{16}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Funcionamiento restricciones}{17}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Funcionamiento Restricciones check}{19}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Creación de dominios personalizados}{21}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}Restricciones para tuplas}{23}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}Consultas}{24}{subsection.3.10}%
-\contentsline {subsection}{\numberline {3.11}Vistas}{24}{subsection.3.11}%
+\contentsline {subsection}{\numberline {3.2}Modelo conceptual}{13}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Modelo relacional}{13}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Script de creación}{13}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Script de Insert}{14}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Funcionamiento restricciones}{15}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Funcionamiento Restricciones check}{17}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Creación de dominios personalizados}{19}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Restricciones para tuplas}{20}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Consultas}{21}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}Vistas}{22}{subsection.3.11}%
