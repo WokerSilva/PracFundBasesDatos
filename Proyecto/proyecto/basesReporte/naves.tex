@@ -1,0 +1,518 @@
+%%%%%----------------------------------------
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\section{\texttt{Naves}}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+%%%%%----------------------------------------
+
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Lista de Requerimientos}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+\subsubsection*{Tablas para la base de datos}
+
+\begin{itemize}
+    \item PASAJEROS
+    \begin{itemize}
+        \item Clave primaria: pasajeroID
+        \item Nombre
+        \item Apellido
+        \item Edad
+        \item Género
+        \item Nacionalidad
+        \item Clave foránea: naveID
+    \end{itemize}
+    \item NAVES
+    \begin{itemize}
+        \item Clave primaria: naveID
+        \item Nombre
+        \item Tipo
+        \item Capacidad_Pasajeros
+        \item VelocidadMax
+        \item Clave foránea: rutaID
+        \item Clave foránea: choferID
+    \end{itemize}
+    \item PLANETAS
+    \begin{itemize}
+        \item Clave primaria: planetaID
+        \item Nombre
+        \item DistanciaSol
+        \item Gravedad
+        \item Población
+        \end{itemize}
+    \item CHOFERES
+    \begin{itemize}
+        \item Clave primaria: choferID
+        \item Nombre
+        \item Edad
+        \item Género
+        \item Nacionalidad
+        \item Clave foránea: ID_Nave
+    \end{itemize}
+    \item RUTAS
+    \begin{itemize}
+        \item Clave primaria: ID_Ruta
+        \item Origen (ID_Planeta)
+        \item Destino (ID_Planeta)
+        \item Distancia
+        \item Duración (tiempo estimado de viaje)
+    \end{itemize}
+\end{itemize}
+\subsubsection*{Principales restricciones}
+\begin{itemize}
+    \item TABLAS
+\end{itemize}
+
+  
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Modelo conceptual}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{center}
+    MAPA
+\end{center}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Modelo relacional}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{center}
+  MAPA
+\end{center}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Script de creación}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    -- Solo los titulos de las tablas para naves    
+   
+\end{lstlisting}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Script de Insert}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{itemize}
+    \item[$\rightarrow$] Se deben generar 100 registros para cada tabla.
+    \item[$\rightarrow$] Si para el buen funcionamiento de la base de datos se requieren más de 100 registros o
+            menos de 100 registros en una tabla, se debe explicar claramente la razón, sólo en este caso
+            sí se debe incluir un apartado en el reporte final.
+\end{itemize}
+
+Tablas:
+\begin{itemize}
+  \item TABLAS
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento Restricciones}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 4 restricciones de integridad referencial.
+
+\subsubsection*{Restricción 01}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: 
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: 
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: 
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+        \begin{verbatim}
+    
+        \end{verbatim}
+
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+    
+        \begin{center}
+            CAPTURA
+        \end{center}
+
+\end{itemize}
+
+\subsubsection*{Restricción 02}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: 
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: 
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: 
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+        \begin{verbatim}
+    
+        \end{verbatim}
+
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+    
+        \begin{center}
+            CAPTURA
+        \end{center}
+
+\end{itemize}
+
+\subsubsection*{Restricción 03}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: 
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: 
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: 
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+        \begin{verbatim}
+    
+        \end{verbatim}
+
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+    
+        \begin{center}
+            CAPTURA
+        \end{center}
+
+\end{itemize}
+
+\subsubsection*{Restricción 04}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: 
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: 
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: 
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+        \begin{verbatim}
+    
+        \end{verbatim}
+
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+    
+        \begin{center}
+            CAPTURA
+        \end{center}
+
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento Restricciones check}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 3 restricciones check para “atributos” de varias
+tablas.
+
+\subsubsection*{Restricción 01}
+
+\begin{itemize} 
+  \item Tabla elegida: 
+  \item Atributo elegido: 
+  \item Descripción: 
+  \item Instrucción para la creación de la restricción: 
+  \item 
+    \begin{verbatim} 
+    
+    \end{verbatim} 
+
+  \item Instrucción que permita evidenciar que la restricción esta funcionando: 
+  
+    \begin{verbatim} 
+    
+    \end{verbatim} 
+
+  \item Captura de pantalla 
+  
+    \begin{center} 
+      CAPTURA
+    \end{center} 
+
+\end{itemize}
+
+
+\subsubsection*{Restricción 02}
+
+\begin{itemize} 
+  \item Tabla elegida: 
+  \item Atributo elegido: 
+  \item Descripción: 
+  \item Instrucción para la creación de la restricción: 
+  \item 
+    \begin{verbatim} 
+    
+    \end{verbatim} 
+
+  \item Instrucción que permita evidenciar que la restricción esta funcionando: 
+  
+    \begin{verbatim} 
+    
+    \end{verbatim} 
+
+  \item Captura de pantalla 
+  
+    \begin{center} 
+      CAPTURA
+    \end{center} 
+
+\end{itemize}
+
+
+\subsubsection*{Restricción 03}
+
+\begin{itemize} 
+  \item Tabla elegida: 
+  \item Atributo elegido: 
+  \item Descripción: 
+  \item Instrucción para la creación de la restricción: 
+  \item 
+    \begin{verbatim} 
+    
+    \end{verbatim} 
+
+  \item Instrucción que permita evidenciar que la restricción esta funcionando: 
+  
+    \begin{verbatim} 
+    
+    \end{verbatim} 
+
+  \item Captura de pantalla 
+  
+    \begin{center} 
+      CAPTURA
+    \end{center} 
+
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Creación de dominios personalizados}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia de la creación de al menos tres dominios personalizados. Se deben utilizar restricciones check en la creación de los tres dominios.
+
+\subsubsection*{Dominio 01}
+
+\begin{itemize}
+    \item Tabla elegida: 
+    \item Atributo elegido: 
+    \item Descripción: 
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    
+    \end{lstlisting}
+\end{itemize}
+
+
+\subsubsection*{Dominio 02}
+
+\begin{itemize}
+    \item Tabla elegida: 
+    \item Atributo elegido: 
+    \item Descripción: 
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    
+    \end{lstlisting}
+\end{itemize}
+
+
+\subsubsection*{Dominio 03}
+
+\begin{itemize}
+    \item Tabla elegida: 
+    \item Atributo elegido: 
+    \item Descripción: 
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    
+    \end{lstlisting}
+\end{itemize}
+
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Restricciones para tuplas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 2 restricciones para tuplas en diferentes tablas (Unidad 8 Integridad, tema Specifying Constraints on Tuples Using CHECK)
+
+
+\subsubsection*{Dominio 01}
+
+\begin{itemize}
+    \item Tabla elegida: 
+    \item Breve descripción de la restricción: 
+    \item Instrucción para la creación de la restricción:
+        \begin{verbatim}
+        
+        \end{verbatim}
+
+    \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando:
+    
+        \begin{verbatim}
+        
+        \end{verbatim}  
+\end{itemize}
+
+
+\subsubsection*{Dominio 02}
+
+\begin{itemize}
+    \item Tabla elegida: 
+    \item Breve descripción de la restricción: 
+    \item Instrucción para la creación de la restricción:
+        \begin{verbatim}
+        
+        \end{verbatim}
+
+    \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando:
+    
+        \begin{verbatim}
+        
+        \end{verbatim}  
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Consultas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 consultas que consideres relevantes para la base de datos propuesta. Para cada consulta planteada, incluir en el reporte los siguientes incisos:
+
+
+\subsubsection*{Consulta 01}
+
+\begin{itemize}
+    \item Redacción clara de la consulta: 
+    \item Código en lenguaje SQL de la consulta.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    
+    \end{lstlisting}    
+
+    \begin{center}
+      CAPTURA
+    \end{center}
+    
+\end{itemize}
+
+
+\subsubsection*{Consulta 02}
+
+\begin{itemize}
+    \item Redacción clara de la consulta: 
+    \item Código en lenguaje SQL de la consulta.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    
+    \end{lstlisting}    
+
+    \begin{center}
+      CAPTURA
+    \end{center}
+    
+\end{itemize}
+
+
+\subsubsection*{Consulta 03}
+
+\begin{itemize}
+    \item Redacción clara de la consulta: 
+    \item Código en lenguaje SQL de la consulta.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    
+    \end{lstlisting}    
+
+    \begin{center}
+      CAPTURA
+    \end{center}
+    
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Vistas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 vistas que consideres relevantes para la base de datos propuesta. Para cada vista planteada, incluir en el reporte los siguientes incisos:
+
+\subsection*{Vista 01}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada: 
+    \item Código en lenguaje SQL que permita crear la vista solicitada.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      
+    \end{lstlisting}    
+    
+    \item USO:
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      
+    \end{lstlisting}    
+
+    \begin{center}
+      CAPTURA
+    \end{center}
+\end{itemize}
+
+
+\subsection*{Vista 02}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada: 
+    \item Código en lenguaje SQL que permita crear la vista solicitada.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      
+    \end{lstlisting}    
+    
+    \item USO:
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      
+    \end{lstlisting}    
+
+    \begin{center}
+      CAPTURA
+    \end{center}
+\end{itemize}
+
+
+\subsection*{Vista 03}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada: 
+    \item Código en lenguaje SQL que permita crear la vista solicitada.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      
+    \end{lstlisting}    
+    
+    \item USO:
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      
+    \end{lstlisting}    
+
+    \begin{center}
+      CAPTURA
+    \end{center}
+\end{itemize}
