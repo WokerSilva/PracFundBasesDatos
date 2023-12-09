@@ -6,7 +6,21 @@
 %%%%%--------------------------------------
 %%%%%----------------------------------------
 
-  
+\subsection{Requerimientos}
+
+La empresa Galactic Travel Solutions ha solicitado el diseño de una base de datos para gestionar 
+los viajes galácticos en el año 4000. El objetivo es administrar eficientemente la información relacionada 
+con pasajeros, naves, planetas, rutas y choferes para ofrecer servicios de transporte 
+interplanetario de manera segura y organizada.
+
+\begin{itemize}
+  \item Cada pasajero debe estar asociado a una única nave, y cada nave debe tener asignada una ruta específica.
+  \item Los planetas deben tener información única y estar relacionados con las rutas para garantizar la coherencia de los viajes.
+  \item Las relaciones entre las tablas deben ser mantenidas para asegurar la integridad referencial. Por ejemplo, un chofer debe estar asignado a una nave existente.
+  \item Los identificadores primarios y foráneos deben seguir una convención clara y única para facilitar la comprensión y mantenimiento de la base de datos.
+  \item Se deben establecer restricciones de integridad para prevenir operaciones que puedan comprometer la consistencia de los datos, como eliminar un planeta asociado a una ruta activa.
+\end{itemize}
+
 %%%%%--------------------------------------
 %%%%%-------------------------------------
 \subsection{Modelo conceptual}

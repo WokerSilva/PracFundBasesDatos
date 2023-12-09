@@ -6,6 +6,26 @@
 %%%%%--------------------------------------
 %%%%%----------------------------------------
   
+\subsection{Requerimientos}
+
+Saludos desde Hogwarts Escuela de Magia y Hechicería. Después de revisar exhaustivamente sus habilidades y
+experiencia en el mundo mágico de la programación, nos complace informarles que han sido seleccionados para 
+crear y gestionar la base de datos mágica de nuestra venerable institución.
+
+\subsubsection*{Principales restricciones}
+\begin{itemize}
+    \item La clave primaria en cada tabla debe ser única y no nula.
+    \item Las claves foráneas deben hacer referencia a claves primarias existentes en las tablas referenciadas.
+    \item La columna de Fecha de Nacimiento en las tablas Alumnos y Maestros debe contener fechas válidas.
+    \item La columna de Género en las tablas Alumnos y Maestros debe contener valores específicos: 'Masculino' o 'Femenino'.
+    \item La columna de Casa en la tabla Alumnos debe contener valores específicos: 'Gryffindor', 'Hufflepuff', 'Ravenclaw' o 'Slytherin'.
+    \item La columna de Año Académico en la tabla Cursos debe contener valores específicos: '1ro', '2do', '3ro', '4to', '5to', '6to'.    
+    \item La columna de Nombre y Apellido en las tablas Alumnos y Maestros debe contener texto no nulo y no vacío.
+    \item La tabla Asignaturas debe tener una relación adecuada entre las claves foráneas y la información del profesor y el curso.
+    \item La columna de Localidad en la tabla Ubicacion debe contener valores no nulos y no vacíos.  
+    \item Cada año escolar tiene un curso asociado 
+\end{itemize}
+
 %%%%%--------------------------------------
 %%%%%-------------------------------------
 \subsection{Modelo conceptual}
