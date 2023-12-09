@@ -2,7 +2,7 @@ CREATE TABLE PLANETAS
 (
   planetaID VARCHAR(15) NOT NULL PRIMARY KEY,
   estacion VARCHAR(255) NOT NULL,
-  distanciaSol INT NOT NULL,
+  distanciaSol INT CHECK (distanciaSol > 0 AND distanciaSol < 1000000),
   gravedad INT NOT NULL,
   poblacion INT NOT NULL
 );
@@ -23,7 +23,7 @@ CREATE TABLE NAVES
 (
   naveID VARCHAR(15) NOT NULL PRIMARY KEY,
   modelo VARCHAR(255) NOT NULL,
-  capacidad INT NOT NULL,
+  capacidad INT CHECK (capacidad > 0 AND capacidad < 300),
   velocidadMax INT NOT NULL,
   rutaID VARCHAR(5) NOT NULL,
   FOREIGN KEY (rutaID) REFERENCES RUTAS(rutaID)
