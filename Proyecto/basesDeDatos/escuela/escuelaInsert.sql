@@ -282,6 +282,5 @@ VALUES
     ('S32', 'Oliver', 'Hill', 'Slytherin', '1996-02-06', 'Masculino', 'OXFU', 'A2DM'),
     ('G27', 'Eva', 'Martin', 'Gryffindor', '1997-11-20', 'Femenino', 'EXEU', 'A3MA'),
     ('G28', 'Mason', 'Lopez', 'Gryffindor', '1998-09-03', 'Masculino', 'EXEU', 'A4EM'),
-    ('G29', 'Sophia', 'Collins', 'Gryffindor', '1999-06-16', 'Femenino', 'BIRU', 'A5MM'),
-    ('G30', 'Jackson', 'Anderson', 'Gryffindor', '2992-03-01', 'Masculino', 'BIRU', 'A6SA'),
+    ('G29', 'Sophia', 'Collins', 'Gryffindor', '1999-06-16', 'Femenino', 'BIRU', 'A5MM'),    
     ('G31', 'Olivia', 'Garcia', 'Gryffindor', '2001-12-14', 'Femenino', 'BIRU', 'A1IM');

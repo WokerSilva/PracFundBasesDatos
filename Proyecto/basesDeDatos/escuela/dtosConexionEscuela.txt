@@ -1,0 +1,5 @@
+Server:	berry.db.elephantsql.com (berry-01)
+Region:	amazon-web-services::us-east-1
+User & Default database: wssovcub
+Password: Tk-nIiwvypKHMvIkzGUKI08M03QrCTUa
+URL: postgres://wssovcub:Tk-nIiwvypKHMvIkzGUKI08M03QrCTUa@berry.db.elephantsql.com/wssovcub

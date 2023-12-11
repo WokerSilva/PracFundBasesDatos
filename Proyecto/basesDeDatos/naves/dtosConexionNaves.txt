@@ -1,0 +1,5 @@
+Server:	berry.db.elephantsql.com (berry-01)
+Region:	amazon-web-services::us-east-1
+User & Default database: eqsxfetn
+Password: Cy04GCM_7ikYwkX12GOJNzxRDFz3HXLY
+URL: postgres://eqsxfetn:Cy04GCM_7ikYwkX12GOJNzxRDFz3HXLY@berry.db.elephantsql.com/eqsxfetn

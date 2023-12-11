@@ -1,0 +1,5 @@
+Server:	berry.db.elephantsql.com (berry-01)
+Region:	amazon-web-services::us-east-1
+User & Default database: rptjnggc
+Password: CtiqhyQJgPdd17H012vN9lf6jY519nGL
+URL: postgres://rptjnggc:CtiqhyQJgPdd17H012vN9lf6jY519nGL@berry.db.elephantsql.com/rptjnggc
