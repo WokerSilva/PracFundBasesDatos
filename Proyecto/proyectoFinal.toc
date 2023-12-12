@@ -1,37 +1,37 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}\texttt {Escuela}}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Requerimientos}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Modelo conceptual}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Modelo relacional}{2}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Script de creación}{3}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Script de Insert}{3}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Funcionamiento Restricciones}{4}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}Funcionamiento Restricciones check}{6}{subsection.1.7}%
-\contentsline {subsection}{\numberline {1.8}Creación de dominios personalizados}{7}{subsection.1.8}%
-\contentsline {subsection}{\numberline {1.9}Restricciones para tuplas}{8}{subsection.1.9}%
-\contentsline {subsection}{\numberline {1.10}Consultas}{9}{subsection.1.10}%
-\contentsline {subsection}{\numberline {1.11}Vistas}{10}{subsection.1.11}%
-\contentsline {section}{\numberline {2}\texttt {Naves}}{13}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Requerimientos}{13}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Modelo conceptual}{13}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Modelo relacional}{13}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Script de creación}{13}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Script de Insert}{14}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Funcionamiento Restricciones}{14}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Funcionamiento Restricciones check}{16}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Creación de dominios personalizados}{18}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}Restricciones para tuplas}{19}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}Consultas}{20}{subsection.2.10}%
-\contentsline {subsection}{\numberline {2.11}Vistas}{21}{subsection.2.11}%
-\contentsline {section}{\numberline {3}\texttt {Estadios}}{23}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Requerimientos}{23}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Modelo conceptual}{24}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Modelo relacional}{24}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Script de creación}{24}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Script de Insert}{25}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Funcionamiento restricciones}{25}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Funcionamiento Restricciones check}{27}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Creación de dominios personalizados}{29}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}Restricciones para tuplas}{31}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}Consultas}{32}{subsection.3.10}%
-\contentsline {subsection}{\numberline {3.11}Vistas}{33}{subsection.3.11}%
+\contentsline {subsection}{\numberline {1.2}Modelo conceptual}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Modelo relacional}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Script de creación}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Script de Insert}{5}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Funcionamiento Restricciones}{5}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Funcionamiento Restricciones check}{7}{subsection.1.7}%
+\contentsline {subsection}{\numberline {1.8}Creación de dominios personalizados}{9}{subsection.1.8}%
+\contentsline {subsection}{\numberline {1.9}Restricciones para tuplas}{10}{subsection.1.9}%
+\contentsline {subsection}{\numberline {1.10}Consultas}{11}{subsection.1.10}%
+\contentsline {subsection}{\numberline {1.11}Vistas}{12}{subsection.1.11}%
+\contentsline {section}{\numberline {2}\texttt {Naves}}{15}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Requerimientos}{15}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Modelo conceptual}{16}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Modelo relacional}{17}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Script de creación}{17}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Script de Insert}{18}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Funcionamiento Restricciones}{18}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Funcionamiento Restricciones check}{20}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Creación de dominios personalizados}{22}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Restricciones para tuplas}{23}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Consultas}{24}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}Vistas}{26}{subsection.2.11}%
+\contentsline {section}{\numberline {3}\texttt {Estadios}}{30}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Requerimientos}{30}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Modelo conceptual}{31}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Modelo relacional}{32}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Script de creación}{32}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Script de Insert}{33}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Funcionamiento restricciones}{34}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Funcionamiento Restricciones check}{36}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Creación de dominios personalizados}{38}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Restricciones para tuplas}{40}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Consultas}{41}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}Vistas}{42}{subsection.3.11}%
