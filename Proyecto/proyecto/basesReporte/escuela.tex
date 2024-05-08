@@ -1,0 +1,490 @@
+%%%%%----------------------------------------
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\section{\texttt{Escuela}}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+%%%%%----------------------------------------
+  
+\subsection{Requerimientos}
+
+Saludos desde Hogwarts Escuela de Magia y Hechicería. Después de revisar exhaustivamente sus habilidades y
+experiencia en el mundo mágico de la programación, nos complace informarles que han sido seleccionados para 
+crear y gestionar la base de datos mágica de nuestra venerable institución.
+
+\subsubsection*{Principales restricciones}
+\begin{itemize}
+    \item La clave primaria en cada tabla debe ser única y no nula.
+    \item Las claves foráneas deben hacer referencia a claves primarias existentes en las tablas referenciadas.
+    \item La columna de Fecha de Nacimiento en las tablas Alumnos y Maestros debe contener fechas válidas.
+    \item La columna de Género en las tablas Alumnos y Maestros debe contener valores específicos: 'Masculino' o 'Femenino'.
+    \item La columna de Casa en la tabla Alumnos debe contener valores específicos: 'Gryffindor', 'Hufflepuff', 'Ravenclaw' o 'Slytherin'.
+    \item La columna de Año Académico en la tabla Cursos debe contener valores específicos: '1ro', '2do', '3ro', '4to', '5to', '6to'.    
+    \item La columna de Nombre y Apellido en las tablas Alumnos y Maestros debe contener texto no nulo y no vacío.
+    \item La tabla Asignaturas debe tener una relación adecuada entre las claves foráneas y la información del profesor y el curso.
+    \item La columna de Localidad en la tabla Ubicacion debe contener valores no nulos y no vacíos.  
+    \item Cada año escolar tiene un curso asociado 
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Modelo conceptual}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{center}
+    \includegraphics[scale = .7]{IMA/escuela/BD-ESCUELA-MO-CONCEPTUAL.png}
+\end{center}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Modelo relacional}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{center}
+  \includegraphics[scale = .7]{IMA/escuela/BD-ESCUELA-MO-RELACIONAL.png}
+\end{center}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Script de creación}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    -- Solo los titulos de las tablas para escuela    
+    CREATE TABLE UBICACION
+    (
+      
+    );
+    
+    CREATE TABLE MAESTROS
+    (
+      
+    );
+    
+    CREATE TABLE CURSOS
+    (
+      
+    );
+    
+    CREATE TABLE ASIGNATURAS
+    (
+      
+    );
+    
+    CREATE TABLE ALUMNOS
+    (
+
+    );    
+\end{lstlisting}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Script de Insert}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{itemize}
+    \item[$\rightarrow$] Se deben generar 100 registros para cada tabla.
+    \item[$\rightarrow$] Si para el buen funcionamiento de la base de datos se requieren más de 100 registros o
+            menos de 100 registros en una tabla, se debe explicar claramente la razón, sólo en este caso
+            sí se debe incluir un apartado en el reporte final.
+\end{itemize}
+
+Tablas:
+\begin{itemize}
+  \item UBICACION: Si es posible llegar a 100 registros de ubicación 
+  \item MAESTROS: No es posible llegar a 100 porque la tabla solo contempla 24 maestros registrados
+  \item CURSOS: No es posible llegar a 100 porque solo se contemplan 6 cursos para la escuela
+  \item ASIGNATURAS: No es posible llegar a 100 porque hay 7 asignaturas por cada curso, son 24 asignaturas
+  \item Alumnos: Si es posible llegar a 100 registros de alumnos
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento Restricciones}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 4 restricciones de integridad referencial.
+
+\subsubsection*{Restricción 01}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: ALUMNOS y UBICACION
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: ubicacionID en ALUMNOS es una clave foránea que referencia a ubicacionID en UBICACION
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Esta restricción asegura que cada alumno esté asociado con una ubicación válida en la tabla UBICACION. Si se intenta eliminar una ubicación que está siendo referenciada por un alumno, o se intenta actualizar el ubicacionID de una ubicación a un valor que no existe en la tabla ALUMNOS, la operación será rechazada.
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+    \begin{verbatim}
+      DELETE FROM UBICACION WHERE ubicacionID = 'OXFU';
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/escuela/H-6-01.png}
+    \end{center}
+\end{itemize}
+
+
+\subsubsection*{Restricción 02}
+
+\begin{itemize}
+  \item[$\rightarrow$] Tablas involucradas en la restricción: CURSOS y MAESTROS
+  \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: maestroID en CURSOS es una clave foránea que referencia a maestroID en MAESTROS
+  \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Esta restricción asegura que cada curso esté asociado con un maestro válido en la tabla MAESTROS. Si se intenta eliminar un maestro que está siendo referenciado por un curso, o se intenta actualizar el maestroID de un maestro a un valor que no existe en la tabla CURSOS, la operación será rechazada.
+  \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+  \begin{verbatim}
+    DELETE FROM MAESTROS WHERE maestroID = 'GGO01';
+  \end{verbatim}
+  \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+  \begin{center}
+    \includegraphics[scale = .4]{IMA/escuela/H-6-02.png}
+  \end{center}
+\end{itemize}
+
+\subsubsection*{Restricción 03}
+
+\begin{itemize}
+  \item[$\rightarrow$] Tablas involucradas en la restricción: ASIGNATURAS y CURSOS
+  \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: cursoID en ASIGNATURAS es una clave foránea que referencia a cursoID en CURSOS
+  \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Esta restricción asegura que cada asignatura esté asociada con un curso válido en la tabla CURSOS. Si se intenta eliminar un curso que está siendo referenciado por una asignatura, o se intenta actualizar el cursoID de un curso a un valor que no existe en la tabla ASIGNATURAS, la operación será rechazada.
+  \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+  \begin{verbatim}
+    DELETE FROM CURSOS WHERE cursoID = 'A1IM';
+  \end{verbatim}
+  \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+  \begin{center}
+    \includegraphics[scale = .4]{IMA/escuela/H-6-03.png}
+  \end{center}
+\end{itemize}
+
+
+\subsubsection*{Restricción 03}
+
+\begin{itemize}
+  \item[$\rightarrow$] Tablas involucradas en la restricción: ALUMNOS y CURSOS
+  \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: cursoID en ALUMNOS es una clave foránea que referencia a cursoID en CURSOS
+  \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Esta restricción asegura que cada alumno esté asociado con un curso válido en la tabla CURSOS. Si se intenta eliminar un curso que está siendo referenciado por un alumno, o se intenta actualizar el cursoID de un curso a un valor que no existe en la tabla ALUMNOS, la operación será rechazada.
+  \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+  \begin{verbatim}
+    UPDATE ALUMNOS
+      SET cursoID = 'A7SA'
+      WHERE alumnoID = 'S29';
+  \end{verbatim}
+  \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+  \begin{center}
+    \includegraphics[scale = .4]{IMA/escuela/H-6-04.png}
+  \end{center}
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento Restricciones check}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 3 restricciones check para “atributos” de varias
+tablas.
+
+\begin{itemize} 
+  \item Tabla elegida: ALUMNOS 
+  \item Atributo elegido: casa 
+  \item Descripción: Esta restricción asegura que el valor de la columna Casa sea uno de los cuatro nombres de las casas de Hogwarts: 'Hufflepuff', 'Ravenclaw', 'Gryffindor', 'Slytherin'. 
+  \item Instrucción para la creación de la restricción: 
+    \begin{verbatim} 
+    ALTER TABLE ALUMNOS 
+    ADD CONSTRAINT casaCasa CHECK (Casa IN ('Hufflepuff',
+                                            'Ravenclaw', 
+                                            'Gryffindor', 
+                                            'Slytherin')); 
+    \end{verbatim} 
+  \item Instrucción que permita evidenciar que la restricción esta funcionando: 
+    \begin{verbatim} 
+    INSERT INTO ALUMNOS (alumnoID, Nombre, Apellido, Casa, fechaNacimiento,
+                         Genero, ubicacionID, cursoID) 
+      VALUES ('nuevoID', 'Nombre', 'Apellido', 'CasaIncorrecta', 
+              '2000-01-01', 'Genero', 'ubicacionID', 'cursoID'); 
+    \end{verbatim} 
+  \item Captura de pantalla 
+    \begin{center} 
+      \includegraphics[scale = .4]{IMA/escuela/H-7-01.png}
+    \end{center} 
+\end{itemize}
+
+\begin{itemize} 
+  \item Tabla elegida: MAESTROS 
+  \item Atributo elegido: fechaNacimiento 
+  \item Descripción: Esta restricción asegura que el valor de la columna fechaNacimiento sea una fecha válida y no sea en el futuro. 
+  \item Instrucción para la creación de la restricción: 
+  \begin{verbatim} 
+    ALTER TABLE MAESTROS 
+    ADD CONSTRAINT fechaMaestro CHECK (fechaNacimiento <= CURRENT_DATE); 
+  \end{verbatim} 
+  \item Instrucción que permita evidenciar que la restricción esta funcionando: 
+  \begin{verbatim} 
+    INSERT INTO MAESTROS 
+        (maestroID, Nombre, Apellido, Especialidad, fechaNacimiento, 
+         Genero, ubicacionID) 
+      VALUES (‘nuevoID’, ‘Nombre’, ‘Apellido’, ‘Especialidad’,
+              ‘3000-01-01’, ‘Genero’, ‘ubicacionID’); 
+  \end{verbatim}   
+\end{itemize}
+
+\begin{itemize} 
+  \item Tabla elegida: ALUMNOS 
+  \item Atributo elegido: fechaNacimiento 
+  \item Breve descripción de la restricción: Esta restricción asegura que el valor de la columna fechaNacimiento sea una fecha válida y no sea en el futuro.
+  \item Instrucción para la creación de la restricción: 
+  \begin{verbatim} 
+  ALTER TABLE ALUMNOS 
+  ADD CONSTRAINT fechaAlumno CHECK (fechaNacimiento <= CURRENT_DATE); 
+  \end{verbatim} 
+  \item Instrucción que permita evidenciar que la restricción esta funcionando: 
+  \begin{verbatim} 
+  INSERT INTO ALUMNOS (alumnoID, Nombre, Apellido, Casa, fechaNacimiento, 
+                       Genero, ubicacionID, cursoID) 
+    VALUES (‘nuevoID’, ‘Nombre’, ‘Apellido’, ‘Hufflepuff’, ‘3000-01-01’, 
+            ‘Genero’, ‘ubicacionID’, ‘cursoID’); 
+  \end{verbatim} 
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Creación de dominios personalizados}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia de la creación de al menos tres dominios personalizados. Se deben utilizar restricciones check en la creación de los tres dominios.
+\begin{itemize}
+    \item Tabla elegida: ALUMNOS
+    \item Atributo elegido: Casa
+    \item Descripción: El dominio Casa representa las cuatro casas de la escuela Hogwarts de Magia y Hechicería. Las cuatro casas son: Hufflepuff Ravenclaw Gryffindor Slytherin
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      CREATE DOMAIN Casa
+        AS CHAR(20)
+        CHECK (
+          Casa IN ('Hufflepuff', 'Ravenclaw', 
+                   'Gryffindor', 'Slytherin')
+        );      
+    \end{lstlisting}
+\end{itemize}
+
+
+\begin{itemize}
+    \item Tabla elegida: MAESTROS
+    \item Atributo elegido: genero
+    \item Descripción: El dominio Genero representa el género de un maestro. Los valores permitidos son: Masculino, Femenino
+    \item Instrucción para la creación del dominio personalizado.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      CREATE DOMAIN Genero
+      AS CHAR(20)
+      CHECK (
+        Genero IN ('Masculino', 'Femenino')
+      );      
+    \end{lstlisting}    
+\end{itemize}
+
+
+\begin{itemize}
+    \item Tabla elegida: MAESTROS
+    \item Atributo elegido: especialidad
+    \item Descripción: El dominio Especialidad representa la especialidad de un maestro. La restricción check propuesta indica que el valor de este atributo debe ser una cadena de caracteres de al menos 3 caracteres y no más de 50 caracteres.
+    \item Instrucción para la creación del dominio personalizado.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      USE [EscuelaDeMagia]
+      GO
+
+      CREATE DOMAIN [Especialidad] AS VARCHAR(50)
+      CHECK (LENGTH(VALUE) >= 3 AND LENGTH(VALUE) <= 50)
+      GO
+    \end{lstlisting}    
+\end{itemize}
+
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Restricciones para tuplas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 2 restricciones para “tuplas” en diferentes tablas (Unidad 8 Integridad, tema Specifying Constraints on Tuples Using CHECK)
+
+\begin{itemize}
+    \item Tabla elegida: ALUMNOS
+    \item Breve descripción de la restricción: Esta restricción asegura que los alumnos no puedan ser mayores de 100 años. Para ello, se verifica que la fecha de nacimiento sea posterior al año actual menos 100.
+    \item Instrucción para la creación de la restricción:
+    \begin{verbatim}
+    ALTER TABLE ALUMNOS
+    ADD CONSTRAINT edadAlumno
+    CHECK (fechaNacimiento > DATE_SUB(CURRENT_DATE, INTERVAL 100 YEAR));
+    \end{verbatim}
+    \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando:
+    \begin{verbatim}
+    INSERT INTO ALUMNOS (alumnoID, Nombre, Apellido, Casa, fechaNacimiento, Genero, ubicacionID, cursoID)
+    VALUES ('nuevoID', 'Nombre', 'Apellido', 'Hufflepuff', '1900-01-01', 'Genero', 'ubicacionID', 'cursoID');
+    \end{verbatim}  
+\end{itemize}
+
+
+\begin{itemize}
+  \item Tabla elegida: `MAESTROS`
+  \item Breve descripción de la restricción: Esta restricción asegura que los maestros no puedan ser menores de 25 años. Para ello, se verifica que la fecha de nacimiento sea anterior al año actual menos 25.
+  \item Instrucción para la creación de la restricción:
+  \begin{verbatim}
+  ALTER TABLE MAESTROS
+  ADD CONSTRAINT edadMaestro
+  CHECK (fechaNacimiento < DATE_SUB(CURRENT_DATE, INTERVAL 25 YEAR));
+  \end{verbatim}
+  \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando:
+  \begin{verbatim}
+  INSERT INTO MAESTROS (maestroID, Nombre, Apellido, Especialidad, fechaNacimiento, Genero, ubicacionID)
+  VALUES ('nuevoID', 'Nombre', 'Apellido', 'Especialidad', '2000-01-01', 'Genero', 'ubicacionID');
+  \end{verbatim}
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Consultas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 consultas que consideres relevantes para la base de datos propuesta. Para cada consulta planteada, incluir en el reporte los siguientes incisos:
+
+\subsubsection*{Consulta 01}
+\begin{itemize}
+    \item Redacción clara de la consulta: Obtener una lista de todos los alumnos que están en la casa Gryffindor.
+    \item Código en lenguaje SQL de la consulta.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      SELECT Nombre, Apellido
+      FROM ALUMNOS
+      WHERE Casa = 'Slytherin';
+    \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/escuela/consu01.png}
+    \end{center}
+    
+\end{itemize}
+
+
+\subsubsection*{Consulta 02}
+\begin{itemize}
+    \item Redacción clara de la consulta: Obtener una lista de todos los cursos que son impartidos por un maestro específico.
+    \item Código en lenguaje SQL de la consulta.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      SELECT nombreCurso
+      FROM CURSOS
+      WHERE maestroID = 'GGO01';
+    \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .8]{IMA/escuela/consu02.png}
+    \end{center}
+    
+\end{itemize}
+
+
+\subsubsection*{Consulta 03}
+\begin{itemize}
+    \item Redacción clara de la consulta:  Obtener una lista de todos los maestros que viven en una ubicación específica.
+    \item Código en lenguaje SQL de la consulta.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      SELECT Nombre, Apellido
+      FROM MAESTROS
+      WHERE ubicacionID = 'NEWC';
+    \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .8]{IMA/escuela/consu03.png}
+    \end{center}
+
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Vistas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 vistas que consideres relevantes para la base de datos propuesta. Para cada vista planteada, incluir en el reporte los siguientes incisos:
+
+\subsection*{Vista 01}
+\begin{itemize}
+    \item Redacción clara de la vista planteada: Una vista que muestre todos los alumnos junto con la información de su ubicación.
+    \item Código en lenguaje SQL que permita crear la vista solicitada.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      CREATE VIEW AlumnosUbicacion AS
+      SELECT ALUMNOS.Nombre, ALUMNOS.Apellido, UBICACION.Localidad, UBICACION.Pais
+      FROM ALUMNOS
+      JOIN UBICACION ON ALUMNOS.ubicacionID = UBICACION.ubicacionID;
+    \end{lstlisting}    
+    
+    \item USO:
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      SELECT * FROM AlumnosUbicacion;
+    \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .4]{IMA/escuela/vista01.png}
+    \end{center}
+\end{itemize}
+
+
+\subsection*{Vista 02}
+
+\begin{itemize}
+  \item Redacción clara de la vista planteada: Una vista que muestre todos los cursos junto con el nombre del maestro que los imparte.
+  \item Código en lenguaje SQL que permita crear la vista solicitada.
+  
+  \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    CREATE VIEW CursosMaestros AS
+    SELECT CURSOS.nombreCurso, MAESTROS.Nombre, MAESTROS.Apellido
+    FROM CURSOS
+    JOIN MAESTROS ON CURSOS.maestroID = MAESTROS.maestroID;
+  \end{lstlisting}    
+  
+  \item USO:
+  
+  \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    SELECT * FROM CursosMaestros;
+  \end{lstlisting}    
+
+  \begin{center}
+    \includegraphics[scale = .4]{IMA/escuela/vista02.png}
+  \end{center}
+\end{itemize}
+
+
+\subsection*{Vista 03}
+
+\begin{itemize}
+  \item Redacción clara de la vista planteada: Una vista que muestre todas las asignaturas junto con el nombre del curso al que pertenecen.
+  \item Código en lenguaje SQL que permita crear la vista solicitada.
+  
+  \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    CREATE VIEW AsignaturasCursos AS
+    SELECT ASIGNATURAS.nombreAsignatura, CURSOS.nombreCurso
+    FROM ASIGNATURAS
+    JOIN CURSOS ON ASIGNATURAS.cursoID = CURSOS.cursoID;
+  \end{lstlisting}    
+  
+  \item USO:
+  
+  \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    SELECT * FROM AsignaturasCursos;
+  \end{lstlisting}    
+
+  \begin{center}
+    \includegraphics[scale = .4]{IMA/escuela/vista03.png}
+  \end{center}
+\end{itemize}

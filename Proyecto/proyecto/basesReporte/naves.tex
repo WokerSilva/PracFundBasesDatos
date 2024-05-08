@@ -1,0 +1,502 @@
+%%%%%----------------------------------------
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\section{\texttt{Naves}}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+%%%%%----------------------------------------
+
+\subsection{Requerimientos}
+
+La empresa Galactic Travel Solutions ha solicitado el diseño de una base de datos para gestionar 
+los viajes galácticos en el año 4000. El objetivo es administrar eficientemente la información relacionada 
+con pasajeros, naves, planetas, rutas y choferes para ofrecer servicios de transporte 
+interplanetario de manera segura y organizada.
+
+\begin{itemize}
+  \item Cada pasajero debe estar asociado a una única nave, y cada nave debe tener asignada una ruta específica.
+  \item Los planetas deben tener información única y estar relacionados con las rutas para garantizar la coherencia de los viajes.
+  \item Las relaciones entre las tablas deben ser mantenidas para asegurar la integridad referencial. Por ejemplo, un chofer debe estar asignado a una nave existente.
+  \item Los identificadores primarios y foráneos deben seguir una convención clara y única para facilitar la comprensión y mantenimiento de la base de datos.
+  \item Se deben establecer restricciones de integridad para prevenir operaciones que puedan comprometer la consistencia de los datos, como eliminar un planeta asociado a una ruta activa.
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Modelo conceptual}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{center}
+    \includegraphics[scale = .6]{IMA/nave/BD-NAVE-MO-CONCEPTUAL.png}
+\end{center}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Modelo relacional}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{center}
+  \includegraphics[scale = .7]{IMA/nave/BD-NAVE-MO-RELACIONAL.png}
+\end{center}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Script de creación}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    -- Solo los titulos de las tablas para naves    
+    CREATE TABLE PLANETAS
+    (
+      
+    );
+    
+    CREATE TABLE RUTAS
+    (
+
+    );
+    
+    
+    CREATE TABLE NAVES
+    (
+      
+    );
+    
+    CREATE TABLE CHOFERES
+    (
+      
+    );
+    
+    CREATE TABLE PASAJEROS
+    (
+
+    );
+\end{lstlisting}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Script de Insert}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{itemize}
+    \item[$\rightarrow$] Se deben generar 100 registros para cada tabla.
+    \item[$\rightarrow$] Si para el buen funcionamiento de la base de datos se requieren más de 100 registros o
+            menos de 100 registros en una tabla, se debe explicar claramente la razón, sólo en este caso
+            sí se debe incluir un apartado en el reporte final.
+\end{itemize}
+
+Tablas:
+\begin{itemize}
+  \item PLANETAS: no es posible porque nos concentramos en los 8 planetas del sistema solar
+  \item RUTAS: no es posible porque se toman las posibles rutas entre los 8 planetas, 28
+  \item NAVES: no es posible porque se toman 28 naves para las 28 rutas
+  \item CHOFERES: no es posible porque se toman 28 choferes para las 28 rutas
+  
+  Es importante resaltar que para respetar las secuencias y no tener problemas con los ID se tuvo que realizar así la tabla
+
+  \item PASAJEROS: Si es posible llegar a los 100 registros.
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento Restricciones}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 4 restricciones de integridad referencial.
+
+\subsubsection*{Restricción 01}
+
+\begin{itemize}
+  \item[$\rightarrow$] Tablas involucradas en la restricción: NAVES y RUTAS
+  \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: rutaID en NAVES (FK) hace referencia a rutaID en RUTAS (PK)
+  \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Esta restricción asegura que cada rutaID en la tabla NAVES corresponda a un rutaID válido en la tabla RUTAS. Esto es crucial para mantener la coherencia de los datos, ya que no tendría sentido tener una nave asignada a una ruta que no existe.
+  \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+  \begin{verbatim}  
+  DELETE FROM RUTAS WHERE rutaID = 'R1';  
+  \end{verbatim}
+  \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.    
+        \begin{center}
+            \includegraphics[scale = .4]{IMA/nave/6-01.png}
+        \end{center}
+
+\end{itemize}
+
+\subsubsection*{Restricción 02}
+
+\begin{itemize}
+  \item[$\rightarrow$] Tablas involucradas en la restricción: CHOFERES y NAVES
+  \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: naveID en CHOFERES (FK) hace referencia a naveID en NAVES (PK)
+  \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Esta restricción asegura que cada naveID en la tabla CHOFERES corresponda a un naveID válido en la tabla NAVES. Esto es crucial para mantener la coherencia de los datos, ya que no tendría sentido tener un chofer asignado a una nave que no existe.
+  \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+  \begin{verbatim}
+  DELETE FROM NAVES WHERE naveID = 'N19RR';
+  \end{verbatim}
+  \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.    
+        \begin{center}
+          \includegraphics[scale = .4]{IMA/nave/6-02.png}
+        \end{center}
+
+\end{itemize}
+
+\subsubsection*{Restricción 03}
+
+\begin{itemize}
+  \item[$\rightarrow$] Tablas involucradas en la restricción: PASAJEROS y NAVES
+  \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: naveID en PASAJEROS (FK) hace referencia a naveID en NAVES (PK)
+  \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Esta restricción asegura que cada naveID en la tabla PASAJEROS corresponda a un naveID válido en la tabla NAVES. Esto es crucial para mantener la coherencia de los datos, ya que no tendría sentido tener un pasajero asignado a una nave que no existe.
+  \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+  \begin{verbatim}
+  DELETE FROM NAVES WHERE naveID = 'N7SR';
+  \end{verbatim}
+  \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.    
+        \begin{center}
+          \includegraphics[scale = .4]{IMA/nave/6-03.png}
+        \end{center}
+
+\end{itemize}
+
+\subsubsection*{Restricción 04}
+
+\begin{itemize}
+  \item[$\rightarrow$] Tablas involucradas en la restricción: RUTAS y PLANETAS
+  \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: origen y destino en RUTAS (FK) hacen referencia a planetaID en PLANETAS (PK)
+  \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Esta restricción asegura que cada origen y destino en la tabla RUTAS corresponda a un planetaID válido en la tabla PLANETAS. Esto es crucial para mantener la coherencia de los datos, ya que no tendría sentido tener una ruta que comienza o termina en un planeta que no existe.
+  \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está funcionando.
+  \begin{verbatim}  
+  DELETE FROM PLANETAS WHERE planetaID = 'Tierra';  
+  \end{verbatim}
+  \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está funcionando.
+    
+        \begin{center}
+          \includegraphics[scale = .4]{IMA/nave/6-04.png}
+        \end{center}
+
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento Restricciones check}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 3 restricciones check para “atributos” de varias
+tablas.
+
+\subsubsection*{Restricción 01}
+
+\begin{itemize} 
+  \item Tabla elegida: PLANETAS 
+  \item Atributo elegido: distanciaSol 
+  \item Descripción: Esta restricción asegura que la distancia de un planeta al sol sea siempre positiva. 
+  \item Instrucción para la creación de la restricción: 
+    \begin{verbatim} 
+    ALTER TABLE PLANETAS 
+    ADD CONSTRAINT distanciaSol CHECK (distanciaSol > 0); 
+    \end{verbatim} 
+  \item Instrucción que permita evidenciar que la restricción está funcionando: 
+    \begin{verbatim} 
+    INSERT INTO PLANETAS (planetaID, estacion, distanciaSol, 
+                          gravedad, poblacion) 
+      VALUES ('Pluton', 'Deep', -100, 9.8, 1000000);
+    \end{verbatim} 
+  \item Captura de pantalla 
+  \begin{center}
+    \includegraphics[scale = .5]{IMA/nave/7-01.png}
+  \end{center} 
+\end{itemize}
+
+\subsubsection*{Restricción 02}
+
+\begin{itemize} 
+  \item Tabla elegida: NAVES 
+  \item Atributo elegido: capacidad 
+  \item Descripción: Esta restricción asegura que la capacidad de una nave sea siempre positiva. 
+  \item Instrucción para la creación de la restricción: 
+    \begin{verbatim}
+    ALTER TABLE NAVES 
+    ADD CONSTRAINT capacidad CHECK (capacidad > 0); 
+    \end{verbatim} 
+  \item Instrucción que permita evidenciar que la restricción está funcionando: 
+    \begin{verbatim} 
+    INSERT INTO NAVES (naveID, modelo, capacidad, velocidadMax, rutaID) 
+    VALUES ('N002', 'Modelo1', -50, 1000, 'R001'); 
+    \end{verbatim} 
+    
+  \item Captura de pantalla 
+    \begin{center} 
+      \includegraphics[scale = .5]{IMA/nave/7-02.png}
+    \end{center} 
+\end{itemize}
+
+
+\subsubsection*{Restricción 03}
+
+\begin{itemize} 
+  \item Tabla elegida: CHOFERES 
+  \item Atributo elegido: edad 
+  \item Descripción: Esta restricción asegura que la edad de un chofer sea siempre positiva y menor que 100. 
+  \item Instrucción para la creación de la restricción: 
+    \begin{verbatim} 
+    ALTER TABLE CHOFERES
+    ADD CONSTRAINT edad CHECK (edad > 0 AND edad < 100); 
+    \end{verbatim} 
+  \item Instrucción que permita evidenciar que la restricción está funcionando: 
+    \begin{verbatim}
+      INSERT INTO CHOFERES (choferID, nombre, edad, genero, nacionalidad, naveID) 
+      VALUES ('C002', 'Chofer1', -30, 'M', 'Noruega', 'N001');
+    \end{verbatim} 
+  \item Captura de pantalla 
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/7-03.png}
+    \end{center} 
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Creación de dominios personalizados}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia de la creación de al menos tres dominios personalizados. Se deben utilizar restricciones check en la creación de los tres dominios.
+
+\subsubsection*{Dominio 01}
+
+\begin{itemize} 
+  \item Tabla elegida: PLANETAS 
+  \item Atributo elegido: distanciaSol 
+  \item Descripción: Este dominio personalizado asegura que la distancia de un planeta al sol sea siempre positiva y menor que 1000000 (un millón de unidades de distancia). 
+  \item Instrucción para la creación del dominio personalizado. 
+  \begin{lstlisting}[caption={Dominio 01}, label={lst:sql_estadios}] 
+    distanciaSol INT CHECK (distanciaSol > 0 AND distanciaSol < 1000000),
+  \end{lstlisting} 
+\end{itemize}
+
+\subsubsection*{Dominio 02}
+
+\begin{itemize} 
+  \item Tabla elegida: NAVES 
+  \item Atributo elegido: capacidad 
+  \item Descripción: Este dominio personalizado asegura que la capacidad de una nave sea siempre positiva y menor que 1000. 
+  \item Instrucción para la creación del dominio personalizado. 
+    \begin{lstlisting}[caption={Dominio 02}, label={lst:sql_estadios}] 
+    CREATE DOMAIN capacidad AS INT CHECK (VALUE > 0 AND VALUE < 300); 
+    \end{lstlisting} 
+\end{itemize}
+
+
+\subsubsection*{Dominio 03}
+
+\begin{itemize} 
+  \item Tabla elegida: CHOFERES 
+  \item Atributo elegido: edad 
+  \item Descripción: Este dominio personalizado asegura que la edad de un chofer sea siempre positiva y menor que 100. 
+  \item Instrucción para la creación del dominio personalizado. 
+    \begin{lstlisting}[caption={Dominio 03}, label={lst:sql_estadios}] 
+      CREATE DOMAIN EdadChofer AS INT CHECK (VALUE > 0 AND VALUE < 100); 
+    \end{lstlisting} 
+\end{itemize}
+
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Restricciones para tuplas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 2 restricciones para tuplas en diferentes tablas (Unidad 8 Integridad, tema Specifying Constraints on Tuples Using CHECK)
+
+
+\subsubsection*{Restricción 01}
+
+\begin{itemize} 
+  \item Tabla elegida: NAVES 
+  \item Breve descripción de la restricción: Esta restricción asegura que la capacidad de una nave siempre sea menor que su velocidadMax. 
+  \item Instrucción para la creación de la restricción: 
+    \begin{verbatim} 
+      ALTER TABLE NAVES 
+      ADD CONSTRAINT capacidad_velocidad CHECK (capacidad < velocidadMax); 
+    \end{verbatim} 
+  \item Instrucción Insert o Update que permita evidenciar que la restricción está funcionando: 
+    \begin{verbatim} 
+      INSERT INTO NAVES (naveID, modelo, capacidad, velocidadMax, rutaID) 
+      VALUES ('N003', 'Modelo2', 2000, 1000, 'R001'); 
+    \end{verbatim}
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/tu-01.png}
+    \end{center}
+\end{itemize}
+
+
+\subsubsection*{Restricción 02}
+
+\begin{itemize} 
+  \item Tabla elegida: RUTAS 
+  \item Breve descripción de la restricción: Esta restricción asegura que el origen y el destino de una ruta sean diferentes. 
+  \item Instrucción para la creación de la restricción: 
+    \begin{verbatim} 
+      ALTER TABLE RUTAS 
+      ADD CONSTRAINT origen_destino CHECK (origen <> destino); 
+    \end{verbatim} 
+  \item Instrucción Insert o Update que permita evidenciar que la restricción está funcionando: 
+    \begin{verbatim}
+    INSERT INTO RUTAS (rutaID, origen, destino, distancia, duracion) 
+    VALUES ('R003', 'P001', 'P001', 1000, 10);
+    \end{verbatim}
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/tu-02.png}
+    \end{center}
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Consultas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 consultas que consideres relevantes para la base de datos propuesta. Para cada consulta planteada, incluir en el reporte los siguientes incisos:
+
+
+\subsubsection*{Consulta 01}
+
+\begin{itemize} 
+  \item Redacción clara de la consulta: Obtener la lista de todas las naves y sus respectivas rutas. 
+  \item Código en lenguaje SQL de la consulta.
+
+  \begin{lstlisting}[caption={Consulta de naves y rutas}, label={lst:sql_estadios}]
+  SELECT N.naveID, N.modelo, R.rutaID, R.origen, R.destino
+  FROM NAVES N
+  INNER JOIN RUTAS R ON N.rutaID = R.rutaID;
+  \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/con1.png}
+    \end{center}
+    
+\end{itemize}
+
+
+\subsubsection*{Consulta 02}
+
+\begin{itemize} 
+  \item Redacción clara de la consulta: Obtener la lista de todos los choferes y las naves que están manejando. 
+  \item Código en lenguaje SQL de la consulta.
+
+  \begin{lstlisting}[caption={Consulta de choferes y naves}, label={lst:sql_estadios}]
+  SELECT C.choferID, C.nombre, N.naveID, N.modelo
+  FROM CHOFERES C
+  INNER JOIN NAVES N ON C.naveID = N.naveID;
+  \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/con2.png}
+    \end{center}
+    
+\end{itemize}
+
+
+\subsubsection*{Consulta 03}
+
+\begin{itemize}
+    \item Redacción clara de la consulta: Obtener la lista de todos los pasajeros y las naves en las que están viajando.
+    \item Código en lenguaje SQL de la consulta.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    SELECT PASAJEROS.nombre, PASAJEROS.apellido, NAVES.modelo
+    FROM PASAJEROS
+    INNER JOIN NAVES ON PASAJEROS.naveID = NAVES.naveID;
+    \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/con3.png}
+    \end{center}
+    
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Vistas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 vistas que consideres relevantes para la base de datos propuesta. Para cada vista planteada, incluir en el reporte los siguientes incisos:
+
+\subsection*{Vista 01}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada: Esta vista mostrará todas las naves junto con sus rutas respectivas.
+    \item Código en lenguaje SQL que permita crear la vista solicitada.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    CREATE VIEW Naves_Rutas AS
+    SELECT NAVES.naveID, NAVES.modelo, RUTAS.origen, RUTAS.destino
+    FROM NAVES
+    INNER JOIN RUTAS ON NAVES.rutaID = RUTAS.rutaID;
+    \end{lstlisting}    
+    
+    \item USO:
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    SELECT * FROM Naves_Rutas;
+    \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/V1.png}
+    \end{center}
+\end{itemize}
+
+
+\subsection*{Vista 02}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada: Esta vista mostrará todos los choferes junto con las naves que están manejando.
+    \item Código en lenguaje SQL que permita crear la vista solicitada.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      CREATE VIEW Choferes_Naves AS
+      SELECT CHOFERES.nombre, NAVES.modelo
+      FROM CHOFERES
+      INNER JOIN NAVES ON CHOFERES.naveID = NAVES.naveID;      
+    \end{lstlisting}    
+    
+    \item USO:
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      SELECT * FROM Choferes_Naves;      
+    \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/V2.png}
+    \end{center}
+\end{itemize}
+
+
+\subsection*{Vista 03}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada: Esta vista mostrará todos los pasajeros junto con las naves en las que están viajando.
+    \item Código en lenguaje SQL que permita crear la vista solicitada.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      CREATE VIEW Pasajeros_Naves AS
+      SELECT PASAJEROS.nombre, PASAJEROS.apellido, NAVES.modelo
+      FROM PASAJEROS
+      INNER JOIN NAVES ON PASAJEROS.naveID = NAVES.naveID;      
+    \end{lstlisting}    
+    
+    \item USO:
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+      SELECT * FROM Pasajeros_Naves;
+    \end{lstlisting}    
+
+    \begin{center}
+      \includegraphics[scale = .5]{IMA/nave/V3.png}
+    \end{center}
+\end{itemize}

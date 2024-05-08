@@ -1,0 +1,539 @@
+%%%%%----------------------------------------
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\section{\texttt{Estadios}}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+%%%%%----------------------------------------
+
+\subsection{Requerimientos}
+
+La FIFA nos ha encargado el desarrollo de un sistema para la administración de la venta de boletos
+en estadios de fútbol para los partidos del Mundial de 2026. El sistema deberá cubrir los cuatro
+estadios de fútbol de México que albergarán partidos del torneo: el Estadio Azteca,
+el Estadio Corregidora, el Estadio Hidalgo y el Estadio Jalisco.
+
+\subsubsection*{Restricciones de los datos}
+
+\begin{itemize}
+    \item El número de boleto, el nombre del estadio, el nombre de la sección (dentro de un estadio), el número de transacción, el nombre del equipo y el id del partido deben ser únicos.
+    \item Las fechas del partido y de la transacción deben ser válidas.
+    \item La fecha y hora del partido deben estar en el futuro.
+    \item El estadio debe ser uno de los cuatro estadios de México.
+    \item La sección y el asiento deben ser válidos dentro del estadio.
+    \item El precio y la capacidad del estadio y de la sección deben ser números positivos.
+    \item El estado de venta debe ser Vendido o Disponible.
+    \item El nombre y la dirección del cliente, así como el país del equipo, deben ser cadenas no vacías.
+    \item El teléfono del cliente y el número de tarjeta de crédito deben ser válidos.
+    \item El correo electrónico del cliente debe ser una dirección de correo electrónico válida.
+    \item La ubicación del estadio debe ser una cadena que describa la ciudad o lugar donde se encuentra.
+    \item Debe haber al menos una sección asociada a cada estadio y al menos dos equipos participando en cada partido.
+    \item El estadio asociado al partido y el cliente y el boleto asociados a la transacción deben existir en sus respectivas tablas.
+    \item El precio en la transacción debe ser igual al precio del boleto multiplicado por la cantidad de boletos en la transacción.
+    \item El id del equipo en el partido debe hacer referencia a un equipo existente en la tabla Equipos.
+    \item El id del partido en el equipo partido debe hacer referencia a un partido existente en la tabla Partido.
+    \item La combinación única de id del equipo y id del partido debe asegurar que un equipo no participe más de una vez en el mismo partido.
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Modelo conceptual}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{center}
+    \includegraphics[scale = .6]{IMA/estadio/BD-ESTADIO-MO-CONCEPTUAL.png}
+\end{center}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Modelo relacional}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{center}
+    \includegraphics[scale = .7]{IMA/estadio/BD-ESTADIO-MO-RELACIONAL.png}
+\end{center}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Script de creación}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+\begin{itemize}
+    \item[$\rightarrow$] Script completo y sin errores para la creación de todos los elementos que conforman el esquema
+            de la base de datos.
+    \item[$\rightarrow$] El Script debe estar diseñado para la versión 14 de Postgres.
+    \item[$\rightarrow$] Deben estar contempladas todas las llaves primarias, llaves candidatas y llaves foráneas;
+    todas las llaves foráneas deben contar con un trigger de integridad referencial (SET NULL,
+    CASCADE o SET DEFAULT).
+\end{itemize}
+
+
+\begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    -- Solo los titulos de las tablas    
+    CREATE TABLE Clientes(
+
+    );
+
+    CREATE TABLE Estadios(
+
+    );
+
+    CREATE TABLE SeccionesEstadio(
+
+    );
+
+    CREATE TABLE Equipos(
+
+    );
+
+    CREATE TABLE Partidos(
+
+    );
+
+    CREATE TABLE Boletos (
+
+    );
+
+    CREATE TABLE Transacciones(
+
+    );
+\end{lstlisting}
+
+    
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Script de Insert}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+\begin{itemize}
+    \item[$\rightarrow$] Se deben generar 100 registros para cada tabla.
+    \item[$\rightarrow$] Si para el buen funcionamiento de la base de datos se requieren más de 100 registros o
+            menos de 100 registros en una tabla, se debe explicar claramente la razón, sólo en este caso
+            sí se debe incluir un apartado en el reporte final.
+\end{itemize}
+
+Tablas:
+\begin{itemize}
+    \item Clientes: Si es posible llegar a 100 registros 
+    \item Estadios: La tabla únicamente contiene la información de los 4 estadios que albergan el mundial, por lo que no es posible llegar a 100 registros
+    \item SeccionesEstadio: Si es posible llegar a 100 registros 
+    \item Equipos: La tabla únicamente contiene la información de las 32 selecciones clasificadas al mundial por lo que no es posible llegar a 100 registros
+    \item Partidos: La tabla solo contiene los 24 partidos de fase de grupos por lo que no es posible llegar a 100 registros
+    \item Boletos: Si es posible llegar a 100 registros 
+    \item Transacciones: Si es posible llegar a 100 registros 
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento restricciones}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 4 restricciones de integridad referencial.
+
+\subsubsection*{Restricción 01}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: Partidos y Estadios
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: FK: id Estadio en la tabla Partidos. PK id Estadio en la tabla Estadios
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: : Esta restricción asegura que no puedes tener un partido en un estadio que no exista en la tabla Estadios.
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está
+    funcionando.
+    \begin{verbatim}
+        DELETE FROM Estadios WHERE id_Estadio = 1;
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/6-01.png}
+    \end{center}
+\end{itemize}
+
+
+\subsubsection*{Restricción 02}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: Boletos y Equipos
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: Las claves foráneas en Boletos que hacen referencia a Equipos son id equipoLocal y id equipoVisita, y la clave primaria en Equipos es id Equipo.
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Se utiliza la opción ON DELETE SET NULL. Esto significa que si se elimina un registro en la tabla Equipos, entonces el id equipoLocal y/o id equipoVisita correspondiente en la tabla Boletos se establecerá en NULL. Esto asegura la integridad de los datos.
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está
+    funcionando.
+    \begin{verbatim}
+        DELETE FROM Equipos WHERE id_Equipo = 'SEN';
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/6-02-1.png}
+
+        \includegraphics[scale = .4]{IMA/estadio/6-02-2.png}
+    \end{center}
+\end{itemize}
+
+
+
+\subsubsection*{Restricción 03}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: Transacciones y Clientes
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: La clave foránea en Transacciones que hace referencia a Clientes es id Cliente, y la clave primaria en Clientes es id Cliente.
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido:  Se utiliza la opción ON DELETE CASCADE. Esto significa que si se elimina un registro en la tabla Clientes, entonces todos los registros correspondientes en la tabla Transacciones también se eliminarán. Esto asegura la integridad de los datos. 
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está
+    funcionando.
+    \begin{verbatim}
+        DELETE FROM Clientes WHERE id_Cliente = 'CLI100';
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/6-03-1.png}
+
+        \includegraphics[scale = .4]{IMA/estadio/6-03-2.png}
+    \end{center}
+\end{itemize}
+
+
+\subsubsection*{Restricción 04}
+
+\begin{itemize}
+    \item[$\rightarrow$] Tablas involucradas en la restricción: Transacciones y Boletos
+    \item[$\rightarrow$] FK de la tabla que referencia y PK de la tabla referenciada: La clave foránea en Transacciones que hace referencia a Boletos es id Boleto, y la clave primaria en Boletos es num boleto.
+    \item[$\rightarrow$] Justificación del trigger de integridad referencial elegido: Se utiliza la opción ON DELETE CASCADE. Esto significa que si se elimina un registro en la tabla Boletos, entonces todos los registros correspondientes en la tabla Transacciones también se eliminarán. Esto asegura la integridad de los datos.
+    \item[$\rightarrow$] Instrucción UPDATE o DELETE que permita evidenciar que la restricción está
+    funcionando.
+    \begin{verbatim}
+        DELETE FROM Boletos WHERE num_boleto = 2;
+    \end{verbatim}
+    \item[$\rightarrow$] Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4 ]{IMA/estadio/6-04-1.png}
+
+        \includegraphics[scale = .4 ]{IMA/estadio/6-04-2.png}
+    \end{center}
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Funcionamiento Restricciones check}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 3 restricciones check para \textit{atributos} de varias
+tablas.
+
+\subsection*{Check 01}
+\begin{itemize}
+    \item Tabla elegida: Clientes
+    \item Atributo elegido: tarjetaCredito
+    \item Breve descripción de la restricción: La restricción garantiza que el número de tarjeta de crédito tenga exactamente 16 dígitos.
+    \item Instrucción para la creación de la restricción.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Clientes
+        ADD CONSTRAINT CHK_TarjetaCredito 
+        CHECK (LENGTH(tarjetaCredito) = 16);
+    \end{lstlisting}
+    
+    \item Instrucción que permita evidenciar que la restricción esta funcionando.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Clientes 
+            (id_Cliente, nombre_Cliente, direccion_Cliente, 
+            telefono_Cliente, email_Cliente, tarjetaCredito)
+           VALUES ('CIL120', 'Juan Luna', 'Calle Falsa 123',
+                    '55555555', 'juan.perez@example.com', '123456789012345'); 
+    \end{lstlisting}
+
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/7-01.png}
+    \end{center}
+\end{itemize}
+
+
+\subsection*{Check 02}
+\begin{itemize}
+    \item Tabla elegida: Estadios
+    \item Atributo elegido: capacidad
+    \item Breve descripción de la restricción: La restricción garantiza que la capacidad del estadio sea mayor a 0.
+    \item Instrucción para la creación de la restricción.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Estadios
+    ADD CONSTRAINT CHK_Capacidad CHECK (capacidad > 0);
+    \end{lstlisting}
+
+    \item Instrucción que permita evidenciar que la restricción esta funcionando.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Estadios (id_Estadio, nombre_Estadio, capacidad, ubicacion) VALUES 
+    (5, 'Anfield', 0, 'San Paulo'); 
+    \end{lstlisting}
+
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/7-02.png}
+    \end{center}
+\end{itemize}
+
+
+\subsection*{Check 03}
+\begin{itemize}
+    \item Tabla elegida: Boletos
+    \item Atributo elegido: estado
+    \item Breve descripción de la restricción: Garantiza que el estado del boleto sea Vendido o Disponible.
+    \item Instrucción para la creación de la restricción.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Boletos
+    ADD CONSTRAINT CHK_Estado CHECK (estado IN ('Vendido', 'Disponible'));        
+    \end{lstlisting}
+    \item Instrucción que permita evidenciar que la restricción esta funcionando.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Boletos (num_boleto, id_Partido, id_equipoLocal, id_equipoVisita,
+                         estado, precio, nombre_Seccion) 
+                VALUES (1, 'P123', 'E123', 'E124', 'Reservado',
+                         100, 'Seccion 1');    
+    \end{lstlisting}
+
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+    \begin{center}
+        \includegraphics[scale = .4]{IMA/estadio/7-03.png}
+    \end{center}
+\end{itemize}
+
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Creación de dominios personalizados}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia de la creación de al menos tres dominios personalizados. Se deben utilizar restricciones check en la creación de los tres dominios.
+
+\subsubsection*{Dominio 01}
+\begin{itemize}
+    \item Tabla elegida: Clientes
+    \item Atributo elegido: tarjetaCredito
+    \item Breve descripción del dominio y de la restricción check propuesta: Un dominio personalizado para el número de tarjeta de crédito que debe tener exactamente 16 dígitos.
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    CREATE DOMAIN TarjetaCredito AS VARCHAR(16)
+    CHECK (LENGTH(VALUE) = 16);
+    \end{lstlisting}
+    Instrucción para usar el dominio personalizado en la tabla:
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Clientes
+    ALTER COLUMN tarjetaCredito TYPE TarjetaCredito;        
+    \end{lstlisting}
+    \item Captura de pantalla de la estructura de la tabla donde se muestre el dominio personalizado
+    en uso.
+\end{itemize}
+
+
+\subsubsection*{Dominio 02}
+\begin{itemize}
+    \item Tabla elegida: Equipos
+    \item Atributo elegido: pais
+    \item Breve descripción del dominio y de la restricción check propuesta: Un dominio personalizado para el país del equipo que no debe estar vacío.
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    CREATE DOMAIN PaisEquipo AS VARCHAR(255)
+    CHECK (VALUE <> '');        
+    \end{lstlisting}
+    Instrucción para usar el dominio personalizado en la tabla:
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Equipos
+    ALTER COLUMN pais TYPE PaisEquipo;        
+    \end{lstlisting}
+    \item Captura de pantalla de la estructura de la tabla donde se muestre el dominio personalizado
+    en uso.
+\end{itemize}
+
+
+\subsubsection*{Dominio 03}
+\begin{itemize}
+    \item Tabla elegida: Partidos
+    \item Atributo elegido:  id Estadio
+    \item Breve descripción del dominio y de la restricción check propuesta:  Un dominio personalizado para el id del estadio que debe estar entre 1 y 4.
+    \item Instrucción para la creación del dominio personalizado.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+        CREATE DOMAIN IdEstadio AS INT
+        CHECK (VALUE IN (1, 2, 3, 4));
+    \end{lstlisting}
+    Instrucción para usar el dominio personalizado en la tabla:
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+        ALTER TABLE Partidos
+        ALTER COLUMN id_Estadio TYPE IdEstadio;        
+    \end{lstlisting}
+    \item Captura de pantalla de la estructura de la tabla donde se muestre el dominio personalizado
+    en uso.
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Restricciones para tuplas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Evidencia del funcionamiento de al menos 2 restricciones para “tuplas” en diferentes tablas (Unidad 8 Integridad, tema Specifying Constraints on Tuples Using CHECK)
+
+\subsubsection*{Restricción 01}
+\begin{itemize}
+    \item Tabla elegida: Partidos
+    \item Breve descripción de la restricción: La restricción garantiza que el id del estadio sea válido solo si la fecha y hora del partido están en el futuro.
+    \item Instrucción para la creación de la restricción.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Partidos
+    ADD CONSTRAINT 
+        CHK_FechaEstadio CHECK ((fecha_hora > CURRENT_TIMESTAMP AND 
+        id_Estadio IN (1, 2, 3, 4)) OR (fecha_hora <= CURRENT_TIMESTAMP));
+    \end{lstlisting}
+
+    \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Partidos (id_Partido, fecha_hora, id_Estadio, nombre_Arbitro)
+    VALUES ('P124', '2022-12-31 20:00:00', 5, 'Arbitro Prueba'); 
+    -- falla porque la fecha y hora estan en el futuro pero 
+    -- el id del estadio no es valido    
+    \end{lstlisting}
+
+    \item Captura de pantalla con el resultado de la instrucción que muestre que la restricción está
+    funcionando.
+\end{itemize}
+
+
+\subsubsection*{Restricción 02}
+\begin{itemize}
+    \item Tabla elegida: Transacciones
+    \item Breve descripción de la restricción: La restricción garantiza que el total de la transacción sea igual al precio del boleto multiplicado por la cantidad de boletos.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    ALTER TABLE Transacciones
+    ADD CONSTRAINT CHK_TotalPrecioCantidad CHECK (total_Transaccion = 
+                    (SELECT precio 
+                    FROM Boletos 
+                    WHERE num_boleto = id_Boleto) * cantidad_Boletos);        
+    \end{lstlisting}
+
+    \item Instrucción Insert o Update que permita evidenciar que la restricción esta funcionando.
+    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    INSERT INTO Transacciones (num_Transaccion, fecha_transaccion, id_Cliente, 
+                                id_Boleto, cantidad_Boletos, total_Transaccion)
+    VALUES (2, CURRENT_TIMESTAMP, 'C123', 1, 2, 150);     
+    \end{lstlisting}    
+\end{itemize}
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Consultas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+Plantea 3 consultas que consideres relevantes para la base de datos propuesta. Para cada consulta planteada, incluir en el reporte los siguientes incisos:
+
+
+\subsection*{Consulta 01}
+
+\begin{itemize}
+    \item Redacción clara de la consulta: ¿Cuántos boletos se han vendido para cada partido?
+    \item Código en lenguaje SQL de la consulta.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    SELECT id_Partido, COUNT(*) as Boletos_Vendidos
+    FROM Boletos
+    WHERE estado = 'Vendido'
+    GROUP BY id_Partido;    
+    \end{lstlisting}    
+        
+\end{itemize}
+
+
+\subsection*{Consulta 02}
+
+\begin{itemize}
+    \item Redacción clara de la consulta: ¿Cuál es el total de transacciones realizadas por cada cliente?
+    \item Código en lenguaje SQL de la consulta.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    SELECT id_Cliente, COUNT(*) as Total_Transacciones
+    FROM Transacciones
+    GROUP BY id_Cliente;
+    \end{lstlisting}    
+    
+\end{itemize}
+
+
+\subsection*{Consulta 03}
+
+\begin{itemize}
+    \item Redacción clara de la consulta: ¿Cuál es la capacidad total de cada estadio, sumando todas sus secciones?
+    \item Código en lenguaje SQL de la consulta.
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+    SELECT id_Estadio, SUM(capacidad_Seccion) as Capacidad_Total
+    FROM SeccionesEstadio
+    GROUP BY id_Estadio;    
+    \end{lstlisting}    
+\end{itemize}
+
+
+%%%%%--------------------------------------
+%%%%%-------------------------------------
+\subsection{Vistas}
+%%%%%-------------------------------------
+%%%%%--------------------------------------
+
+
+Plantea 3 vistas que consideres relevantes para la base de datos propuesta. Para cada vista planteada, incluir en el reporte los siguientes incisos:
+
+
+\subsection*{Consulta 01}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada: Una vista que muestre la cantidad de boletos vendidos para cada partido.
+    \item Código en lenguaje SQL que permita crear la vista solicitada.    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+        CREATE VIEW BoletosVendidosPorPartido AS
+        SELECT id_Partido, COUNT(*) as Boletos_Vendidos
+        FROM Boletos
+        WHERE estado = 'Vendido'
+        GROUP BY id_Partido;            
+    \end{lstlisting}    
+    
+\end{itemize}
+
+\subsection*{Consulta 02}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada: Una vista que muestre el total de transacciones realizadas por cada cliente.
+    \item Código en lenguaje SQL que permita crear la vista solicitada.    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+        CREATE VIEW TotalTransaccionesPorCliente AS
+        SELECT id_Cliente, COUNT(*) as Total_Transacciones
+        FROM Transacciones
+        GROUP BY id_Cliente;            
+    \end{lstlisting}    
+    
+\end{itemize}
+
+\subsection*{Consulta 03}
+
+\begin{itemize}
+    \item Redacción clara de la vista planteada:  Una vista que muestre la capacidad total de cada estadio, sumando todas sus secciones.
+    \item Código en lenguaje SQL que permita crear la vista solicitada.    
+    \begin{lstlisting}[caption={Tablas para la BdDatos}, label={lst:sql_estadios}]
+        CREATE VIEW CapacidadTotalPorEstadio AS
+        SELECT id_Estadio, SUM(capacidad_Seccion) as Capacidad_Total
+        FROM SeccionesEstadio
+        GROUP BY id_Estadio;            
+    \end{lstlisting}    
+    
+\end{itemize}
